@@ -44,6 +44,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure edtValorVendaProdKeyPress(Sender: TObject; var Key: Char);
+    procedure cbPesquisaChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -88,7 +89,7 @@ var
   comando, condicao : string;
 begin
   comando := STbProduto;
-  condicao := trim(edtPesquisa.Text);
+  condicao := Trim(edtPesquisa.Text);
   limpa;
   if condicao <> '' then
   begin
@@ -156,7 +157,7 @@ begin
       end;
     end;
 
-    DM.executaSql(comando,dm.sqlAltera);
+    DM.executaSql(comando,DM.sqlAltera);
     DM.fdtTransacaoAltera.Commit;
     btPesquisarClick(nil);
     acaoGeral := 3;
@@ -168,6 +169,11 @@ begin
   end;
 
 
+end;
+
+procedure TFCadProduto.cbPesquisaChange(Sender: TObject);
+begin
+  edtPesquisa.Text := '';
 end;
 
 procedure TFCadProduto.controleBotoes(acao: integer);
@@ -193,7 +199,7 @@ begin
     end;
     else begin
        BtNovo.Enabled := true;
-       if dm.sqlProduto.FieldByName('pkcodprod').AsString <> '' then
+       if DM.sqlProduto.FieldByName('pkcodprod').AsString <> '' then
        begin
           BtAlterar.Enabled := true;
           BtRemover.Enabled := true;
@@ -257,7 +263,7 @@ begin
   end;
   edtPkCodProd.Text := Dm.sqlProduto.FieldByName('pkcodprod').AsString;
   edtNomeProd.Text := Dm.sqlProduto.FieldByName('nomeprod').AsString;
-  edtValorVendaProd.Text := Dm.sqlProduto.FieldByName('valorvendaprod').AsString;
+  edtValorVendaProd.Text := FormatFloat('#0.00',Dm.sqlProduto.FieldByName('valorvendaprod').AsFloat);
 end;
 
 end.

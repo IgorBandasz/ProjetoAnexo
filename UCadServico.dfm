@@ -203,6 +203,7 @@ object FCadServico: TFCadServico
       ItemIndex = 0
       TabOrder = 0
       Text = 'Todos'
+      OnChange = cbPesquisaChange
       Items.Strings = (
         'Todos'
         'C'#243'digo igual a'

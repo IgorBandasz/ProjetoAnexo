@@ -22,6 +22,11 @@ type
     dsServico: TDataSource;
     sqlProduto: TFDQuery;
     dsProduto: TDataSource;
+    sqlMarca: TFDQuery;
+    dsMarca: TDataSource;
+    sqlVeiculo: TFDQuery;
+    dsVeiculo: TDataSource;
+    sqlGeral: TFDQuery;
   private
 
     { Private declarations }
@@ -38,6 +43,9 @@ var
   STbCliente :string= 'select * from tbcliente ';
   STbServico :string= 'select * from tbservico ';
   STbProduto :string= 'select * from tbproduto ';
+  STbMarca   :string= 'select * from tbmarca ';
+  STbVeiculo :string= 'select * from tbveiculo v  '
+                    + 'inner join tbmarca m on m.pkcodmarca = v.fkcodmarca ';
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
@@ -80,7 +88,7 @@ end;
 function TDM.salvaChave(chave: string): string;
 begin
   chave:=Trim(chave);
-  if chave='' then
+  if (chave='') or (chave='-1') then
     chave:='NULL';
   salvaChave:=chave;
 end;

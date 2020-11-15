@@ -42,6 +42,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btSalvarClick(Sender: TObject);
     procedure edtPesquisaKeyPress(Sender: TObject; var Key: Char);
+    procedure cbPesquisaChange(Sender: TObject);
   private
 
     { Private declarations }
@@ -85,7 +86,7 @@ var
   comando, condicao : string;
 begin
   comando := STbCliente;
-  condicao := trim(edtPesquisa.Text);
+  condicao := Trim(edtPesquisa.Text);
   limpa;
   if condicao <> '' then
   begin
@@ -151,7 +152,7 @@ begin
       end;
     end;
 
-    DM.executaSql(comando,dm.sqlAltera);
+    DM.executaSql(comando,DM.sqlAltera);
     DM.fdtTransacaoAltera.Commit;
     btPesquisarClick(nil);
     acaoGeral := 3;
@@ -163,6 +164,11 @@ begin
   end;
 
 
+end;
+
+procedure TFCadCliente.cbPesquisaChange(Sender: TObject);
+begin
+  edtPesquisa.Text := '';
 end;
 
 procedure TFCadCliente.controleBotoes(acao: integer);
@@ -188,7 +194,7 @@ begin
     end;
     else begin
        BtNovo.Enabled := true;
-       if dm.sqlCliente.FieldByName('pkcodcli').AsString <> '' then
+       if DM.sqlCliente.FieldByName('pkcodcli').AsString <> '' then
        begin
           BtAlterar.Enabled := true;
           BtRemover.Enabled := true;

@@ -6,7 +6,9 @@ uses
   UCadCliente in 'UCadCliente.pas' {FCadCliente},
   UDM in 'UDM.pas' {DM: TDataModule},
   UCadServico in 'UCadServico.pas' {FCadServico},
-  UCadProduto in 'UCadProduto.pas' {FCadProduto};
+  UCadProduto in 'UCadProduto.pas' {FCadProduto},
+  UCadMarca in 'UCadMarca.pas' {FCadMarca},
+  UCadVeiculo in 'UCadVeiculo.pas' {FCadVeiculo};
 
 {$R *.res}
 
@@ -18,5 +20,7 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TFCadServico, FCadServico);
   Application.CreateForm(TFCadProduto, FCadProduto);
+  Application.CreateForm(TFCadMarca, FCadMarca);
+  Application.CreateForm(TFCadVeiculo, FCadVeiculo);
   Application.Run;
 end.

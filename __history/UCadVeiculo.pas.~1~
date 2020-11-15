@@ -1,0 +1,45 @@
+unit UCadVeiculo;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Grids,
+  Vcl.DBGrids, Vcl.Buttons, Vcl.ExtCtrls;
+
+type
+  TFCadVeiculo = class(TForm)
+    pBotoes: TPanel;
+    btNovo: TBitBtn;
+    btAlterar: TBitBtn;
+    btRemover: TBitBtn;
+    btSalvar: TBitBtn;
+    btCancelar: TBitBtn;
+    btSair: TBitBtn;
+    dbgServicos: TDBGrid;
+    pListagem: TPanel;
+    cbPesquisa: TComboBox;
+    edtPesquisa: TEdit;
+    btPesquisar: TBitBtn;
+    pDados: TPanel;
+    lbCodigo: TLabel;
+    lbMarca: TLabel;
+    lbPlaca: TLabel;
+    edtPkCodVeiculo: TEdit;
+    cbNomeMarca: TComboBox;
+    cbFkCodMarca: TComboBox;
+    edtPlacaVeiculo: TEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FCadVeiculo: TFCadVeiculo;
+
+implementation
+
+{$R *.dfm}
+
+end.

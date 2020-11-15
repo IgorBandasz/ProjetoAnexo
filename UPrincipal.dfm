@@ -32,6 +32,14 @@ object FPrincipal: TFPrincipal
         Caption = 'Servi'#231'o'
         OnClick = Servio1Click
       end
+      object Veculo1: TMenuItem
+        Caption = 'Ve'#237'culo'
+        OnClick = Veculo1Click
+      end
+      object Marca1: TMenuItem
+        Caption = 'Marca'
+        OnClick = Marca1Click
+      end
       object N1: TMenuItem
         Caption = '-'
       end

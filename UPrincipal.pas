@@ -15,11 +15,15 @@ type
     Servio1: TMenuItem;
     N1: TMenuItem;
     Sair1: TMenuItem;
+    Marca1: TMenuItem;
+    Veculo1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Cliente1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Servio1Click(Sender: TObject);
     procedure Produto1Click(Sender: TObject);
+    procedure Marca1Click(Sender: TObject);
+    procedure Veculo1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -33,7 +37,7 @@ implementation
 
 {$R *.dfm}
 
-uses UCadCliente, UCadServico, UCadProduto;
+uses UCadCliente, UCadServico, UCadProduto, UCadMarca, UCadVeiculo;
 
 procedure TFPrincipal.Cliente1Click(Sender: TObject);
 begin
@@ -46,6 +50,13 @@ procedure TFPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   FPrincipal := nil;
   Action := caFree;
+end;
+
+procedure TFPrincipal.Marca1Click(Sender: TObject);
+begin
+   if FCadMarca = nil then
+    Application.CreateForm(TFCadMarca,FCadMarca);
+  FCadMarca.ShowModal;
 end;
 
 procedure TFPrincipal.Produto1Click(Sender: TObject);
@@ -65,6 +76,13 @@ begin
   if FCadServico = nil then
     Application.CreateForm(TFCadServico,FCadServico);
   FCadServico.ShowModal;
+end;
+
+procedure TFPrincipal.Veculo1Click(Sender: TObject);
+begin
+   if FCadVeiculo = nil then
+    Application.CreateForm(TFCadVeiculo,FCadVeiculo);
+  FCadVeiculo.ShowModal;
 end;
 
 end.

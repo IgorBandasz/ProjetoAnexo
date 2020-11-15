@@ -36,13 +36,13 @@ object DM: TDM
   end
   object fdtTransacaoAltera: TFDTransaction
     Connection = fdcConexao
-    Left = 600
+    Left = 664
     Top = 104
   end
   object sqlAltera: TFDQuery
     Connection = fdcConexao
     Transaction = fdtTransacaoAltera
-    Left = 608
+    Left = 664
     Top = 216
   end
   object sqlServico: TFDQuery
@@ -70,5 +70,40 @@ object DM: TDM
     DataSet = sqlProduto
     Left = 368
     Top = 304
+  end
+  object sqlMarca: TFDQuery
+    Connection = fdcConexao
+    Transaction = fdtTransacao
+    SQL.Strings = (
+      'select * from tbmarca')
+    Left = 440
+    Top = 216
+  end
+  object dsMarca: TDataSource
+    DataSet = sqlMarca
+    Left = 440
+    Top = 304
+  end
+  object sqlVeiculo: TFDQuery
+    Connection = fdcConexao
+    Transaction = fdtTransacao
+    SQL.Strings = (
+      'select * from tbveiculo v'
+      'inner join tbmarca m on m.pkcodmarca = v.fkcodmarca')
+    Left = 512
+    Top = 216
+  end
+  object dsVeiculo: TDataSource
+    DataSet = sqlVeiculo
+    Left = 512
+    Top = 304
+  end
+  object sqlGeral: TFDQuery
+    Connection = fdcConexao
+    Transaction = fdtTransacao
+    SQL.Strings = (
+      '')
+    Left = 144
+    Top = 216
   end
 end

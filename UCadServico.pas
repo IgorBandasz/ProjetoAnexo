@@ -44,6 +44,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure edtValorBaseKeyPress(Sender: TObject; var Key: Char);
+    procedure cbPesquisaChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -86,7 +87,7 @@ var
   comando, condicao : string;
 begin
   comando := STbServico;
-  condicao := trim(edtPesquisa.Text);
+  condicao :=Trim(edtPesquisa.Text);
   limpa;
   if condicao <> '' then
   begin
@@ -153,7 +154,7 @@ begin
       end;
     end;
 
-    DM.executaSql(comando,dm.sqlAltera);
+    DM.executaSql(comando,DM.sqlAltera);
     DM.fdtTransacaoAltera.Commit;
     btPesquisarClick(nil);
     acaoGeral := 3;
@@ -164,6 +165,11 @@ begin
     showmessage('erro ao salvar dados');
   end;
 
+end;
+
+procedure TFCadServico.cbPesquisaChange(Sender: TObject);
+begin
+  edtPesquisa.Text := '';
 end;
 
 procedure TFCadServico.controleBotoes(acao: integer);
@@ -189,7 +195,7 @@ begin
     end;
     else begin
        BtNovo.Enabled := true;
-       if dm.sqlServico.FieldByName('pkcodservico').AsString <> '' then
+       if DM.sqlServico.FieldByName('pkcodservico').AsString <> '' then
        begin
           BtAlterar.Enabled := true;
           BtRemover.Enabled := true;
@@ -252,7 +258,7 @@ begin
   end;
   edtPkCodServico.Text := Dm.sqlServico.FieldByName('pkcodservico').AsString;
   edtDescricaoServico.Text := Dm.sqlServico.FieldByName('descricaoservico').AsString;
-  edtValorBase.Text := Dm.sqlServico.FieldByName('valorbase').AsString;
+  edtValorBase.Text := FormatFloat('#0,00',Dm.sqlServico.FieldByName('valorbase').AsFloat);
 
 end;
 
