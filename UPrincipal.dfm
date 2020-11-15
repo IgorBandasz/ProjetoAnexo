@@ -12,6 +12,7 @@ object FPrincipal: TFPrincipal
   Font.Style = []
   Menu = menuPrincipal
   OldCreateOrder = False
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object menuPrincipal: TMainMenu
@@ -21,12 +22,15 @@ object FPrincipal: TFPrincipal
       Caption = 'Cadastro'
       object Cliente1: TMenuItem
         Caption = 'Cliente'
+        OnClick = Cliente1Click
       end
       object Produto1: TMenuItem
         Caption = 'Produto'
+        OnClick = Produto1Click
       end
       object Servio1: TMenuItem
         Caption = 'Servi'#231'o'
+        OnClick = Servio1Click
       end
       object N1: TMenuItem
         Caption = '-'

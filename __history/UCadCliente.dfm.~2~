@@ -1,0 +1,159 @@
+object FCadCliente: TFCadCliente
+  Left = 0
+  Top = 0
+  Caption = 'Cadastro de Cliente'
+  ClientHeight = 476
+  ClientWidth = 828
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -15
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 18
+  object lbNome: TLabel
+    Left = 48
+    Top = 48
+    Width = 44
+    Height = 18
+    Caption = 'Nome:'
+  end
+  object lbCodigo: TLabel
+    Left = 62
+    Top = 8
+    Width = 30
+    Height = 18
+    Caption = 'C'#243'd:'
+  end
+  object lbFone: TLabel
+    Left = 30
+    Top = 93
+    Width = 62
+    Height = 18
+    Caption = 'Telefone:'
+  end
+  object dbgClientes: TDBGrid
+    Left = 0
+    Top = 199
+    Width = 609
+    Height = 276
+    DataSource = DM.dsCiente
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -15
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object pListagem: TPanel
+    Left = 0
+    Top = 140
+    Width = 609
+    Height = 53
+    TabOrder = 1
+    object cbPesquisa: TComboBox
+      Left = 16
+      Top = 15
+      Width = 145
+      Height = 26
+      TabOrder = 0
+      Text = 'cbPesquisa'
+    end
+    object edtPesquisa: TEdit
+      Left = 216
+      Top = 15
+      Width = 121
+      Height = 26
+      TabOrder = 1
+      Text = 'edtPesquisa'
+    end
+    object btPesquisar: TBitBtn
+      Left = 432
+      Top = 12
+      Width = 75
+      Height = 25
+      Caption = 'Pesquisar'
+      TabOrder = 2
+    end
+  end
+  object edtNomeCli: TEdit
+    Left = 120
+    Top = 48
+    Width = 369
+    Height = 26
+    TabOrder = 2
+  end
+  object edtCodCli: TEdit
+    Left = 120
+    Top = 8
+    Width = 57
+    Height = 26
+    Enabled = False
+    TabOrder = 3
+  end
+  object edtFoneCli: TEdit
+    Left = 120
+    Top = 90
+    Width = 121
+    Height = 26
+    TabOrder = 4
+  end
+  object pBotoes: TPanel
+    Left = 615
+    Top = 232
+    Width = 208
+    Height = 169
+    TabOrder = 5
+    object btNovo: TBitBtn
+      Left = 11
+      Top = 8
+      Width = 83
+      Height = 42
+      Caption = 'Novo'
+      TabOrder = 0
+    end
+    object btAlterar: TBitBtn
+      Left = 11
+      Top = 64
+      Width = 83
+      Height = 42
+      Caption = 'Alterar'
+      TabOrder = 1
+    end
+    object btRemover: TBitBtn
+      Left = 11
+      Top = 120
+      Width = 83
+      Height = 42
+      Caption = 'Remover'
+      TabOrder = 2
+    end
+    object btSalvar: TBitBtn
+      Left = 115
+      Top = 8
+      Width = 83
+      Height = 42
+      Caption = 'Salvar'
+      TabOrder = 3
+    end
+    object btCancelar: TBitBtn
+      Left = 115
+      Top = 64
+      Width = 83
+      Height = 42
+      Caption = 'Cancelar'
+      TabOrder = 4
+    end
+    object btSair: TBitBtn
+      Left = 115
+      Top = 120
+      Width = 83
+      Height = 42
+      Caption = 'Sair'
+      TabOrder = 5
+      OnClick = btSairClick
+    end
+  end
+end

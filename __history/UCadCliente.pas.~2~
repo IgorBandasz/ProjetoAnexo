@@ -1,0 +1,51 @@
+unit UCadCliente;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TFCadCliente = class(TForm)
+    dbgClientes: TDBGrid;
+    pListagem: TPanel;
+    lbNome: TLabel;
+    edtNomeCli: TEdit;
+    lbCodigo: TLabel;
+    edtCodCli: TEdit;
+    lbFone: TLabel;
+    edtFoneCli: TEdit;
+    cbPesquisa: TComboBox;
+    edtPesquisa: TEdit;
+    btPesquisar: TBitBtn;
+    pBotoes: TPanel;
+    btNovo: TBitBtn;
+    btAlterar: TBitBtn;
+    btRemover: TBitBtn;
+    btSalvar: TBitBtn;
+    btCancelar: TBitBtn;
+    btSair: TBitBtn;
+    procedure btSairClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FCadCliente: TFCadCliente;
+
+implementation
+
+{$R *.dfm}
+
+uses UDM;
+
+procedure TFCadCliente.btSairClick(Sender: TObject);
+begin
+  close;
+end;
+
+end.

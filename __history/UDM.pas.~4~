@@ -1,0 +1,87 @@
+unit UDM;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.Phys.FB, FireDAC.Phys.FBDef,
+  Vcl.StdCtrls;
+
+type
+  TDM = class(TDataModule)
+    fdcConexao: TFDConnection;
+    fdtTransacao: TFDTransaction;
+    sqlCliente: TFDQuery;
+    dsCliente: TDataSource;
+    fdtTransacaoAltera: TFDTransaction;
+    sqlAltera: TFDQuery;
+    sqlServico: TFDQuery;
+    dsServico: TDataSource;
+  private
+
+    { Private declarations }
+  public
+    procedure executaSql(comando : string; q :TFDQuery);
+    function apenasNumerosEdit(Edt: TCustomEdit; K : char; C :char='#'; sinal: char='+'): char;
+    function limpaVir(num : string):string;
+    { Public declarations }
+  end;
+
+var
+  DM: TDM;
+  STbCliente :string= 'select * from tbcliente ';
+  STbServico :string= 'select * from tbservico ';
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+{ TDM }
+
+procedure TDM.executaSql(comando : string; q :TFDQuery);
+begin
+  comando := trim(comando);
+  with q do
+  begin
+    close;
+    sql.clear;
+    sql.Add(comando);
+    if UpperCase(Copy(comando,1,6)) = 'SELECT' then
+      open
+    else
+      execsql;
+  end;
+
+end;
+
+function TDM.limpaVir(num: string): string;
+var
+  i: integer;
+begin
+  num := trim(num);
+  if num='' then
+    num:='0';
+
+  for I := 1 to Length(num) do
+    if num[i]=',' then
+      num[i]:='.';
+
+  limpaVir := num;
+end;
+
+function TDM.apenasNumerosEdit(Edt: TCustomEdit; K, C, sinal: char): char;
+begin
+  if not(K in['0'..'9',#8,sinal,C,#13]) then
+  begin
+    apenasNumerosEdit := #0;
+    exit;
+  end;
+
+  apenasNumerosEdit:= k;
+end;
+
+end.

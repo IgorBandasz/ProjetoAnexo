@@ -1,0 +1,73 @@
+unit UCadServico;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Mask, Vcl.DBCtrls,
+  Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.ExtCtrls;
+
+type
+  TFCadServico = class(TForm)
+    pDados: TPanel;
+    lbCodigo: TLabel;
+    lbValor: TLabel;
+    lbDescricao: TLabel;
+    edtDescricaoServico: TEdit;
+    edtPkCodServico: TEdit;
+    pBotoes: TPanel;
+    btNovo: TBitBtn;
+    btAlterar: TBitBtn;
+    btRemover: TBitBtn;
+    btSalvar: TBitBtn;
+    btCancelar: TBitBtn;
+    btSair: TBitBtn;
+    dbgServicos: TDBGrid;
+    pListagem: TPanel;
+    cbPesquisa: TComboBox;
+    edtPesquisa: TEdit;
+    btPesquisar: TBitBtn;
+    edtValorBase: TEdit;
+    dbedtPkCodServico: TDBEdit;
+    procedure mostra;
+    procedure limpa;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FCadServico: TFCadServico;
+
+implementation
+
+{$R *.dfm}
+
+uses UDM;
+
+procedure TFCadServico.limpa;
+var
+  i : integer;
+begin
+  for i := 0 to ComponentCount-1 do
+  begin
+    if Components[i] is TEdit then TEdit(Components[i]).Text := '';
+  end;
+
+end;
+
+procedure TFCadServico.mostra;
+begin
+  if(dm.sqlServico.Active = false) or (dm.sqlServico.FieldByName('pkcodservico').AsString = '') then
+  begin
+    limpa;
+    exit;
+  end;
+  edtPkCodServico.Text := Dm.sqlServico.FieldByName('pkcodservico').AsString;
+  edtDescricaoServico.Text := Dm.sqlServico.FieldByName('descricaoservico').AsString;
+  edtValorBase.Text := Dm.sqlServico.FieldByName('valorbase').AsString;
+
+end;
+
+end.

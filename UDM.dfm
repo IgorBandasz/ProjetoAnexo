@@ -4,9 +4,7 @@ object DM: TDM
   Width = 841
   object fdcConexao: TFDConnection
     Params.Strings = (
-      
-        'Database=C:\Users\iband\OneDrive - Universidade Luterana do Bras' +
-        'il\Documentos\Embarcadero\Studio\Projects\ProjetoAnexo\BANCO.FDB'
+      'Database=C:\Users\iband\Desktop\Git\ProjetoAnexo\BANCO.FDB'
       'User_Name=SYSDBA'
       'Password=masterkey'
       'Protocol=TCPIP'
@@ -26,12 +24,51 @@ object DM: TDM
   object sqlCliente: TFDQuery
     Connection = fdcConexao
     Transaction = fdtTransacao
-    Left = 224
+    SQL.Strings = (
+      'select * from tbcliente')
+    Left = 216
     Top = 216
   end
-  object dsCiente: TDataSource
+  object dsCliente: TDataSource
     DataSet = sqlCliente
-    Left = 232
+    Left = 216
+    Top = 304
+  end
+  object fdtTransacaoAltera: TFDTransaction
+    Connection = fdcConexao
+    Left = 600
+    Top = 104
+  end
+  object sqlAltera: TFDQuery
+    Connection = fdcConexao
+    Transaction = fdtTransacaoAltera
+    Left = 608
+    Top = 216
+  end
+  object sqlServico: TFDQuery
+    Connection = fdcConexao
+    Transaction = fdtTransacao
+    SQL.Strings = (
+      'select * from tbservico')
+    Left = 296
+    Top = 216
+  end
+  object dsServico: TDataSource
+    DataSet = sqlServico
+    Left = 296
+    Top = 304
+  end
+  object sqlProduto: TFDQuery
+    Connection = fdcConexao
+    Transaction = fdtTransacao
+    SQL.Strings = (
+      'select * from tbproduto')
+    Left = 368
+    Top = 216
+  end
+  object dsProduto: TDataSource
+    DataSet = sqlProduto
+    Left = 368
     Top = 304
   end
 end

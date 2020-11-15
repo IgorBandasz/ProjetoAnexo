@@ -1,0 +1,90 @@
+unit UCadCliente;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.Mask, Vcl.DBCtrls;
+
+type
+  TFCadCliente = class(TForm)
+    dbgClientes: TDBGrid;
+    pListagem: TPanel;
+    lbNome: TLabel;
+    edtNomeCli: TEdit;
+    lbCodigo: TLabel;
+    edtCodCli: TEdit;
+    lbFone: TLabel;
+    edtFoneCli: TEdit;
+    cbPesquisa: TComboBox;
+    edtPesquisa: TEdit;
+    btPesquisar: TBitBtn;
+    pBotoes: TPanel;
+    btNovo: TBitBtn;
+    btAlterar: TBitBtn;
+    btRemover: TBitBtn;
+    btSalvar: TBitBtn;
+    btCancelar: TBitBtn;
+    btSair: TBitBtn;
+    dbedtCodCli: TDBEdit;
+    procedure btSairClick(Sender: TObject);
+    procedure dbedtCodCliChange(Sender: TObject);
+    procedure mostra;
+    procedure FormActivate(Sender: TObject);
+    procedure btPesquisarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FCadCliente: TFCadCliente;
+
+implementation
+
+{$R *.dfm}
+
+uses UDM;
+
+procedure TFCadCliente.btPesquisarClick(Sender: TObject);
+var
+  comando, condicao : string;
+begin
+  comando := STbCliente;
+  condicao := trim(edtPesquisa.Text);
+  if condicao <> '' then
+  begin
+    case cbPesquisa.ItemIndex of
+      1: condicao := ' where pkcodcli ='+condicao;
+      2: condicao := ' where upper(nomecli) like upper('+QuotedStr(condicao+'%')+')';
+    end;
+    comando := comando+condicao;
+  end;
+
+  DM.executaSql(comando,dm.sqlCliente);
+end;
+
+procedure TFCadCliente.btSairClick(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TFCadCliente.dbedtCodCliChange(Sender: TObject);
+begin
+  mostra;
+end;
+
+procedure TFCadCliente.FormActivate(Sender: TObject);
+begin
+  {mostra;}
+end;
+
+procedure TFCadCliente.mostra;
+begin
+  edtCodCli.Text := Dm.sqlCliente.FieldByName('pkcodcli').AsString;
+  edtNomeCli.Text := Dm.sqlCliente.FieldByName('nomecli').AsString;
+end;
+
+end.
