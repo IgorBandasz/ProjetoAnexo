@@ -48,7 +48,6 @@ object FCadServico: TFCadServico
       Width = 369
       Height = 26
       TabOrder = 0
-      Text = 'edtDescricaoServico'
     end
     object edtPkCodServico: TEdit
       Left = 120
@@ -57,7 +56,6 @@ object FCadServico: TFCadServico
       Height = 26
       Enabled = False
       TabOrder = 1
-      Text = 'edtPkCodServico'
     end
     object edtValorBase: TEdit
       Left = 120
@@ -65,7 +63,6 @@ object FCadServico: TFCadServico
       Width = 121
       Height = 26
       TabOrder = 2
-      Text = 'edtValorBase'
       OnKeyPress = edtValorBaseKeyPress
     end
     object dbedtPkCodServico: TDBEdit
@@ -82,12 +79,12 @@ object FCadServico: TFCadServico
   end
   object pBotoes: TPanel
     Left = 0
-    Top = 166
+    Top = 153
     Width = 700
     Height = 63
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 152
+    ExplicitTop = 166
     object btNovo: TBitBtn
       Left = 30
       Top = 12
@@ -145,9 +142,9 @@ object FCadServico: TFCadServico
   end
   object dbgServicos: TDBGrid
     Left = 0
-    Top = 229
+    Top = 216
     Width = 700
-    Height = 219
+    Height = 232
     Align = alBottom
     DataSource = DM.dsServico
     Font.Charset = DEFAULT_CHARSET
@@ -174,7 +171,7 @@ object FCadServico: TFCadServico
       item
         Expanded = False
         FieldName = 'DESCRICAOSERVICO'
-        Title.Caption = 'DESCRI'#199#195'O'
+        Title.Caption = 'DESCRI'#199#195'O DO SERVI'#199'O'
         Width = 463
         Visible = True
       end
@@ -193,7 +190,6 @@ object FCadServico: TFCadServico
     Height = 53
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 435
     object cbPesquisa: TComboBox
       Left = 30
       Top = 13

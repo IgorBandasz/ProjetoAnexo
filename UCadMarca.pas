@@ -26,7 +26,7 @@ type
     lbNome: TLabel;
     edtNomeMarca: TEdit;
     edtPkCodMarca: TEdit;
-    DBEdit1: TDBEdit;
+    dbedtPkCodMarca: TDBEdit;
     procedure mostra;
     procedure limpa;
     procedure controleBotoes(acao: integer);
@@ -38,7 +38,7 @@ type
     procedure btSairClick(Sender: TObject);
     procedure btPesquisarClick(Sender: TObject);
     procedure edtPesquisaKeyPress(Sender: TObject; var Key: Char);
-    procedure DBEdit1Change(Sender: TObject);
+    procedure dbedtPkCodMarcaChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cbPesquisaChange(Sender: TObject);
@@ -203,7 +203,7 @@ begin
   end;
 end;
 
-procedure TFCadMarca.DBEdit1Change(Sender: TObject);
+procedure TFCadMarca.dbedtPkCodMarcaChange(Sender: TObject);
 begin
    if acaoGeral in[0,1] then
     exit;

@@ -27,6 +27,8 @@ type
     sqlVeiculo: TFDQuery;
     dsVeiculo: TDataSource;
     sqlGeral: TFDQuery;
+    sqlOS: TFDQuery;
+    dsOS: TDataSource;
   private
 
     { Private declarations }

@@ -22,9 +22,6 @@ object FCadVeiculo: TFCadVeiculo
     Height = 63
     Align = alBottom
     TabOrder = 0
-    ExplicitLeft = -3
-    ExplicitTop = 166
-    ExplicitWidth = 700
     object btNovo: TBitBtn
       Left = 30
       Top = 12
@@ -132,8 +129,6 @@ object FCadVeiculo: TFCadVeiculo
     Height = 53
     Align = alBottom
     TabOrder = 2
-    ExplicitTop = 399
-    ExplicitWidth = 704
     object cbPesquisa: TComboBox
       Left = 30
       Top = 13
@@ -198,7 +193,7 @@ object FCadVeiculo: TFCadVeiculo
     object edtPkCodVeiculo: TEdit
       Left = 129
       Top = 8
-      Width = 57
+      Width = 72
       Height = 26
       Enabled = False
       TabOrder = 0
@@ -235,9 +230,9 @@ object FCadVeiculo: TFCadVeiculo
     object medtPlacaVeiculo: TMaskEdit
       Left = 129
       Top = 51
-      Width = 72
+      Width = 70
       Height = 26
-      EditMask = '>LLL-9A99;1;_'
+      EditMask = '>LLL-0A00;1;_'
       MaxLength = 8
       TabOrder = 4
       Text = '   -    '

@@ -36,13 +36,13 @@ object DM: TDM
   end
   object fdtTransacaoAltera: TFDTransaction
     Connection = fdcConexao
-    Left = 664
+    Left = 696
     Top = 104
   end
   object sqlAltera: TFDQuery
     Connection = fdcConexao
     Transaction = fdtTransacaoAltera
-    Left = 664
+    Left = 696
     Top = 216
   end
   object sqlServico: TFDQuery
@@ -105,5 +105,20 @@ object DM: TDM
       '')
     Left = 144
     Top = 216
+  end
+  object sqlOS: TFDQuery
+    Connection = fdcConexao
+    Transaction = fdtTransacao
+    SQL.Strings = (
+      'select * from tbos o'
+      'inner join tbcliente c on c.pkcodcli = o.fkcodcli'
+      'inner join tbveiculo v on v.pkcodveiculo = o.fkcodveiculo')
+    Left = 584
+    Top = 216
+  end
+  object dsOS: TDataSource
+    DataSet = sqlOS
+    Left = 584
+    Top = 304
   end
 end

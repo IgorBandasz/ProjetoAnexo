@@ -22,7 +22,6 @@ object FCadMarca: TFCadMarca
     Height = 63
     Align = alBottom
     TabOrder = 0
-    ExplicitWidth = 696
     object btNovo: TBitBtn
       Left = 26
       Top = 12
@@ -121,9 +120,6 @@ object FCadMarca: TFCadMarca
     Height = 53
     Align = alBottom
     TabOrder = 2
-    ExplicitLeft = -69
-    ExplicitTop = 246
-    ExplicitWidth = 704
     object cbPesquisa: TComboBox
       Left = 36
       Top = 13
@@ -183,7 +179,6 @@ object FCadMarca: TFCadMarca
       Width = 369
       Height = 26
       TabOrder = 0
-      Text = 'edtNomeMarca'
     end
     object edtPkCodMarca: TEdit
       Left = 129
@@ -192,9 +187,8 @@ object FCadMarca: TFCadMarca
       Height = 26
       Enabled = False
       TabOrder = 1
-      Text = 'edtPkCodMarca'
     end
-    object DBEdit1: TDBEdit
+    object dbedtPkCodMarca: TDBEdit
       Left = 572
       Top = 8
       Width = 50
@@ -203,7 +197,7 @@ object FCadMarca: TFCadMarca
       DataSource = DM.dsMarca
       TabOrder = 2
       Visible = False
-      OnChange = DBEdit1Change
+      OnChange = dbedtPkCodMarcaChange
     end
   end
 end

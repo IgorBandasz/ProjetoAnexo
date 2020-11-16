@@ -22,9 +22,6 @@ object FCadProduto: TFCadProduto
     Height = 63
     Align = alBottom
     TabOrder = 0
-    ExplicitLeft = -3
-    ExplicitTop = 166
-    ExplicitWidth = 700
     object btNovo: TBitBtn
       Left = 30
       Top = 12
@@ -131,9 +128,6 @@ object FCadProduto: TFCadProduto
     Height = 53
     Align = alBottom
     TabOrder = 2
-    ExplicitLeft = -3
-    ExplicitTop = 391
-    ExplicitWidth = 700
     object cbPesquisa: TComboBox
       Left = 30
       Top = 13
@@ -202,7 +196,6 @@ object FCadProduto: TFCadProduto
       Width = 369
       Height = 26
       TabOrder = 0
-      Text = 'edtNomeProd'
     end
     object edtPkCodProd: TEdit
       Left = 129
@@ -211,7 +204,6 @@ object FCadProduto: TFCadProduto
       Height = 26
       Enabled = False
       TabOrder = 1
-      Text = 'edtPkCodProd'
     end
     object edtValorVendaProd: TEdit
       Left = 129
@@ -219,7 +211,6 @@ object FCadProduto: TFCadProduto
       Width = 121
       Height = 26
       TabOrder = 2
-      Text = 'edtValorVendaProd'
       OnKeyPress = edtValorVendaProdKeyPress
     end
     object dbedtPkCodProd: TDBEdit

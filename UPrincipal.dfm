@@ -20,6 +20,10 @@ object FPrincipal: TFPrincipal
     Top = 88
     object Cadastro1: TMenuItem
       Caption = 'Cadastro'
+      object OS1: TMenuItem
+        Caption = 'OS'
+        OnClick = OS1Click
+      end
       object Cliente1: TMenuItem
         Caption = 'Cliente'
         OnClick = Cliente1Click

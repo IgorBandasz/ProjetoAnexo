@@ -8,7 +8,8 @@ uses
   UCadServico in 'UCadServico.pas' {FCadServico},
   UCadProduto in 'UCadProduto.pas' {FCadProduto},
   UCadMarca in 'UCadMarca.pas' {FCadMarca},
-  UCadVeiculo in 'UCadVeiculo.pas' {FCadVeiculo};
+  UCadVeiculo in 'UCadVeiculo.pas' {FCadVeiculo},
+  ULocOS in 'ULocOS.pas' {FLocOS};
 
 {$R *.res}
 
@@ -22,5 +23,6 @@ begin
   Application.CreateForm(TFCadProduto, FCadProduto);
   Application.CreateForm(TFCadMarca, FCadMarca);
   Application.CreateForm(TFCadVeiculo, FCadVeiculo);
+  Application.CreateForm(TFLocOS, FLocOS);
   Application.Run;
 end.

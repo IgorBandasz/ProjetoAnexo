@@ -93,7 +93,6 @@ var
 begin
   comando := STbVeiculo;
   condicao := Trim(edtPesquisa.Text);
-  {limpa}
   if condicao <> '' then
   begin
     case cbPesquisa.ItemIndex of
@@ -170,14 +169,8 @@ begin
     acaoGeral := 3;
     controleBotoes(acaoGeral);
   except
-
-    on E: Exception do
-    begin
-      DM.fdtTransacaoAltera.Rollback;
-      ShowMessage('Erro: ' + E.Message );
-    end;
-
-    {showmessage('erro ao salvar dados'); }
+    DM.fdtTransacaoAltera.Rollback;
+    showmessage('erro ao salvar dados');
   end;
 
 end;
