@@ -48,10 +48,6 @@ var
   STbMarca   :string= 'select * from tbmarca ';
   STbVeiculo :string= 'select * from tbveiculo v  '
                     + 'inner join tbmarca m on m.pkcodmarca = v.fkcodmarca ';
-  STbOS :string= 'select * from tbos o '
-                +'inner join tbcliente c on c.pkcodcli = o.fkcodcli'
-                +'inner join tbveiculo v on v.pkcodveiculo = o.fkcodveiculo';
-
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}

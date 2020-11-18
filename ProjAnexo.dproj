@@ -131,6 +131,10 @@
             <Form>FLocOS</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="UCadOS.pas">
+            <Form>FCadOS</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
