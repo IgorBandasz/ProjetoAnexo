@@ -3,7 +3,7 @@ object FCadOS: TFCadOS
   Top = 0
   Caption = 'Cadastro de Ordem de Servi'#231'o'
   ClientHeight = 840
-  ClientWidth = 918
+  ClientWidth = 919
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,6 +11,8 @@ object FCadOS: TFCadOS
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnActivate = FormActivate
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 18
   object lbValor: TLabel
@@ -42,12 +44,11 @@ object FCadOS: TFCadOS
   object pBotoes: TPanel
     Left = 0
     Top = 777
-    Width = 918
+    Width = 919
     Height = 63
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 169
-    ExplicitWidth = 839
+    ExplicitWidth = 918
     object btSalvar: TBitBtn
       Left = 697
       Top = 11
@@ -55,6 +56,7 @@ object FCadOS: TFCadOS
       Height = 42
       Caption = 'Salvar'
       TabOrder = 0
+      OnClick = btSalvarClick
     end
     object btCancelar: TBitBtn
       Left = 811
@@ -63,6 +65,7 @@ object FCadOS: TFCadOS
       Height = 42
       Caption = 'Cancelar'
       TabOrder = 1
+      OnClick = btCancelarClick
     end
   end
   object dbgServicos: TDBGrid
@@ -155,9 +158,9 @@ object FCadOS: TFCadOS
     object lbNomeCliente: TLabel
       Left = 424
       Top = 11
-      Width = 91
+      Width = 81
       Height = 18
-      Caption = 'lbNomeCliente'
+      Caption = 'NomeCliente'
     end
     object lbFkCodVeiculo: TLabel
       Left = 426
@@ -200,6 +203,7 @@ object FCadOS: TFCadOS
       MaxLength = 8
       TabOrder = 2
       Text = '   -    '
+      OnExit = medtPlacaVeiculoExit
     end
     object edtFkCodCli: TEdit
       Left = 314
@@ -207,8 +211,7 @@ object FCadOS: TFCadOS
       Width = 70
       Height = 26
       TabOrder = 3
-      Text = 'edtFkCodCli'
-      OnChange = edtFkCodCliChange
+      OnExit = edtFkCodCliExit
     end
     object btProcuraCliente: TBitBtn
       Left = 390
@@ -240,55 +243,57 @@ object FCadOS: TFCadOS
       Caption = 'Produto'
     end
     object lbQuantidade: TLabel
-      Left = 449
-      Top = 7
+      Left = 473
+      Top = 8
       Width = 45
       Height = 18
       Caption = 'Quant.'
     end
     object lbValorUnit: TLabel
-      Left = 585
-      Top = 7
-      Width = 67
+      Left = 584
+      Top = 8
+      Width = 85
       Height = 18
-      Caption = 'Valor Unit.'
+      Caption = 'Valor Unit'#225'rio'
     end
-    object edtfkcodprod: TEdit
+    object edtFkCodProd: TEdit
       Left = 25
       Top = 32
       Width = 82
-      Height = 31
+      Height = 26
       TabOrder = 0
+      OnExit = edtFkCodProdExit
     end
     object edtNomeProduto: TEdit
       Left = 121
       Top = 32
-      Width = 304
-      Height = 31
+      Width = 328
+      Height = 26
       Enabled = False
       TabOrder = 1
     end
     object edtQuantidade: TEdit
-      Left = 449
+      Left = 473
       Top = 32
-      Width = 121
-      Height = 31
+      Width = 90
+      Height = 26
       TabOrder = 2
     end
     object edtValorUnit: TEdit
       Left = 585
       Top = 32
       Width = 121
-      Height = 31
+      Height = 26
       TabOrder = 3
     end
-    object BitBtn1: TBitBtn
+    object btAdicionarProduto: TBitBtn
       Left = 780
       Top = 14
       Width = 106
       Height = 41
       Caption = 'Adicionar'
       TabOrder = 4
+      OnClick = btAdicionarProdutoClick
     end
   end
   object DBGrid1: TDBGrid
@@ -372,7 +377,6 @@ object FCadOS: TFCadOS
       Width = 82
       Height = 26
       TabOrder = 0
-      Text = 'edtFkCodServico'
     end
     object edtValorServico: TEdit
       Left = 584
@@ -380,7 +384,6 @@ object FCadOS: TFCadOS
       Width = 121
       Height = 26
       TabOrder = 1
-      Text = 'edtValorServico'
     end
     object btAdicionarServico: TBitBtn
       Left = 780
@@ -389,6 +392,7 @@ object FCadOS: TFCadOS
       Height = 41
       Caption = 'Adicionar'
       TabOrder = 2
+      OnClick = btAdicionarServicoClick
     end
   end
   object edtDescricaoServico: TEdit
@@ -397,7 +401,6 @@ object FCadOS: TFCadOS
     Width = 449
     Height = 26
     TabOrder = 6
-    Text = 'Edit1'
   end
   object cdTbRelProdutoOS: TClientDataSet
     PersistDataPacket.Data = {

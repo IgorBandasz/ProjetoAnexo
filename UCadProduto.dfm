@@ -77,7 +77,7 @@ object FCadProduto: TFCadProduto
       OnClick = btSairClick
     end
   end
-  object dbgServicos: TDBGrid
+  object dbgProdutos: TDBGrid
     Left = 0
     Top = 213
     Width = 704

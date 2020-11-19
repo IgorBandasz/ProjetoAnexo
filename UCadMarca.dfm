@@ -77,7 +77,7 @@ object FCadMarca: TFCadMarca
       OnClick = btSairClick
     end
   end
-  object dbgServicos: TDBGrid
+  object dbgMarcas: TDBGrid
     Left = 0
     Top = 165
     Width = 690

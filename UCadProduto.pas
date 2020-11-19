@@ -16,7 +16,7 @@ type
     btSalvar: TBitBtn;
     btCancelar: TBitBtn;
     btSair: TBitBtn;
-    dbgServicos: TDBGrid;
+    dbgProdutos: TDBGrid;
     pListagem: TPanel;
     cbPesquisa: TComboBox;
     edtPesquisa: TEdit;

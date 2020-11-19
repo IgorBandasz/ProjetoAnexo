@@ -77,7 +77,7 @@ object FCadVeiculo: TFCadVeiculo
       OnClick = btSairClick
     end
   end
-  object dbgServicos: TDBGrid
+  object dbgVeiculos: TDBGrid
     Left = 0
     Top = 176
     Width = 705

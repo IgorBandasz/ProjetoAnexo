@@ -36,7 +36,8 @@ type
     procedure executaSql(comando : string; q :TFDQuery);
     function LimpaEdit(Edt: TCustomEdit; K : char; C :char='#'; sinal: char='+'): char;
     function limpaVir(num : string):string;
-    function salvaChave(chave :string):string;
+    function salvaChave(chave : string):string;
+    function salvaData(data : string):string;
     { Public declarations }
   end;
 
@@ -49,8 +50,13 @@ var
   STbVeiculo :string= 'select * from tbveiculo v  '
                     + 'inner join tbmarca m on m.pkcodmarca = v.fkcodmarca ';
   STbOS :string= 'select * from tbos o '
-                +'inner join tbcliente c on c.pkcodcli = o.fkcodcli'
-                +'inner join tbveiculo v on v.pkcodveiculo = o.fkcodveiculo';
+                +' inner join tbcliente c on c.pkcodcli = o.fkcodcli'
+                +' inner join tbveiculo v on v.pkcodveiculo = o.fkcodveiculo'
+                +' inner join tbmarca m on m.pkcodmarca = v.fkcodmarca';
+  STbRelProdutoOS :string= 'select * from tbrelprodutoos r'
+                          +' inner join tbproduto p on p.pkcodprod = r.fkcodprod';
+  STbRelServicoOS :string= 'select * from tbrelservicoos '
+                          +' inner join tbservico s on s.pkcodservico = r.fkcodservico';
 
 implementation
 
@@ -97,6 +103,17 @@ begin
   if (chave='') or (chave='-1') then
     chave:='NULL';
   salvaChave:=chave;
+end;
+
+function TDM.salvaData(data: string): string;
+var
+  x : string;
+begin
+  if data = '  /  /    ' then
+    x:='NULL'
+  else
+    x:= QuotedStr(formatdatetime('dd.mm.yyyy',StrToDate(data)));
+  salvaData := x;
 end;
 
 function TDM.LimpaEdit(Edt: TCustomEdit; K, C, sinal: char): char;
