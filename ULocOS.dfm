@@ -22,7 +22,6 @@ object FLocOS: TFLocOS
     Height = 63
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 839
     object btNovo: TBitBtn
       Left = 360
       Top = 11
@@ -132,7 +131,6 @@ object FLocOS: TFLocOS
     Height = 53
     Align = alTop
     TabOrder = 2
-    ExplicitWidth = 839
     object cbPesquisa: TComboBox
       Left = 106
       Top = 14

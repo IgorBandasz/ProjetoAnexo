@@ -52,6 +52,7 @@ type
     edtValorServico: TEdit;
     btAdicionarServico: TBitBtn;
     btAdicionarProduto: TBitBtn;
+    btRemoverProduto: TBitBtn;
     procedure mostra(codigo :string);
     procedure mostraItens(codigo :string);
     procedure limpa;
@@ -66,6 +67,14 @@ type
     procedure btAdicionarProdutoClick(Sender: TObject);
     procedure btAdicionarServicoClick(Sender: TObject);
     procedure medtPlacaVeiculoExit(Sender: TObject);
+    procedure edtFkCodServicoExit(Sender: TObject);
+    procedure edtFkCodCliKeyPress(Sender: TObject; var Key: Char);
+    procedure edtFkCodProdKeyPress(Sender: TObject; var Key: Char);
+    procedure edtQuantidadeKeyPress(Sender: TObject; var Key: Char);
+    procedure edtValorUnitKeyPress(Sender: TObject; var Key: Char);
+    procedure edtFkCodServicoKeyPress(Sender: TObject; var Key: Char);
+    procedure edtValorServicoKeyPress(Sender: TObject; var Key: Char);
+    procedure btRemoverProdutoClick(Sender: TObject);
   private
 
     { Private declarations }
@@ -93,7 +102,7 @@ begin
     cdTbRelProdutoOS.FieldByName('nomeproduto').AsString := edtNomeProduto.Text;
     cdTbRelProdutoOS.FieldByName('quantidade').AsInteger := StrToInt(edtQuantidade.Text);
     cdTbRelProdutoOS.FieldByName('valorunitario').Asfloat := StrToFloat(edtValorUnit.Text);
-    cdTbRelProdutoOS.FieldByName('valortotal').Asfloat := cdTbRelProdutoOS.FieldByName('quantidade').AsInteger * cdTbRelProdutoOS.FieldByName('valorunit').Asfloat;
+    cdTbRelProdutoOS.FieldByName('valortotal').Asfloat := cdTbRelProdutoOS.FieldByName('quantidade').AsInteger * cdTbRelProdutoOS.FieldByName('valorunitario').Asfloat;
     cdTbRelProdutoOS.FieldByName('controle').AsInteger := 1;
     cdTbRelProdutoOS.Post;
     limpaItem;
@@ -110,7 +119,7 @@ begin
     cdTbRelServicoOS.Append;
     cdTbRelServicoOS.FieldByName('fkcodservico').AsInteger := StrToInt(edtFkCodServico.Text);
     cdTbRelServicoOS.FieldByName('descricaoservico').AsString := edtDescricaoServico.Text;
-    cdTbRelServicoOS.FieldByName('valorservico').Asfloat := StrToFloat(edtValorServico.Text);
+    cdTbRelServicoOS.FieldByName('valorservico').AsFloat := StrToFloat(edtValorServico.Text);
     cdTbRelServicoOS.FieldByName('controle').AsInteger := 1;
     cdTbRelServicoOS.Post;
     limpaItem;
@@ -124,6 +133,35 @@ end;
 procedure TFCadOS.btCancelarClick(Sender: TObject);
 begin
   close;
+end;
+
+procedure TFCadOS.btRemoverProdutoClick(Sender: TObject);
+var
+  comando :string;
+begin
+   if cdTbRelProdutoOS.FieldByName('controle').AsInteger = 1 then
+   begin
+      cdTbRelProdutoOS.Delete;
+      calculaTotal;
+      exit
+   end;
+   try
+    if DM.fdtTransacaoAltera.TransactionIntf.Active then
+      DM.fdtTransacaoAltera.Rollback;
+    DM.fdtTransacaoAltera.StartTransaction;
+
+    comando:='DELETE FROM TBRELPRODUTOOS'
+       +' WHERE PKCODRELP = '+cdTbRelProdutoOS.FieldByName('pkcodrelp').AsString;
+    DM.executaSql(comando,DM.sqlAltera);
+
+    cdTbRelProdutoOS.Delete;
+    calculaTotal;
+    DM.fdtTransacaoAltera.Commit;
+   except
+    DM.fdtTransacaoAltera.Rollback;
+    showmessage('erro ao apagar dados');
+   end;
+
 end;
 
 procedure TFCadOS.btSalvarClick(Sender: TObject);
@@ -174,9 +212,22 @@ begin
             +')';
         DM.executaSql(x,DM.sqlAltera);
       end;
-
-
       cdTbRelProdutoOS.Next;
+    end;
+
+    cdTbRelServicoOS.First;
+    while not cdTbRelServicoOS.Eof do
+    begin
+      if cdTbRelServicoOS.FieldByName('controle').AsInteger = 1 then
+      begin
+        x :='INSERT INTO TBRELSERVICOOS (FKCODOS, FKCODSERVICO, VALORSERVICO) '
+            +'VALUES ('+DM.salvaChave(edtPkCodOS.Text)
+            +','+DM.salvaChave(cdTbRelServicoOS.FieldByName('fkcodservico').AsString)
+            +','+DM.limpaVir(cdTbRelServicoOS.FieldByName('valorservico').AsString)
+            +')';
+        DM.executaSql(x,DM.sqlAltera);
+      end;
+      cdTbRelServicoOS.Next;
     end;
 
     DM.fdtTransacaoAltera.Commit;
@@ -184,7 +235,6 @@ begin
     acaogeral := 3;
 
     close;
-
   except
     DM.fdtTransacaoAltera.Rollback;
     showmessage('Erro ao salvar dados');
@@ -238,6 +288,11 @@ begin
   lbNomeCliente.Caption := DM.sqlGeral.FieldByName('nomecli').AsString;
 end;
 
+procedure TFCadOS.edtFkCodCliKeyPress(Sender: TObject; var Key: Char);
+begin
+  key := DM.LimpaEdit((Sender as TCustomEdit),Key);
+end;
+
 procedure TFCadOS.edtFkCodProdExit(Sender: TObject);
 var
   x: string;
@@ -262,8 +317,59 @@ begin
   end;
 
   edtNomeProduto.Text := DM.sqlGeral.FieldByName('nomeprod').AsString;
-  edtValorUnit.Text := DM.sqlGeral.FieldByName('valorvendaprod').AsString;
+  edtValorUnit.Text := FormatFloat('#0.00',DM.sqlGeral.FieldByName('valorvendaprod').AsFloat);
 
+end;
+
+procedure TFCadOS.edtFkCodProdKeyPress(Sender: TObject; var Key: Char);
+begin
+  key := DM.LimpaEdit((Sender as TCustomEdit),Key);
+end;
+
+procedure TFCadOS.edtFkCodServicoExit(Sender: TObject);
+var
+  x: string;
+begin
+  x:= Trim(edtFkCodServico.Text);
+  if x='' then
+  begin
+    edtDescricaoServico.Text := '';
+    edtValorServico.Text := '';
+    exit
+  end;
+
+  x:= 'select * from tbservico where pkcodservico = '+x;
+  DM.executaSql(x,DM.sqlGeral);
+  if DM.sqlGeral.FieldByName('pkcodservico').AsString = '' then
+  begin
+    showmessage('Serviço não encontrado');
+    if edtFkCodServico.CanFocus then
+      edtFkCodServico.SetFocus;
+    exit;
+  end;
+
+  edtDescricaoServico.Text := DM.sqlGeral.FieldByName('descricaoservico').AsString;
+  edtValorServico.Text := FormatFloat('#0.00',DM.sqlGeral.FieldByName('valorbase').AsFloat);
+end;
+
+procedure TFCadOS.edtFkCodServicoKeyPress(Sender: TObject; var Key: Char);
+begin
+  key := DM.LimpaEdit((Sender as TCustomEdit),Key);
+end;
+
+procedure TFCadOS.edtQuantidadeKeyPress(Sender: TObject; var Key: Char);
+begin
+  key := DM.LimpaEdit((Sender as TCustomEdit),Key);
+end;
+
+procedure TFCadOS.edtValorServicoKeyPress(Sender: TObject; var Key: Char);
+begin
+  key := DM.LimpaEdit((Sender as TCustomEdit), Key, ',');
+end;
+
+procedure TFCadOS.edtValorUnitKeyPress(Sender: TObject; var Key: Char);
+begin
+  key := DM.LimpaEdit((Sender as TCustomEdit), Key, ',');
 end;
 
 procedure TFCadOS.FormActivate(Sender: TObject);
@@ -329,7 +435,6 @@ begin
   end;
 
   x:= 'select * from tbveiculo where placaveiculo = '+QuotedStr(medtPlacaVeiculo.Text);
-  showmessage(x);
   DM.executaSql(x,DM.sqlGeral);
   if DM.sqlGeral.FieldByName('pkcodveiculo').AsString = '' then
   begin
@@ -353,8 +458,10 @@ begin
   edtfkcodcli.Text := DM.sqlOS.FieldByName('fkcodcli').AsString;
   medtDataOS.Text := FormatDateTime('dd/mm/yyyy', DM.sqlOS.FieldByName('dataos').AsDateTime);
   lbValorTotal.Caption := FormatFloat('#0.00', DM.sqlOS.FieldByName('valortotal').AsFloat);
+  medtPlacaVeiculo.Text := DM.sqlOS.FieldByName('placaveiculo').AsString;
   mostraItens(codigo);
   edtFkCodCliExit(nil);
+  medtPlacaVeiculoExit(nil);
 end;
 
 procedure TFCadOS.mostraItens(codigo: string);

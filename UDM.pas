@@ -55,7 +55,7 @@ var
                 +' inner join tbmarca m on m.pkcodmarca = v.fkcodmarca';
   STbRelProdutoOS :string= 'select * from tbrelprodutoos r'
                           +' inner join tbproduto p on p.pkcodprod = r.fkcodprod';
-  STbRelServicoOS :string= 'select * from tbrelservicoos '
+  STbRelServicoOS :string= 'select * from tbrelservicoos r '
                           +' inner join tbservico s on s.pkcodservico = r.fkcodservico';
 
 implementation

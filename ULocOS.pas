@@ -88,19 +88,27 @@ end;
 
 procedure TFLocOS.btRemoverClick(Sender: TObject);
 var
-  comando : string;
-  codigo : integer;
+  comando, codigo : string;
 begin
   try
     if DM.fdtTransacaoAltera.TransactionIntf.Active then
       DM.fdtTransacaoAltera.Rollback;
     DM.fdtTransacaoAltera.StartTransaction;
 
-    codigo := DM.sqlOS.FieldByName('pkcodos').AsInteger;
-    comando:='DELETE FROM TBOS'
-       +' WHERE PKCODOS = '+DM.sqlOS.FieldByName('pkcodos').AsString;
+    codigo := DM.sqlOS.FieldByName('pkcodos').AsString;
 
+    comando:='DELETE FROM TBRELPRODUTOOS'
+       +' WHERE FKCODOS = '+codigo;
     DM.executaSql(comando,DM.sqlAltera);
+
+    comando:='DELETE FROM TBRELSERVICOOS'
+       +' WHERE FKCODOS = '+codigo;
+    DM.executaSql(comando,DM.sqlAltera);
+
+    comando:='DELETE FROM TBOS'
+       +' WHERE PKCODOS = '+codigo;
+    DM.executaSql(comando,DM.sqlAltera);
+
     DM.fdtTransacaoAltera.Commit;
     btPesquisarClick(nil);
     controleBotoes();

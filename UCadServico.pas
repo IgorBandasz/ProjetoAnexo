@@ -258,7 +258,7 @@ begin
   end;
   edtPkCodServico.Text := Dm.sqlServico.FieldByName('pkcodservico').AsString;
   edtDescricaoServico.Text := Dm.sqlServico.FieldByName('descricaoservico').AsString;
-  edtValorBase.Text := FormatFloat('#0,00',Dm.sqlServico.FieldByName('valorbase').AsFloat);
+  edtValorBase.Text := FormatFloat('#0.00',Dm.sqlServico.FieldByName('valorbase').AsFloat);
 
 end;
 

@@ -29,13 +29,13 @@ object FCadOS: TFCadOS
     ParentFont = False
   end
   object lbValorTotal: TLabel
-    Left = 833
+    Left = 841
     Top = 750
     Width = 32
     Height = 21
     Caption = '0,00'
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clGreen
     Font.Height = -17
     Font.Name = 'Tahoma'
     Font.Style = []
@@ -48,7 +48,6 @@ object FCadOS: TFCadOS
     Height = 63
     Align = alBottom
     TabOrder = 0
-    ExplicitWidth = 918
     object btSalvar: TBitBtn
       Left = 697
       Top = 11
@@ -212,6 +211,7 @@ object FCadOS: TFCadOS
       Height = 26
       TabOrder = 3
       OnExit = edtFkCodCliExit
+      OnKeyPress = edtFkCodCliKeyPress
     end
     object btProcuraCliente: TBitBtn
       Left = 390
@@ -263,6 +263,7 @@ object FCadOS: TFCadOS
       Height = 26
       TabOrder = 0
       OnExit = edtFkCodProdExit
+      OnKeyPress = edtFkCodProdKeyPress
     end
     object edtNomeProduto: TEdit
       Left = 121
@@ -278,6 +279,7 @@ object FCadOS: TFCadOS
       Width = 90
       Height = 26
       TabOrder = 2
+      OnKeyPress = edtQuantidadeKeyPress
     end
     object edtValorUnit: TEdit
       Left = 585
@@ -285,6 +287,7 @@ object FCadOS: TFCadOS
       Width = 121
       Height = 26
       TabOrder = 3
+      OnKeyPress = edtValorUnitKeyPress
     end
     object btAdicionarProduto: TBitBtn
       Left = 780
@@ -295,6 +298,15 @@ object FCadOS: TFCadOS
       TabOrder = 4
       OnClick = btAdicionarProdutoClick
     end
+    object btRemoverProduto: TBitBtn
+      Left = 723
+      Top = 16
+      Width = 51
+      Height = 41
+      Caption = 'X'
+      TabOrder = 5
+      OnClick = btRemoverProdutoClick
+    end
   end
   object DBGrid1: TDBGrid
     Left = 8
@@ -302,6 +314,7 @@ object FCadOS: TFCadOS
     Width = 902
     Height = 233
     DataSource = dsCdTbRelServicoOS
+    ReadOnly = True
     TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -323,13 +336,14 @@ object FCadOS: TFCadOS
       item
         Expanded = False
         FieldName = 'DescricaoServico'
+        Title.Alignment = taCenter
         Title.Caption = 'DESCRI'#199#195'O DO SERVI'#199'O'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clWindowText
         Title.Font.Height = -16
         Title.Font.Name = 'Tahoma'
         Title.Font.Style = [fsBold]
-        Width = 649
+        Width = 639
         Visible = True
       end
       item
@@ -341,6 +355,7 @@ object FCadOS: TFCadOS
         Title.Font.Height = -16
         Title.Font.Name = 'Tahoma'
         Title.Font.Style = [fsBold]
+        Width = 144
         Visible = True
       end>
   end
@@ -377,6 +392,8 @@ object FCadOS: TFCadOS
       Width = 82
       Height = 26
       TabOrder = 0
+      OnExit = edtFkCodServicoExit
+      OnKeyPress = edtFkCodServicoKeyPress
     end
     object edtValorServico: TEdit
       Left = 584
@@ -384,6 +401,7 @@ object FCadOS: TFCadOS
       Width = 121
       Height = 26
       TabOrder = 1
+      OnKeyPress = edtValorServicoKeyPress
     end
     object btAdicionarServico: TBitBtn
       Left = 780
@@ -400,6 +418,7 @@ object FCadOS: TFCadOS
     Top = 703
     Width = 449
     Height = 26
+    Enabled = False
     TabOrder = 6
   end
   object cdTbRelProdutoOS: TClientDataSet
@@ -486,7 +505,7 @@ object FCadOS: TFCadOS
       item
         Name = 'DescricaoServico'
         DataType = ftString
-        Size = 20
+        Size = 200
       end
       item
         Name = 'controle'

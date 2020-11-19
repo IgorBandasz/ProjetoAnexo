@@ -84,7 +84,6 @@ object FCadServico: TFCadServico
     Height = 63
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 166
     object btNovo: TBitBtn
       Left = 30
       Top = 12
