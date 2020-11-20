@@ -53,11 +53,16 @@ type
     btAdicionarServico: TBitBtn;
     btAdicionarProduto: TBitBtn;
     btRemoverProduto: TBitBtn;
+    btRemoverServico: TBitBtn;
+    btListarProdutos: TBitBtn;
+    btListarServicos: TBitBtn;
+    pValorOS: TPanel;
     procedure mostra(codigo :string);
     procedure mostraItens(codigo :string);
     procedure limpa;
     procedure limpaItem;
     procedure calculaTotal;
+
     procedure FormActivate(Sender: TObject);
     procedure edtFkCodCliExit(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -75,8 +80,11 @@ type
     procedure edtFkCodServicoKeyPress(Sender: TObject; var Key: Char);
     procedure edtValorServicoKeyPress(Sender: TObject; var Key: Char);
     procedure btRemoverProdutoClick(Sender: TObject);
+    procedure btRemoverServicoClick(Sender: TObject);
+    procedure btProcuraClienteClick(Sender: TObject);
+    procedure btListarProdutosClick(Sender: TObject);
+    procedure btListarServicosClick(Sender: TObject);
   private
-
     { Private declarations }
   public
     { Public declarations }
@@ -86,12 +94,15 @@ var
   FCadOS: TFCadOS;
   acaoGeral :integer=3;
   pkCodOS : string;
+  pkCodCli : string='';
+  pkCodProd : string='';
+  pkCodServ : string='';
 
 implementation
 
 {$R *.dfm}
 
-uses UDM, ULocOS;
+uses UDM, ULocOS, UListarClientes, UListarProdutos, UListarServicos;
 
 
 procedure TFCadOS.btAdicionarProdutoClick(Sender: TObject);
@@ -135,6 +146,51 @@ begin
   close;
 end;
 
+procedure TFCadOS.btListarProdutosClick(Sender: TObject);
+begin
+   if FListarProdutos = nil then
+    Application.CreateForm(TFlistarProdutos,FListarProdutos);
+    FListarProdutos.ShowModal;
+
+  if pkCodProd = '' then
+     exit
+  else
+  begin
+     edtFkCodProd.Text := pkCodProd;
+     edtFkCodProdExit(nil);
+  end;
+end;
+
+procedure TFCadOS.btListarServicosClick(Sender: TObject);
+begin
+  if FListarServicos = nil then
+    Application.CreateForm(TFlistarServicos,FListarServicos);
+    FListarServicos.ShowModal;
+
+  if pkCodServ = '' then
+     exit
+  else
+  begin
+     edtFkCodServico.Text := pkCodServ;
+     edtFkCodServicoExit(nil);
+  end;
+end;
+
+procedure TFCadOS.btProcuraClienteClick(Sender: TObject);
+begin
+  if FListarClientes = nil then
+    Application.CreateForm(TFlistarClientes,FListarClientes);
+    FListarClientes.ShowModal;
+
+  if pkCodCli = '' then
+     exit
+  else
+  begin
+     edtFkCodCli.Text := pkCodCli;
+     edtFkCodCliExit(nil);
+  end;
+end;
+
 procedure TFCadOS.btRemoverProdutoClick(Sender: TObject);
 var
   comando :string;
@@ -155,6 +211,35 @@ begin
     DM.executaSql(comando,DM.sqlAltera);
 
     cdTbRelProdutoOS.Delete;
+    calculaTotal;
+    DM.fdtTransacaoAltera.Commit;
+   except
+    DM.fdtTransacaoAltera.Rollback;
+    showmessage('erro ao apagar dados');
+   end;
+
+end;
+
+procedure TFCadOS.btRemoverServicoClick(Sender: TObject);
+var
+  comando :string;
+begin
+   if cdTbRelServicoOS.FieldByName('controle').AsInteger = 1 then
+   begin
+      cdTbRelServicoOS.Delete;
+      calculaTotal;
+      exit
+   end;
+   try
+    if DM.fdtTransacaoAltera.TransactionIntf.Active then
+      DM.fdtTransacaoAltera.Rollback;
+    DM.fdtTransacaoAltera.StartTransaction;
+
+    comando:='DELETE FROM TBRELSERVICOOS'
+       +' WHERE PKCODRELS = '+cdTbRelServicoOS.FieldByName('pkcodrels').AsString;
+    DM.executaSql(comando,DM.sqlAltera);
+
+    cdTbRelServicoOS.Delete;
     calculaTotal;
     DM.fdtTransacaoAltera.Commit;
    except

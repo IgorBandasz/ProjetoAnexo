@@ -135,6 +135,18 @@
             <Form>FCadOS</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="UListarClientes.pas">
+            <Form>FListarClientes</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UListarProdutos.pas">
+            <Form>FListarProdutos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UListarServicos.pas">
+            <Form>FListarServicos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

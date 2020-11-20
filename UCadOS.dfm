@@ -2,8 +2,8 @@ object FCadOS: TFCadOS
   Left = 0
   Top = 0
   Caption = 'Cadastro de Ordem de Servi'#231'o'
-  ClientHeight = 840
-  ClientWidth = 919
+  ClientHeight = 849
+  ClientWidth = 1005
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,41 +15,17 @@ object FCadOS: TFCadOS
   OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 18
-  object lbValor: TLabel
-    Left = 727
-    Top = 750
-    Width = 87
-    Height = 21
-    Caption = 'Valor Total:'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -17
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-  end
-  object lbValorTotal: TLabel
-    Left = 841
-    Top = 750
-    Width = 32
-    Height = 21
-    Caption = '0,00'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clGreen
-    Font.Height = -17
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-  end
   object pBotoes: TPanel
     Left = 0
-    Top = 777
-    Width = 919
+    Top = 786
+    Width = 1005
     Height = 63
     Align = alBottom
     TabOrder = 0
+    ExplicitTop = 777
+    ExplicitWidth = 919
     object btSalvar: TBitBtn
-      Left = 697
+      Left = 783
       Top = 11
       Width = 83
       Height = 42
@@ -58,7 +34,7 @@ object FCadOS: TFCadOS
       OnClick = btSalvarClick
     end
     object btCancelar: TBitBtn
-      Left = 811
+      Left = 897
       Top = 11
       Width = 83
       Height = 42
@@ -70,7 +46,7 @@ object FCadOS: TFCadOS
   object dbgServicos: TDBGrid
     Left = 8
     Top = 87
-    Width = 900
+    Width = 989
     Height = 249
     DataSource = dsCdTbRelProdutoOS
     Font.Charset = DEFAULT_CHARSET
@@ -123,7 +99,7 @@ object FCadOS: TFCadOS
   object pDados: TPanel
     Left = 1
     Top = 8
-    Width = 907
+    Width = 996
     Height = 73
     TabOrder = 2
     object lbCodigo: TLabel
@@ -155,9 +131,9 @@ object FCadOS: TFCadOS
       Caption = 'C'#243'd. Cliente:'
     end
     object lbNomeCliente: TLabel
-      Left = 424
+      Left = 495
       Top = 11
-      Width = 81
+      Width = 97
       Height = 18
       Caption = 'NomeCliente'
     end
@@ -216,48 +192,49 @@ object FCadOS: TFCadOS
     object btProcuraCliente: TBitBtn
       Left = 390
       Top = 9
-      Width = 28
+      Width = 99
       Height = 25
-      Caption = '...'
+      Caption = 'Listar Clientes'
       TabOrder = 4
+      OnClick = btProcuraClienteClick
     end
   end
   object pInsereProduto: TPanel
     Left = 8
     Top = 342
-    Width = 900
+    Width = 989
     Height = 67
     TabOrder = 3
     object lbCodProd: TLabel
-      Left = 25
+      Left = 111
       Top = 7
       Width = 64
       Height = 18
       Caption = 'C'#243'd. Prod'
     end
     object lbnomeprod: TLabel
-      Left = 121
+      Left = 207
       Top = 7
       Width = 50
       Height = 18
       Caption = 'Produto'
     end
     object lbQuantidade: TLabel
-      Left = 473
+      Left = 559
       Top = 8
       Width = 45
       Height = 18
       Caption = 'Quant.'
     end
     object lbValorUnit: TLabel
-      Left = 584
+      Left = 670
       Top = 8
       Width = 85
       Height = 18
       Caption = 'Valor Unit'#225'rio'
     end
     object edtFkCodProd: TEdit
-      Left = 25
+      Left = 111
       Top = 32
       Width = 82
       Height = 26
@@ -266,7 +243,7 @@ object FCadOS: TFCadOS
       OnKeyPress = edtFkCodProdKeyPress
     end
     object edtNomeProduto: TEdit
-      Left = 121
+      Left = 207
       Top = 32
       Width = 328
       Height = 26
@@ -274,7 +251,7 @@ object FCadOS: TFCadOS
       TabOrder = 1
     end
     object edtQuantidade: TEdit
-      Left = 473
+      Left = 559
       Top = 32
       Width = 90
       Height = 26
@@ -282,7 +259,7 @@ object FCadOS: TFCadOS
       OnKeyPress = edtQuantidadeKeyPress
     end
     object edtValorUnit: TEdit
-      Left = 585
+      Left = 671
       Top = 32
       Width = 121
       Height = 26
@@ -290,28 +267,37 @@ object FCadOS: TFCadOS
       OnKeyPress = edtValorUnitKeyPress
     end
     object btAdicionarProduto: TBitBtn
-      Left = 780
+      Left = 809
       Top = 14
-      Width = 106
+      Width = 70
       Height = 41
       Caption = 'Adicionar'
       TabOrder = 4
       OnClick = btAdicionarProdutoClick
     end
     object btRemoverProduto: TBitBtn
-      Left = 723
-      Top = 16
-      Width = 51
+      Left = 898
+      Top = 14
+      Width = 74
       Height = 41
-      Caption = 'X'
+      Caption = 'Remover'
       TabOrder = 5
       OnClick = btRemoverProdutoClick
+    end
+    object btListarProdutos: TBitBtn
+      Left = 0
+      Top = 17
+      Width = 105
+      Height = 25
+      Caption = 'Listar Produtos'
+      TabOrder = 6
+      OnClick = btListarProdutosClick
     end
   end
   object DBGrid1: TDBGrid
     Left = 8
     Top = 432
-    Width = 902
+    Width = 989
     Height = 233
     DataSource = dsCdTbRelServicoOS
     ReadOnly = True
@@ -361,33 +347,33 @@ object FCadOS: TFCadOS
   end
   object pInsereServico: TPanel
     Left = 8
-    Top = 671
-    Width = 902
+    Top = 676
+    Width = 989
     Height = 66
     TabOrder = 5
     object lbCodServ: TLabel
-      Left = 25
+      Left = 111
       Top = 8
       Width = 64
       Height = 18
       Caption = 'C'#243'd. Serv'
     end
     object lbDescricaoServ: TLabel
-      Left = 121
+      Left = 207
       Top = 8
       Width = 134
       Height = 18
       Caption = 'Descri'#231#227'o do Servi'#231'o'
     end
     object lbValorServ: TLabel
-      Left = 585
+      Left = 671
       Top = 8
       Width = 104
       Height = 18
       Caption = 'Valor do Servi'#231'o'
     end
     object edtFkCodServico: TEdit
-      Left = 25
+      Left = 111
       Top = 32
       Width = 82
       Height = 26
@@ -396,7 +382,7 @@ object FCadOS: TFCadOS
       OnKeyPress = edtFkCodServicoKeyPress
     end
     object edtValorServico: TEdit
-      Left = 584
+      Left = 670
       Top = 32
       Width = 121
       Height = 26
@@ -404,22 +390,75 @@ object FCadOS: TFCadOS
       OnKeyPress = edtValorServicoKeyPress
     end
     object btAdicionarServico: TBitBtn
-      Left = 780
+      Left = 809
       Top = 13
-      Width = 107
+      Width = 70
       Height = 41
       Caption = 'Adicionar'
       TabOrder = 2
       OnClick = btAdicionarServicoClick
     end
+    object btRemoverServico: TBitBtn
+      Left = 898
+      Top = 13
+      Width = 74
+      Height = 41
+      Caption = 'Remover'
+      TabOrder = 3
+      OnClick = btRemoverServicoClick
+    end
+    object btListarServicos: TBitBtn
+      Left = 4
+      Top = 16
+      Width = 101
+      Height = 25
+      Caption = 'Listar Servi'#231'os'
+      TabOrder = 4
+      OnClick = btListarServicosClick
+    end
   end
   object edtDescricaoServico: TEdit
-    Left = 129
-    Top = 703
+    Left = 215
+    Top = 708
     Width = 449
     Height = 26
     Enabled = False
     TabOrder = 6
+  end
+  object pValorOS: TPanel
+    Left = 782
+    Top = 743
+    Width = 215
+    Height = 41
+    Color = clScrollBar
+    ParentBackground = False
+    TabOrder = 7
+    object lbValor: TLabel
+      Left = 21
+      Top = 9
+      Width = 87
+      Height = 21
+      Caption = 'Valor Total:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -17
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object lbValorTotal: TLabel
+      Left = 166
+      Top = 9
+      Width = 32
+      Height = 21
+      Caption = '0,00'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGreen
+      Font.Height = -17
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
   end
   object cdTbRelProdutoOS: TClientDataSet
     PersistDataPacket.Data = {
@@ -468,12 +507,12 @@ object FCadOS: TFCadOS
     IndexDefs = <>
     Params = <>
     StoreDefs = True
-    Left = 552
+    Left = 592
     Top = 16
   end
   object dsCdTbRelProdutoOS: TDataSource
     DataSet = cdTbRelProdutoOS
-    Left = 617
+    Left = 657
     Top = 32
   end
   object cdTbRelServicoOS: TClientDataSet
@@ -505,7 +544,7 @@ object FCadOS: TFCadOS
       item
         Name = 'DescricaoServico'
         DataType = ftString
-        Size = 200
+        Size = 20
       end
       item
         Name = 'controle'

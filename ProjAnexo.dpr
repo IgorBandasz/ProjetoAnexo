@@ -10,7 +10,10 @@ uses
   UCadMarca in 'UCadMarca.pas' {FCadMarca},
   UCadVeiculo in 'UCadVeiculo.pas' {FCadVeiculo},
   ULocOS in 'ULocOS.pas' {FLocOS},
-  UCadOS in 'UCadOS.pas' {FCadOS};
+  UCadOS in 'UCadOS.pas' {FCadOS},
+  UListarClientes in 'UListarClientes.pas' {FListarClientes},
+  UListarProdutos in 'UListarProdutos.pas' {FListarProdutos},
+  UListarServicos in 'UListarServicos.pas' {FListarServicos};
 
 {$R *.res}
 
@@ -26,5 +29,8 @@ begin
   Application.CreateForm(TFCadVeiculo, FCadVeiculo);
   Application.CreateForm(TFLocOS, FLocOS);
   Application.CreateForm(TFCadOS, FCadOS);
+  Application.CreateForm(TFListarClientes, FListarClientes);
+  Application.CreateForm(TFListarProdutos, FListarProdutos);
+  Application.CreateForm(TFListarServicos, FListarServicos);
   Application.Run;
 end.

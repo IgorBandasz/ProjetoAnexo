@@ -17,11 +17,12 @@ object FLocOS: TFLocOS
   TextHeight = 18
   object pBotoes: TPanel
     Left = 0
-    Top = 302
+    Top = 473
     Width = 845
     Height = 63
     Align = alTop
     TabOrder = 0
+    ExplicitTop = 302
     object btNovo: TBitBtn
       Left = 360
       Top = 11
@@ -63,7 +64,7 @@ object FLocOS: TFLocOS
     Left = 0
     Top = 53
     Width = 845
-    Height = 249
+    Height = 420
     Align = alTop
     DataSource = DM.dsOS
     Font.Charset = DEFAULT_CHARSET
