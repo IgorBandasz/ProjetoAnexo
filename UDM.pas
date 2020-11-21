@@ -29,12 +29,18 @@ type
     sqlGeral: TFDQuery;
     sqlOS: TFDQuery;
     dsOS: TDataSource;
+    sqlRelatorioProd: TFDQuery;
+    dsRelatorioProd: TDataSource;
+    sqlRelatorioServ: TFDQuery;
+    dsRelatorioServ: TDataSource;
+    sqlRelatorioCli: TFDQuery;
+    dsRelatorioCli: TDataSource;
   private
 
     { Private declarations }
   public
     procedure executaSql(comando : string; q :TFDQuery);
-    function LimpaEdit(Edt: TCustomEdit; K : char; C :char='#'; sinal: char='+'): char;
+    function LimpaEdit(Edt: TCustomEdit; K : char; C :char='#'): char;
     function limpaVir(num : string):string;
     function salvaChave(chave : string):string;
     function salvaData(data : string):string;
@@ -56,7 +62,15 @@ var
   STbRelProdutoOS :string= 'select * from tbrelprodutoos r'
                           +' inner join tbproduto p on p.pkcodprod = r.fkcodprod';
   STbRelServicoOS :string= 'select * from tbrelservicoos r '
-                          +' inner join tbservico s on s.pkcodservico = r.fkcodservico';
+                          +' inner join tbservico s on s.pkcodservico = r.fkcodservico ';
+  SRelatorioProd :string= 'select p.pkcodprod, p.nomeprod, count(*), sum(r.quantidade) from tbproduto p '
+                              +' inner join tbrelprodutoos r on p.pkcodprod = r.fkcodprod ';
+  SRelatorioServ :string= 'select s.pkcodservico, s.descricaoservico, count(*) from tbservico s '
+                            +' inner join tbrelservicoos r on s.pkcodservico = r.fkcodservico';
+  SRelatorioCli :string= 'select c.pkcodcli, c.nomecli, count(*), sum(o.valortotal), avg(o.valortotal) from tbcliente c '
+                        +' inner join tbos o on c.pkcodcli = o.fkcodcli';
+
+
 
 implementation
 
@@ -116,43 +130,31 @@ begin
   salvaData := x;
 end;
 
-function TDM.LimpaEdit(Edt: TCustomEdit; K, C, sinal: char): char;
+function TDM.LimpaEdit(Edt: TCustomEdit; K, C: char): char;
 var
   B, I: integer;
 begin
-  if sinal='-' then
+  if not(K in['0'..'9', #8, C, #13]) then
   begin
-    if not(K in['0'..'9', #8,sinal, C, #13]) then
-    begin
-      LimpaEdit := #0;
-      Exit;
-    end
-  end
-  else
-    if not(K in['0'..'9', #8, C, #13]) then
-    begin
-      LimpaEdit := #0;
-      Exit;
-    end;
+    LimpaEdit := #0;
+    Exit;
+  end;
 
-  B:= 0;
-  for I:= 1 to Length(Edt.Text) do
-    if Edt.Text[I] = c then
-      B:= B + 1;
+  B := 0;
+  for I := 1 to Length(Edt.Text) do
+    if Edt.Text[I] = C then
+      B := B + 1;
 
   if (B > 0) then
     if ((K in['0'..'9', #8])) then
-      LimpaEdit:= K
+      LimpaEdit := K
     else
     begin
-      k:=#0;
-      LimpaEdit:= (#0) ;
+      K := #0;
+      LimpaEdit := (#0) ;
     end;
 
-  if (sinal='-') and (Edt.Text<>'') and (k='-') then
-    LimpaEdit:= (#0)
-  else
-    LimpaEdit:= K;
+  LimpaEdit := K;
 end;
 
 end.

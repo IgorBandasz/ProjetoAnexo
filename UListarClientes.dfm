@@ -79,8 +79,6 @@ object FListarClientes: TFListarClientes
     Height = 53
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = 8
-    ExplicitTop = 413
     object cbPesquisa: TComboBox
       Left = 86
       Top = 14

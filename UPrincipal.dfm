@@ -52,5 +52,20 @@ object FPrincipal: TFPrincipal
         OnClick = Sair1Click
       end
     end
+    object Relatrios1: TMenuItem
+      Caption = 'Relat'#243'rios'
+      object Produto2: TMenuItem
+        Caption = 'Produto'
+        OnClick = Produto2Click
+      end
+      object Servio2: TMenuItem
+        Caption = 'Servi'#231'o'
+        OnClick = Servio2Click
+      end
+      object Cliente2: TMenuItem
+        Caption = 'Cliente'
+        OnClick = Cliente2Click
+      end
+    end
   end
 end

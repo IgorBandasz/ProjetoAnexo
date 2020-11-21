@@ -13,76 +13,76 @@ object DM: TDM
       'DriverID=FB')
     Connected = True
     Transaction = fdtTransacao
-    Left = 104
-    Top = 104
+    Left = 24
+    Top = 24
   end
   object fdtTransacao: TFDTransaction
     Connection = fdcConexao
-    Left = 216
-    Top = 104
+    Left = 136
+    Top = 24
   end
   object sqlCliente: TFDQuery
     Connection = fdcConexao
     Transaction = fdtTransacao
     SQL.Strings = (
       'select * from tbcliente')
-    Left = 216
-    Top = 216
+    Left = 136
+    Top = 136
   end
   object dsCliente: TDataSource
     DataSet = sqlCliente
-    Left = 216
-    Top = 304
+    Left = 136
+    Top = 224
   end
   object fdtTransacaoAltera: TFDTransaction
     Connection = fdcConexao
-    Left = 696
-    Top = 104
+    Left = 616
+    Top = 24
   end
   object sqlAltera: TFDQuery
     Connection = fdcConexao
     Transaction = fdtTransacaoAltera
-    Left = 696
-    Top = 216
+    Left = 616
+    Top = 136
   end
   object sqlServico: TFDQuery
     Connection = fdcConexao
     Transaction = fdtTransacao
     SQL.Strings = (
       'select * from tbservico')
-    Left = 296
-    Top = 216
+    Left = 216
+    Top = 136
   end
   object dsServico: TDataSource
     DataSet = sqlServico
-    Left = 296
-    Top = 304
+    Left = 216
+    Top = 224
   end
   object sqlProduto: TFDQuery
     Connection = fdcConexao
     Transaction = fdtTransacao
     SQL.Strings = (
       'select * from tbproduto')
-    Left = 368
-    Top = 216
+    Left = 288
+    Top = 136
   end
   object dsProduto: TDataSource
     DataSet = sqlProduto
-    Left = 368
-    Top = 304
+    Left = 288
+    Top = 224
   end
   object sqlMarca: TFDQuery
     Connection = fdcConexao
     Transaction = fdtTransacao
     SQL.Strings = (
       'select * from tbmarca')
-    Left = 440
-    Top = 216
+    Left = 360
+    Top = 136
   end
   object dsMarca: TDataSource
     DataSet = sqlMarca
-    Left = 440
-    Top = 304
+    Left = 360
+    Top = 224
   end
   object sqlVeiculo: TFDQuery
     Connection = fdcConexao
@@ -90,21 +90,21 @@ object DM: TDM
     SQL.Strings = (
       'select * from tbveiculo v'
       'inner join tbmarca m on m.pkcodmarca = v.fkcodmarca')
-    Left = 512
-    Top = 216
+    Left = 432
+    Top = 136
   end
   object dsVeiculo: TDataSource
     DataSet = sqlVeiculo
-    Left = 512
-    Top = 304
+    Left = 432
+    Top = 224
   end
   object sqlGeral: TFDQuery
     Connection = fdcConexao
     Transaction = fdtTransacao
     SQL.Strings = (
       '')
-    Left = 144
-    Top = 216
+    Left = 64
+    Top = 136
   end
   object sqlOS: TFDQuery
     Connection = fdcConexao
@@ -113,12 +113,63 @@ object DM: TDM
       'select * from tbos o'
       'inner join tbcliente c on c.pkcodcli = o.fkcodcli'
       'inner join tbveiculo v on v.pkcodveiculo = o.fkcodveiculo')
-    Left = 584
-    Top = 216
+    Left = 504
+    Top = 136
   end
   object dsOS: TDataSource
     DataSet = sqlOS
-    Left = 584
+    Left = 504
+    Top = 224
+  end
+  object sqlRelatorioProd: TFDQuery
+    Connection = fdcConexao
+    Transaction = fdtTransacao
+    SQL.Strings = (
+      
+        'select p.pkcodprod, p.nomeprod, count(*), sum(r.quantidade) from' +
+        ' tbproduto p'
+      'inner join tbrelprodutoos r on p.pkcodprod = r.fkcodprod'
+      'group by p.nomeprod,p.pkcodprod')
+    Left = 96
     Top = 304
+  end
+  object dsRelatorioProd: TDataSource
+    DataSet = sqlRelatorioProd
+    Left = 96
+    Top = 392
+  end
+  object sqlRelatorioServ: TFDQuery
+    Connection = fdcConexao
+    Transaction = fdtTransacao
+    SQL.Strings = (
+      
+        'select s.pkcodservico, s.descricaoservico, count(*) from tbservi' +
+        'co s'
+      'inner join tbrelservicoos r on s.pkcodservico = r.fkcodservico'
+      'group by s.descricaoservico, s.pkcodservico')
+    Left = 184
+    Top = 304
+  end
+  object dsRelatorioServ: TDataSource
+    DataSet = sqlRelatorioServ
+    Left = 184
+    Top = 392
+  end
+  object sqlRelatorioCli: TFDQuery
+    Connection = fdcConexao
+    Transaction = fdtTransacao
+    SQL.Strings = (
+      
+        'select c.pkcodcli, c.nomecli, count(*), sum(o.valortotal), avg(o' +
+        '.valortotal) from tbcliente c'
+      'inner join tbos o on c.pkcodcli = o.fkcodcli'
+      'group by c.pkcodcli, c.nomecli')
+    Left = 272
+    Top = 304
+  end
+  object dsRelatorioCli: TDataSource
+    DataSet = sqlRelatorioCli
+    Left = 272
+    Top = 392
   end
 end

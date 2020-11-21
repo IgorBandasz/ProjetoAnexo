@@ -20,9 +20,7 @@ type
     lbPlaca: TLabel;
     lbValor: TLabel;
     lbCliente: TLabel;
-    lbNomeCliente: TLabel;
     lbFkCodVeiculo: TLabel;
-    lbCod: TLabel;
     edtPkCodOS: TEdit;
     medtDataOs: TMaskEdit;
     medtPlacaVeiculo: TMaskEdit;
@@ -57,6 +55,8 @@ type
     btListarProdutos: TBitBtn;
     btListarServicos: TBitBtn;
     pValorOS: TPanel;
+    lbNomeCli: TLabel;
+    edtNomeCliente: TEdit;
     procedure mostra(codigo :string);
     procedure mostraItens(codigo :string);
     procedure limpa;
@@ -84,6 +84,7 @@ type
     procedure btProcuraClienteClick(Sender: TObject);
     procedure btListarProdutosClick(Sender: TObject);
     procedure btListarServicosClick(Sender: TObject);
+    procedure medtDataOsExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -121,6 +122,7 @@ begin
   except
      cdTbRelProdutoOS.Cancel;
      showmessage('Erro ao adicionar Produto à lista');
+     limpaItem;
   end;
 end;
 
@@ -138,6 +140,7 @@ begin
   except
      cdTbRelServicoOS.Cancel;
      showmessage('Erro ao adicionar Serviço à lista');
+     limpaItem;
   end;
 end;
 
@@ -356,7 +359,7 @@ begin
   x:= trim(edtFkCodCli.Text);
   if x='' then
   begin
-    lbNomeCliente.Caption := '';
+    edtNomeCliente.Text := '';
     exit
   end;
 
@@ -365,12 +368,12 @@ begin
   if DM.sqlGeral.FieldByName('pkcodcli').AsString = '' then
   begin
     showmessage('Cliente não encontrado');
-    if edtfkcodcli.CanFocus then
-      edtfkcodcli.SetFocus;
+    if edtFkCodCli.CanFocus then
+      edtFkCodCli.SetFocus;
     exit;
   end;
 
-  lbNomeCliente.Caption := DM.sqlGeral.FieldByName('nomecli').AsString;
+  edtNomeCliente.Text := DM.sqlGeral.FieldByName('nomecli').AsString;
 end;
 
 procedure TFCadOS.edtFkCodCliKeyPress(Sender: TObject; var Key: Char);
@@ -403,7 +406,8 @@ begin
 
   edtNomeProduto.Text := DM.sqlGeral.FieldByName('nomeprod').AsString;
   edtValorUnit.Text := FormatFloat('#0.00',DM.sqlGeral.FieldByName('valorvendaprod').AsFloat);
-
+  if edtQuantidade.CanFocus then
+    edtQuantidade.SetFocus;
 end;
 
 procedure TFCadOS.edtFkCodProdKeyPress(Sender: TObject; var Key: Char);
@@ -491,7 +495,7 @@ begin
   end;
 
   lbValorTotal.Caption := '0,00';
-  lbNomeCliente.Caption :='';
+  edtNomeCliente.Text := '';
   cdTbRelProdutoOS.EmptyDataSet;
   cdTbRelServicoOS.EmptyDataSet;
 end;
@@ -506,6 +510,13 @@ begin
   edtFkCodServico.Text := '';
   edtDescricaoServico.Text := '';
   edtValorServico.Text := '';
+end;
+
+procedure TFCadOS.medtDataOsExit(Sender: TObject);
+var
+  x :string;
+begin
+  x := formatdatetime('dd.mm.yyyy',StrToDate(medtDataOS.Text));
 end;
 
 procedure TFCadOS.medtPlacaVeiculoExit(Sender: TObject);
@@ -524,8 +535,7 @@ begin
   if DM.sqlGeral.FieldByName('pkcodveiculo').AsString = '' then
   begin
     showmessage('Veículo não encontrado');
-    if medtPlacaVeiculo.CanFocus then
-      medtPlacaVeiculo.SetFocus;
+    medtPlacaVeiculo.Text := '';
     exit;
   end;
 

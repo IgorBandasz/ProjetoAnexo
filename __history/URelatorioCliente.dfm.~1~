@@ -1,7 +1,7 @@
-object FCadOS: TFCadOS
+object FRelatorioCliente: TFRelatorioCliente
   Left = 0
   Top = 0
-  Caption = 'Cadastro de Ordem de Servi'#231'o'
+  Caption = 'Relat'#243'rio de Clientes'
   ClientHeight = 299
   ClientWidth = 635
   Color = clBtnFace
@@ -11,6 +11,7 @@ object FCadOS: TFCadOS
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesigned
   PixelsPerInch = 96
   TextHeight = 13
 end

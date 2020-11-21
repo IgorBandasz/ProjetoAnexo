@@ -18,6 +18,10 @@ type
     Marca1: TMenuItem;
     Veculo1: TMenuItem;
     OS1: TMenuItem;
+    Relatrios1: TMenuItem;
+    Produto2: TMenuItem;
+    Servio2: TMenuItem;
+    Cliente2: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Cliente1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -26,6 +30,9 @@ type
     procedure Marca1Click(Sender: TObject);
     procedure Veculo1Click(Sender: TObject);
     procedure OS1Click(Sender: TObject);
+    procedure Produto2Click(Sender: TObject);
+    procedure Servio2Click(Sender: TObject);
+    procedure Cliente2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,13 +46,21 @@ implementation
 
 {$R *.dfm}
 
-uses UCadCliente, UCadServico, UCadProduto, UCadMarca, UCadVeiculo, ULocOS;
+uses UCadCliente, UCadServico, UCadProduto, UCadMarca, UCadVeiculo, ULocOS,
+  URelatorioProduto, URelatorioServico, URelatorioCliente;
 
 procedure TFPrincipal.Cliente1Click(Sender: TObject);
 begin
   if FCadCliente = nil then
     Application.CreateForm(TFCadCliente,FCadCliente);
   FCadCliente.ShowModal;
+end;
+
+procedure TFPrincipal.Cliente2Click(Sender: TObject);
+begin
+  if FRelatorioCliente = nil then
+    Application.CreateForm(TFRelatorioCliente,FRelatorioCliente);
+  FRelatorioCliente.ShowModal;
 end;
 
 procedure TFPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -75,6 +90,13 @@ begin
   FCadProduto.ShowModal;
 end;
 
+procedure TFPrincipal.Produto2Click(Sender: TObject);
+begin
+   if FRelatorioProduto = nil then
+    Application.CreateForm(TFRelatorioProduto,FRelatorioProduto);
+  FRelatorioProduto.ShowModal;
+end;
+
 procedure TFPrincipal.Sair1Click(Sender: TObject);
 begin
   Close;
@@ -85,6 +107,13 @@ begin
   if FCadServico = nil then
     Application.CreateForm(TFCadServico,FCadServico);
   FCadServico.ShowModal;
+end;
+
+procedure TFPrincipal.Servio2Click(Sender: TObject);
+begin
+   if FRelatorioServico = nil then
+    Application.CreateForm(TFRelatorioServico,FRelatorioServico);
+  FRelatorioServico.ShowModal;
 end;
 
 procedure TFPrincipal.Veculo1Click(Sender: TObject);

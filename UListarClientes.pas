@@ -50,7 +50,7 @@ begin
     end;
     comando := comando+condicao;
   end;
-  DM.executaSql(comando,dm.sqlCliente);
+  DM.executaSql(comando,DM.sqlCliente);
 
 end;
 

@@ -13,7 +13,10 @@ uses
   UCadOS in 'UCadOS.pas' {FCadOS},
   UListarClientes in 'UListarClientes.pas' {FListarClientes},
   UListarProdutos in 'UListarProdutos.pas' {FListarProdutos},
-  UListarServicos in 'UListarServicos.pas' {FListarServicos};
+  UListarServicos in 'UListarServicos.pas' {FListarServicos},
+  URelatorioProduto in 'URelatorioProduto.pas' {FRelatorioProduto},
+  URelatorioServico in 'URelatorioServico.pas' {FRelatorioServico},
+  URelatorioCliente in 'URelatorioCliente.pas' {FRelatorioCliente};
 
 {$R *.res}
 
@@ -32,5 +35,8 @@ begin
   Application.CreateForm(TFListarClientes, FListarClientes);
   Application.CreateForm(TFListarProdutos, FListarProdutos);
   Application.CreateForm(TFListarServicos, FListarServicos);
+  Application.CreateForm(TFRelatorioProduto, FRelatorioProduto);
+  Application.CreateForm(TFRelatorioServico, FRelatorioServico);
+  Application.CreateForm(TFRelatorioCliente, FRelatorioCliente);
   Application.Run;
 end.

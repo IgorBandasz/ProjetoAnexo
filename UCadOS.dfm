@@ -22,8 +22,6 @@ object FCadOS: TFCadOS
     Height = 63
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 777
-    ExplicitWidth = 919
     object btSalvar: TBitBtn
       Left = 783
       Top = 11
@@ -117,39 +115,33 @@ object FCadOS: TFCadOS
       Caption = 'Data:'
     end
     object lbPlaca: TLabel
-      Left = 261
+      Left = 341
       Top = 43
       Width = 38
       Height = 18
       Caption = 'Placa:'
     end
     object lbCliente: TLabel
-      Left = 217
+      Left = 297
       Top = 11
       Width = 82
       Height = 18
       Caption = 'C'#243'd. Cliente:'
     end
-    object lbNomeCliente: TLabel
-      Left = 495
-      Top = 11
-      Width = 97
-      Height = 18
-      Caption = 'NomeCliente'
-    end
     object lbFkCodVeiculo: TLabel
-      Left = 426
+      Left = 489
       Top = 43
       Width = 69
       Height = 18
       Caption = 'CodVeiculo'
+      Visible = False
     end
-    object lbCod: TLabel
-      Left = 390
-      Top = 43
-      Width = 30
+    object lbNomeCli: TLabel
+      Left = 472
+      Top = 11
+      Width = 112
       Height = 18
-      Caption = 'C'#243'd:'
+      Caption = 'Nome do Cliente:'
     end
     object edtPkCodOS: TEdit
       Left = 92
@@ -168,11 +160,12 @@ object FCadOS: TFCadOS
       MaxLength = 10
       TabOrder = 1
       Text = '  /  /    '
+      OnExit = medtDataOsExit
     end
     object medtPlacaVeiculo: TMaskEdit
-      Left = 314
+      Left = 394
       Top = 40
-      Width = 70
+      Width = 89
       Height = 26
       EditMask = '>LLL-0A00;1;_'
       MaxLength = 8
@@ -181,7 +174,7 @@ object FCadOS: TFCadOS
       OnExit = medtPlacaVeiculoExit
     end
     object edtFkCodCli: TEdit
-      Left = 314
+      Left = 394
       Top = 8
       Width = 70
       Height = 26
@@ -190,13 +183,21 @@ object FCadOS: TFCadOS
       OnKeyPress = edtFkCodCliKeyPress
     end
     object btProcuraCliente: TBitBtn
-      Left = 390
+      Left = 192
       Top = 9
       Width = 99
       Height = 25
       Caption = 'Listar Clientes'
       TabOrder = 4
       OnClick = btProcuraClienteClick
+    end
+    object edtNomeCliente: TEdit
+      Left = 600
+      Top = 8
+      Width = 337
+      Height = 26
+      Enabled = False
+      TabOrder = 5
     end
   end
   object pInsereProduto: TPanel
@@ -215,9 +216,9 @@ object FCadOS: TFCadOS
     object lbnomeprod: TLabel
       Left = 207
       Top = 7
-      Width = 50
+      Width = 115
       Height = 18
-      Caption = 'Produto'
+      Caption = 'Nome do Produto'
     end
     object lbQuantidade: TLabel
       Left = 559
@@ -507,13 +508,13 @@ object FCadOS: TFCadOS
     IndexDefs = <>
     Params = <>
     StoreDefs = True
-    Left = 592
-    Top = 16
+    Left = 736
+    Top = 160
   end
   object dsCdTbRelProdutoOS: TDataSource
     DataSet = cdTbRelProdutoOS
-    Left = 657
-    Top = 32
+    Left = 809
+    Top = 184
   end
   object cdTbRelServicoOS: TClientDataSet
     PersistDataPacket.Data = {
@@ -554,11 +555,11 @@ object FCadOS: TFCadOS
     Params = <>
     StoreDefs = True
     Left = 737
-    Top = 16
+    Top = 512
   end
   object dsCdTbRelServicoOS: TDataSource
     DataSet = cdTbRelServicoOS
     Left = 809
-    Top = 32
+    Top = 536
   end
 end

@@ -3,7 +3,7 @@ object FLocOS: TFLocOS
   Top = 0
   Caption = 'FLocOS'
   ClientHeight = 534
-  ClientWidth = 845
+  ClientWidth = 857
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,11 +18,11 @@ object FLocOS: TFLocOS
   object pBotoes: TPanel
     Left = 0
     Top = 473
-    Width = 845
+    Width = 857
     Height = 63
     Align = alTop
     TabOrder = 0
-    ExplicitTop = 302
+    ExplicitWidth = 845
     object btNovo: TBitBtn
       Left = 360
       Top = 11
@@ -63,7 +63,7 @@ object FLocOS: TFLocOS
   object dbgOS: TDBGrid
     Left = 0
     Top = 53
-    Width = 845
+    Width = 857
     Height = 420
     Align = alTop
     DataSource = DM.dsOS
@@ -128,10 +128,11 @@ object FLocOS: TFLocOS
   object pListagem: TPanel
     Left = 0
     Top = 0
-    Width = 845
+    Width = 857
     Height = 53
     Align = alTop
     TabOrder = 2
+    ExplicitWidth = 845
     object cbPesquisa: TComboBox
       Left = 106
       Top = 14

@@ -138,14 +138,25 @@ procedure TFCadVeiculo.btSalvarClick(Sender: TObject);
 var
   comando : string;
 begin
-  btPesquisar.Enabled := true;
   try
+    btPesquisar.Enabled := true;
+
     if DM.fdtTransacaoAltera.TransactionIntf.Active then
       DM.fdtTransacaoAltera.Rollback;
     DM.fdtTransacaoAltera.StartTransaction;
 
     case acaoGeral of
       0: begin
+        comando := 'select * from tbveiculo where placaveiculo ='+QuotedStr(medtPlacaVeiculo.Text);
+        DM.executaSql(comando,DM.sqlGeral);
+        if DM.sqlGeral.FieldByName('pkcodveiculo').AsString <> '' then
+          begin
+            ShowMessage('Placa de veículo já cadastrada');
+            if medtPlacaVeiculo.CanFocus then
+              medtPlacaVeiculo.SetFocus;
+            exit
+        end;
+
         if cbFkCodMarca.Text = '' then
         begin
           showmessage('Você precisa cadastrar uma Marca na área de cadastramento primeiro, só depois poderá cadastrar um Veículo');
