@@ -85,6 +85,7 @@ var
   SRelatorioVei :string= 'select v.pkcodveiculo, v.placaveiculo, m.nomemarca, count(*), avg(o.valortotal), sum(o.valortotal) from tbveiculo v '
                         +' inner join tbos o on v.pkcodveiculo = o.fkcodveiculo '
                         +' inner join tbmarca m on m.pkcodmarca = v.fkcodmarca';
+  SRelatorioVei2 :string=' group by v.placaveiculo, v.pkcodveiculo, m.nomemarca ';
 
   SRelatorioMarca :string= 'select m.pkcodmarca, m.nomemarca, count(*), avg(o.valortotal), sum(o.valortotal) from tbmarca m '
                           +' inner join tbveiculo v on m.pkcodmarca = v.fkcodmarca '

@@ -17,9 +17,9 @@ object FRelatorioVeiculo: TFRelatorioVeiculo
   TextHeight = 18
   object dbgRelatorioVei: TDBGrid
     Left = 0
-    Top = 0
+    Top = 41
     Width = 760
-    Height = 305
+    Height = 328
     Align = alTop
     DataSource = DM.dsRelatorioVei
     TabOrder = 0
@@ -32,7 +32,8 @@ object FRelatorioVeiculo: TFRelatorioVeiculo
       item
         Expanded = False
         FieldName = 'PKCODVEICULO'
-        Title.Caption = 'C'#243'd. VEI'
+        Title.Alignment = taCenter
+        Title.Caption = 'C'#243'd.'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clWindowText
         Title.Font.Height = -16
@@ -96,6 +97,7 @@ object FRelatorioVeiculo: TFRelatorioVeiculo
       item
         Expanded = False
         FieldName = 'SUM'
+        Title.Alignment = taCenter
         Title.Caption = 'Somat'#243'rio OS'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clWindowText
@@ -108,18 +110,16 @@ object FRelatorioVeiculo: TFRelatorioVeiculo
   end
   object pListagem: TPanel
     Left = 0
-    Top = 305
+    Top = 369
     Width = 760
     Height = 53
     Align = alTop
     TabOrder = 1
-    ExplicitLeft = -22
-    ExplicitTop = 377
-    ExplicitWidth = 705
+    ExplicitTop = 305
     object cbPesquisa: TComboBox
       Left = 30
       Top = 13
-      Width = 155
+      Width = 189
       Height = 26
       Style = csDropDownList
       ItemIndex = 0
@@ -130,10 +130,16 @@ object FRelatorioVeiculo: TFRelatorioVeiculo
         'Todos'
         'C'#243'digo igual a'
         'Placa iniciando por'
-        'Marca iniciando por')
+        'Marca iniciando por'
+        'Quant. OS maior que'
+        'Quant. OS menor que'
+        'M'#233'dia OS maior que'
+        'M'#233'dia OS menor que'
+        'Somat'#243'rio OS maior que'
+        'Somat'#243'rio OS menor que')
     end
     object edtPesquisa: TEdit
-      Left = 224
+      Left = 266
       Top = 14
       Width = 201
       Height = 26
@@ -141,13 +147,53 @@ object FRelatorioVeiculo: TFRelatorioVeiculo
       OnKeyPress = edtPesquisaKeyPress
     end
     object btPesquisar: TBitBtn
-      Left = 464
+      Left = 506
       Top = 9
       Width = 83
       Height = 35
       Caption = 'Pesquisar'
       TabOrder = 2
       OnClick = btPesquisarClick
+    end
+  end
+  object pOrdem: TPanel
+    Left = 0
+    Top = 0
+    Width = 760
+    Height = 41
+    Align = alTop
+    TabOrder = 2
+    ExplicitLeft = -8
+    object lbOrdem: TLabel
+      Left = 32
+      Top = 10
+      Width = 58
+      Height = 18
+      Caption = 'Ordenar:'
+    end
+    object cbOrdem: TComboBox
+      Left = 114
+      Top = 7
+      Width = 199
+      Height = 26
+      Style = csDropDownList
+      ItemIndex = 0
+      TabOrder = 0
+      Text = 'Placa A-Z'
+      OnChange = cbOrdemChange
+      Items.Strings = (
+        'Placa A-Z'
+        'Placa Z-A'
+        'Marca A-Z'
+        'Marca Z-A'
+        'Menor c'#243'digo'
+        'Maior c'#243'digo'
+        'Maior quant. OS'
+        'Menor quant. OS'
+        'Maior m'#233'dia OS'
+        'Menor m'#233'dia OS'
+        'Maior somat'#243'rio OS'
+        'Menor somat'#243'rio OS')
     end
   end
 end

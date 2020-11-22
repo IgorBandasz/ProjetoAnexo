@@ -14,11 +14,15 @@ type
     cbPesquisa: TComboBox;
     edtPesquisa: TEdit;
     btPesquisar: TBitBtn;
+    pOrdem: TPanel;
+    lbOrdem: TLabel;
+    cbOrdem: TComboBox;
     procedure btPesquisarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormActivate(Sender: TObject);
     procedure cbPesquisaChange(Sender: TObject);
     procedure edtPesquisaKeyPress(Sender: TObject; var Key: Char);
+    procedure cbOrdemChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,21 +40,57 @@ uses UDM;
 
 procedure TFRelatorioVeiculo.btPesquisarClick(Sender: TObject);
 var
-  comando, condicao : string;
+  comando, condicao, cond, ordem : string;
 begin
-  comando := SRelatorioVei;
-  condicao := Trim(edtPesquisa.Text);
-  if condicao <> '' then
+  comando := SRelatoriovei;
+  cond := Trim(edtPesquisa.Text);
+  condicao := '';
+  if cond <> '' then
   begin
     case cbPesquisa.ItemIndex of
-      1: condicao := ' where pkcodveiculo ='+condicao;
-      2: condicao := ' where upper(placaveiculo) like upper('+QuotedStr(condicao+'%')+')';
-      3: condicao := ' where upper(nomemarca) like upper('+QuotedStr(condicao+'%')+')';
+      1: condicao := ' where pkcodveiculo ='+cond;
+      2: condicao := ' where upper(v.placaveiculo) like upper('+QuotedStr(cond+'%')+')';
+      3: condicao := ' where upper(m.nomemarca) like upper('+QuotedStr(cond+'%')+')';
     end;
     comando := comando+condicao;
+    condicao := '';
   end;
-  comando := comando+' group by v.pkcodveiculo, v.placaveiculo, m.nomemarca';
+  comando := comando + SRelatorioVei2;
+  if cond <> '' then
+  begin
+    case cbPesquisa.ItemIndex of
+      4: condicao := ' having count(*) > '+cond;
+      5: condicao := ' having count(*) < '+cond;
+      6: condicao := ' having avg(valortotal) > '+cond;
+      7: condicao := ' having avg(valortotal) < '+cond;
+      8: condicao := ' having sum(valortotal) > '+cond;
+      9: condicao := ' having sum(valortotal) < '+cond;
+    end;
+    comando := comando + condicao;
+  end;
+
+  case cbOrdem.ItemIndex of
+    0: ordem := ' order by v.placaveiculo';
+    1: ordem := ' order by v.placaveiculo desc';
+    2: ordem := ' order by m.nomemarca';
+    3: ordem := ' order by m.nomemarca desc';
+    4: ordem := ' order by v.pkcodveiculo';
+    5: ordem := ' order by v.pkcodveiculo desc';
+    6: ordem := ' order by count(*) desc';
+    7: ordem := ' order by count(*)';
+    8: ordem := ' order by avg(valortotal) desc';
+    9: ordem := ' order by avg(valortotal)';
+    10: ordem := ' order by sum(valortotal) desc';
+    11: ordem := ' order by sum(valortotal)';
+  end;
+  comando := comando + ordem;
+
   DM.executaSql(comando,DM.sqlRelatorioVei);
+end;
+
+procedure TFRelatorioVeiculo.cbOrdemChange(Sender: TObject);
+begin
+  btPesquisarClick(nil);
 end;
 
 procedure TFRelatorioVeiculo.cbPesquisaChange(Sender: TObject);
@@ -63,7 +103,8 @@ procedure TFRelatorioVeiculo.edtPesquisaKeyPress(Sender: TObject;
 begin
   case cbPesquisa.ItemIndex of
     0: key := #0;
-    1: key := DM.LimpaEdit((Sender as TCustomEdit),Key);
+    1,4,5: key := DM.LimpaEdit((Sender as TCustomEdit),Key);
+    6,7,8,9: key := DM.LimpaEdit((Sender as TCustomEdit),Key, ',');
   end;
 end;
 
