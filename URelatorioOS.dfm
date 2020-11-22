@@ -3,7 +3,7 @@ object FRelatorioOS: TFRelatorioOS
   Top = 0
   Caption = 'Relat'#243'rio de OS'
   ClientHeight = 496
-  ClientWidth = 681
+  ClientWidth = 541
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,7 +18,7 @@ object FRelatorioOS: TFRelatorioOS
   object dbgRelatorioOS: TDBGrid
     Left = 0
     Top = 41
-    Width = 681
+    Width = 541
     Height = 393
     Align = alTop
     DataSource = DM.dsRelatorioOS
@@ -95,7 +95,7 @@ object FRelatorioOS: TFRelatorioOS
   object pListagem: TPanel
     Left = 0
     Top = 434
-    Width = 681
+    Width = 541
     Height = 53
     Align = alTop
     TabOrder = 1
@@ -146,10 +146,11 @@ object FRelatorioOS: TFRelatorioOS
   object pOrdem: TPanel
     Left = 0
     Top = 0
-    Width = 681
+    Width = 541
     Height = 41
     Align = alTop
     TabOrder = 2
+    ExplicitWidth = 681
     object lbOrdem: TLabel
       Left = 32
       Top = 10
@@ -160,7 +161,7 @@ object FRelatorioOS: TFRelatorioOS
     object cbOrdem: TComboBox
       Left = 114
       Top = 7
-      Width = 145
+      Width = 199
       Height = 26
       Style = csDropDownList
       ItemIndex = 0
@@ -169,7 +170,13 @@ object FRelatorioOS: TFRelatorioOS
       OnChange = cbOrdemChange
       Items.Strings = (
         'Mais recente'
-        'Mais antigo')
+        'Mais antigo'
+        'Maior quant. OS'
+        'Menor quant. OS'
+        'Maior m'#233'dia OS'
+        'Menor m'#233'dia OS'
+        'Maior somat'#243'rio OS'
+        'Menor somat'#243'rio OS')
     end
   end
 end

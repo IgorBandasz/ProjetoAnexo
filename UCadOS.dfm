@@ -452,6 +452,7 @@ object FCadOS: TFCadOS
       Top = 9
       Width = 32
       Height = 21
+      Alignment = taRightJustify
       Caption = '0,00'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clGreen

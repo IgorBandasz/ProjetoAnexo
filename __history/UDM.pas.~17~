@@ -69,25 +69,18 @@ var
                           +' inner join tbproduto p on p.pkcodprod = r.fkcodprod';
   STbRelServicoOS :string= 'select * from tbrelservicoos r '
                           +' inner join tbservico s on s.pkcodservico = r.fkcodservico ';
-
   SRelatorioProd :string= 'select p.pkcodprod, p.nomeprod, count(*), sum(r.quantidade) from tbproduto p '
                               +' inner join tbrelprodutoos r on p.pkcodprod = r.fkcodprod ';
-
   SRelatorioServ :string= 'select s.pkcodservico, s.descricaoservico, count(*) from tbservico s '
                             +' inner join tbrelservicoos r on s.pkcodservico = r.fkcodservico';
-
   SRelatorioCli :string= 'select c.pkcodcli, c.nomecli, count(*), sum(o.valortotal), avg(o.valortotal) from tbcliente c '
                         +' inner join tbos o on c.pkcodcli = o.fkcodcli';
-
   SRelatorioVei :string= 'select v.pkcodveiculo, v.placaveiculo, m.nomemarca, count(*), avg(o.valortotal), sum(o.valortotal) from tbveiculo v '
                         +' inner join tbos o on v.pkcodveiculo = o.fkcodveiculo '
                         +' inner join tbmarca m on m.pkcodmarca = v.fkcodmarca';
-
   SRelatorioMarca :string= 'select m.pkcodmarca, m.nomemarca, count(*), avg(o.valortotal), sum(o.valortotal) from tbmarca m '
                           +' inner join tbveiculo v on m.pkcodmarca = v.fkcodmarca '
                           +' inner join tbos o on v.pkcodveiculo = o.fkcodveiculo ';
-  SRelatorioMarca2 :string=' group by m.nomemarca, m.pkcodmarca';
-
   SRelatorioOS :string= 'select extract(MONTH from dataos) AS MES, extract(YEAR from dataos) AS ANO, '
                         +' count(*), avg(valortotal), sum(valortotal) from tbos ';
   SRelatorioOS2 :string= ' group by extract(MONTH from dataos),extract(YEAR from dataos) ';

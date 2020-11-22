@@ -108,7 +108,7 @@ object FRelatorioMarca: TFRelatorioMarca
     object cbPesquisa: TComboBox
       Left = 36
       Top = 13
-      Width = 173
+      Width = 149
       Height = 26
       Style = csDropDownList
       ItemIndex = 0
@@ -127,7 +127,7 @@ object FRelatorioMarca: TFRelatorioMarca
         'Somat'#243'rio OS menor que')
     end
     object edtPesquisa: TEdit
-      Left = 254
+      Left = 214
       Top = 14
       Width = 201
       Height = 26
@@ -135,7 +135,7 @@ object FRelatorioMarca: TFRelatorioMarca
       OnKeyPress = edtPesquisaKeyPress
     end
     object btPesquisar: TBitBtn
-      Left = 510
+      Left = 470
       Top = 9
       Width = 83
       Height = 35
@@ -168,7 +168,6 @@ object FRelatorioMarca: TFRelatorioMarca
       ItemIndex = 0
       TabOrder = 0
       Text = 'A-Z'
-      OnChange = cbOrdemChange
       Items.Strings = (
         'A-Z'
         'Z-A'

@@ -73,12 +73,6 @@ begin
   case cbOrdem.ItemIndex of
     0: ordem := ' order by extract(YEAR from dataos) desc, extract(MONTH from dataos) desc';
     1: ordem := ' order by extract(YEAR from dataos), extract(MONTH from dataos)';
-    2: ordem := ' order by count(*) desc';
-    3: ordem := ' order by count(*)';
-    4: ordem := ' order by avg(valortotal) desc';
-    5: ordem := ' order by avg(valortotal)';
-    6: ordem := ' order by sum(valortotal) desc';
-    7: ordem := ' order by sum(valortotal)';
   end;
   comando := comando + ordem;
   DM.executaSql(comando,DM.sqlRelatorioOS);

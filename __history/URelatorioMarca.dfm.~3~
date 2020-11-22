@@ -2,8 +2,8 @@ object FRelatorioMarca: TFRelatorioMarca
   Left = 0
   Top = 0
   Caption = 'Relat'#243'rio das Marcas de ve'#237'culos'
-  ClientHeight = 461
-  ClientWidth = 816
+  ClientHeight = 425
+  ClientWidth = 824
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,8 +17,8 @@ object FRelatorioMarca: TFRelatorioMarca
   TextHeight = 18
   object dbgRelatorioMarca: TDBGrid
     Left = 0
-    Top = 41
-    Width = 816
+    Top = 0
+    Width = 824
     Height = 362
     Align = alTop
     DataSource = DM.dsRelatorioMarca
@@ -97,18 +97,18 @@ object FRelatorioMarca: TFRelatorioMarca
   end
   object pListagem: TPanel
     Left = 0
-    Top = 403
-    Width = 816
+    Top = 362
+    Width = 824
     Height = 53
     Align = alTop
     TabOrder = 1
-    ExplicitLeft = -8
-    ExplicitTop = 432
-    ExplicitWidth = 818
+    ExplicitLeft = -3
+    ExplicitTop = 369
+    ExplicitWidth = 690
     object cbPesquisa: TComboBox
       Left = 36
       Top = 13
-      Width = 173
+      Width = 149
       Height = 26
       Style = csDropDownList
       ItemIndex = 0
@@ -118,16 +118,10 @@ object FRelatorioMarca: TFRelatorioMarca
       Items.Strings = (
         'Todos'
         'C'#243'digo igual a'
-        'Nome iniciando por'
-        'Quant. OS maior que'
-        'Quant. OS menor que'
-        'M'#233'dia OS maior que'
-        'M'#233'dia OS menor que'
-        'Somat'#243'rio OS maior que'
-        'Somat'#243'rio OS menor que')
+        'Nome iniciando por')
     end
     object edtPesquisa: TEdit
-      Left = 254
+      Left = 214
       Top = 14
       Width = 201
       Height = 26
@@ -135,51 +129,13 @@ object FRelatorioMarca: TFRelatorioMarca
       OnKeyPress = edtPesquisaKeyPress
     end
     object btPesquisar: TBitBtn
-      Left = 510
+      Left = 470
       Top = 9
       Width = 83
       Height = 35
       Caption = 'Pesquisar'
       TabOrder = 2
       OnClick = btPesquisarClick
-    end
-  end
-  object pOrdem: TPanel
-    Left = 0
-    Top = 0
-    Width = 816
-    Height = 41
-    Align = alTop
-    TabOrder = 2
-    ExplicitWidth = 818
-    object lbOrdem: TLabel
-      Left = 32
-      Top = 10
-      Width = 58
-      Height = 18
-      Caption = 'Ordenar:'
-    end
-    object cbOrdem: TComboBox
-      Left = 114
-      Top = 7
-      Width = 199
-      Height = 26
-      Style = csDropDownList
-      ItemIndex = 0
-      TabOrder = 0
-      Text = 'A-Z'
-      OnChange = cbOrdemChange
-      Items.Strings = (
-        'A-Z'
-        'Z-A'
-        'Menor c'#243'digo'
-        'Maior c'#243'digo'
-        'Maior quant. OS'
-        'Menor quant. OS'
-        'Maior m'#233'dia OS'
-        'Menor m'#233'dia OS'
-        'Maior somat'#243'rio OS'
-        'Menor somat'#243'rio OS')
     end
   end
 end
