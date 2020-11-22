@@ -70,6 +70,14 @@ object FPrincipal: TFPrincipal
         Caption = 'Ve'#237'culo'
         OnClick = Veculo2Click
       end
+      object Marca2: TMenuItem
+        Caption = 'Marca'
+        OnClick = Marca2Click
+      end
+      object OS2: TMenuItem
+        Caption = 'OS'
+        OnClick = OS2Click
+      end
     end
   end
 end

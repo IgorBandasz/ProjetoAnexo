@@ -23,6 +23,8 @@ type
     Servio2: TMenuItem;
     Cliente2: TMenuItem;
     Veculo2: TMenuItem;
+    Marca2: TMenuItem;
+    OS2: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Cliente1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -35,6 +37,8 @@ type
     procedure Servio2Click(Sender: TObject);
     procedure Cliente2Click(Sender: TObject);
     procedure Veculo2Click(Sender: TObject);
+    procedure Marca2Click(Sender: TObject);
+    procedure OS2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,7 +53,8 @@ implementation
 {$R *.dfm}
 
 uses UCadCliente, UCadServico, UCadProduto, UCadMarca, UCadVeiculo, ULocOS,
-  URelatorioProduto, URelatorioServico, URelatorioCliente, URelatorioVeiculo;
+  URelatorioProduto, URelatorioServico, URelatorioCliente, URelatorioVeiculo,
+  URelatorioMarca, URelatorioOS;
 
 procedure TFPrincipal.Cliente1Click(Sender: TObject);
 begin
@@ -78,11 +83,25 @@ begin
   FCadMarca.ShowModal;
 end;
 
+procedure TFPrincipal.Marca2Click(Sender: TObject);
+begin
+   if FRelatorioMarca = nil then
+    Application.CreateForm(TFRelatorioMarca,FRelatorioMarca);
+  FRelatorioMarca.ShowModal;
+end;
+
 procedure TFPrincipal.OS1Click(Sender: TObject);
 begin
   if FLocOS = nil then
     Application.CreateForm(TFLocOS,FLocOS);
   FLocOS.ShowModal;
+end;
+
+procedure TFPrincipal.OS2Click(Sender: TObject);
+begin
+   if FRelatorioOS = nil then
+    Application.CreateForm(TFRelatorioOS,FRelatorioOS);
+  FRelatorioOS.ShowModal;
 end;
 
 procedure TFPrincipal.Produto1Click(Sender: TObject);

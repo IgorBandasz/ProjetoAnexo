@@ -190,4 +190,41 @@ object DM: TDM
     Left = 360
     Top = 392
   end
+  object sqlRelatorioMarca: TFDQuery
+    Connection = fdcConexao
+    Transaction = fdtTransacao
+    SQL.Strings = (
+      
+        'select m.pkcodmarca, m.nomemarca, count(*), avg(o.valortotal), s' +
+        'um(o.valortotal) from tbmarca m'
+      'inner join tbveiculo v on m.pkcodmarca = v.fkcodmarca'
+      'inner join tbos o on v.pkcodveiculo = o.fkcodveiculo'
+      'group by m.nomemarca, m.pkcodmarca'
+      '')
+    Left = 448
+    Top = 304
+  end
+  object dsRelatorioMarca: TDataSource
+    DataSet = sqlRelatorioMarca
+    Left = 448
+    Top = 392
+  end
+  object sqlRelatorioOS: TFDQuery
+    Connection = fdcConexao
+    Transaction = fdtTransacao
+    SQL.Strings = (
+      'select '
+      '  extract(MONTH from dataos) AS MES,'
+      '  extract(YEAR from dataos) AS ANO,'
+      '  count(*), avg(valortotal), sum(valortotal)'
+      'from tbos'
+      'group by extract(MONTH from dataos),extract(YEAR from dataos)')
+    Left = 536
+    Top = 304
+  end
+  object dsRelatorioOS: TDataSource
+    DataSet = sqlRelatorioOS
+    Left = 536
+    Top = 392
+  end
 end

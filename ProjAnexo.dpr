@@ -17,7 +17,9 @@ uses
   URelatorioProduto in 'URelatorioProduto.pas' {FRelatorioProduto},
   URelatorioServico in 'URelatorioServico.pas' {FRelatorioServico},
   URelatorioCliente in 'URelatorioCliente.pas' {FRelatorioCliente},
-  URelatorioVeiculo in 'URelatorioVeiculo.pas' {FRelatorioVeiculo};
+  URelatorioVeiculo in 'URelatorioVeiculo.pas' {FRelatorioVeiculo},
+  URelatorioMarca in 'URelatorioMarca.pas' {FRelatorioMarca},
+  URelatorioOS in 'URelatorioOS.pas' {FRelatorioOS};
 
 {$R *.res}
 
@@ -40,5 +42,7 @@ begin
   Application.CreateForm(TFRelatorioServico, FRelatorioServico);
   Application.CreateForm(TFRelatorioCliente, FRelatorioCliente);
   Application.CreateForm(TFRelatorioVeiculo, FRelatorioVeiculo);
+  Application.CreateForm(TFRelatorioMarca, FRelatorioMarca);
+  Application.CreateForm(TFRelatorioOS, FRelatorioOS);
   Application.Run;
 end.
