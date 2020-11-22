@@ -83,7 +83,7 @@ var
                           +' inner join tbos o on v.pkcodveiculo = o.fkcodveiculo ';
   SRelatorioOS :string= 'select extract(MONTH from dataos) AS MES, extract(YEAR from dataos) AS ANO, '
                         +' count(*), avg(valortotal), sum(valortotal) from tbos ';
-
+  SRelatorioOS2 :string= ' group by extract(MONTH from dataos),extract(YEAR from dataos) ';
 
 
 implementation

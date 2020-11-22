@@ -14,11 +14,15 @@ type
     cbPesquisa: TComboBox;
     edtPesquisa: TEdit;
     btPesquisar: TBitBtn;
+    pOrdem: TPanel;
+    cbOrdem: TComboBox;
+    lbOrdem: TLabel;
     procedure cbPesquisaChange(Sender: TObject);
     procedure edtPesquisaKeyPress(Sender: TObject; var Key: Char);
     procedure btPesquisarClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure cbOrdemChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,21 +40,47 @@ uses UDM;
 
 procedure TFRelatorioOS.btPesquisarClick(Sender: TObject);
 var
-  comando, condicao : string;
+  comando, condicao, cond, ordem :string;
 begin
   comando := SRelatorioOS;
-  condicao := Trim(edtPesquisa.Text);
-  if condicao <> '' then
+  cond := Trim(edtPesquisa.Text);
+  condicao := '';
+  if cond <> '' then
   begin
     case cbPesquisa.ItemIndex of
-      1: condicao := ' where  extract(MONTH from dataos) = '+condicao;
-      2: condicao := ' where  extract(YEAR from dataos) = '+condicao;
+      1: condicao := ' where  extract(MONTH from dataos) = '+cond;
+      2: condicao := ' where  extract(YEAR from dataos) = '+cond;
+      3: condicao := ' where  extract(YEAR from dataos) > '+cond;
+      4: condicao := ' where  extract(YEAR from dataos) < '+cond;
+    end;
+    comando := comando+condicao;
+    condicao := '';
+  end;
+  comando := comando + SRelatorioOS2;
+  if cond <> '' then
+  begin
+    case cbPesquisa.ItemIndex of
+      5: condicao := ' having count(*) > '+cond;
+      6: condicao := ' having count(*) < '+cond;
+      7: condicao := ' having avg(valortotal) > '+cond;
+      8: condicao := ' having avg(valortotal) < '+cond;
+      9: condicao := ' having sum(valortotal) > '+cond;
+      10: condicao := ' having sum(valortotal) < '+cond;
     end;
     comando := comando+condicao;
   end;
-  comando := comando + ' group by extract(MONTH from dataos),extract(YEAR from dataos)';
-  DM.executaSql(comando,DM.sqlRelatorioOS);
 
+  case cbOrdem.ItemIndex of
+    0: ordem := ' order by extract(YEAR from dataos) desc, extract(MONTH from dataos) desc';
+    1: ordem := ' order by extract(YEAR from dataos), extract(MONTH from dataos)';
+  end;
+  comando := comando + ordem;
+  DM.executaSql(comando,DM.sqlRelatorioOS);
+end;
+
+procedure TFRelatorioOS.cbOrdemChange(Sender: TObject);
+begin
+  btPesquisarClick(nil);
 end;
 
 procedure TFRelatorioOS.cbPesquisaChange(Sender: TObject);
@@ -62,7 +92,7 @@ procedure TFRelatorioOS.edtPesquisaKeyPress(Sender: TObject; var Key: Char);
 begin
   case cbPesquisa.ItemIndex of
     0: key := #0;
-    1,2: key := DM.LimpaEdit((Sender as TCustomEdit),Key);
+    1,2,3,4: key := DM.LimpaEdit((Sender as TCustomEdit),Key);
   end;
 end;
 

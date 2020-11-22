@@ -2,8 +2,8 @@ object FRelatorioOS: TFRelatorioOS
   Left = 0
   Top = 0
   Caption = 'Relat'#243'rio de OS'
-  ClientHeight = 450
-  ClientWidth = 684
+  ClientHeight = 496
+  ClientWidth = 681
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,9 +17,9 @@ object FRelatorioOS: TFRelatorioOS
   TextHeight = 18
   object dbgRelatorioOS: TDBGrid
     Left = 0
-    Top = 0
-    Width = 684
-    Height = 209
+    Top = 41
+    Width = 681
+    Height = 393
     Align = alTop
     DataSource = DM.dsRelatorioOS
     TabOrder = 0
@@ -33,6 +33,7 @@ object FRelatorioOS: TFRelatorioOS
         Expanded = False
         FieldName = 'MES'
         Title.Alignment = taCenter
+        Title.Caption = 'M'#202'S'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clWindowText
         Title.Font.Height = -16
@@ -93,8 +94,8 @@ object FRelatorioOS: TFRelatorioOS
   end
   object pListagem: TPanel
     Left = 0
-    Top = 209
-    Width = 684
+    Top = 434
+    Width = 681
     Height = 53
     Align = alTop
     TabOrder = 1
@@ -102,7 +103,7 @@ object FRelatorioOS: TFRelatorioOS
     ExplicitTop = 0
     ExplicitWidth = 857
     object cbPesquisa: TComboBox
-      Left = 106
+      Left = 18
       Top = 14
       Width = 183
       Height = 26
@@ -114,10 +115,18 @@ object FRelatorioOS: TFRelatorioOS
       Items.Strings = (
         'Todos'
         'M'#234's igual a'
-        'Ano igual a')
+        'Ano igual a'
+        'Ano maior que'
+        'Ano menor que'
+        'Quant. OS maior que'
+        'Quant. OS menor que'
+        'M'#233'dia OS maior que'
+        'M'#233'dia OS menor que'
+        'Somat'#243'rio OS maior que'
+        'Somat'#243'rio OS menor que')
     end
     object edtPesquisa: TEdit
-      Left = 307
+      Left = 219
       Top = 14
       Width = 201
       Height = 26
@@ -125,13 +134,42 @@ object FRelatorioOS: TFRelatorioOS
       OnKeyPress = edtPesquisaKeyPress
     end
     object btPesquisar: TBitBtn
-      Left = 547
+      Left = 438
       Top = 10
       Width = 83
       Height = 35
       Caption = 'Pesquisar'
       TabOrder = 2
       OnClick = btPesquisarClick
+    end
+  end
+  object pOrdem: TPanel
+    Left = 0
+    Top = 0
+    Width = 681
+    Height = 41
+    Align = alTop
+    TabOrder = 2
+    object lbOrdem: TLabel
+      Left = 32
+      Top = 10
+      Width = 58
+      Height = 18
+      Caption = 'Ordenar:'
+    end
+    object cbOrdem: TComboBox
+      Left = 114
+      Top = 7
+      Width = 145
+      Height = 26
+      Style = csDropDownList
+      ItemIndex = 0
+      TabOrder = 0
+      Text = 'Mais recente'
+      OnChange = cbOrdemChange
+      Items.Strings = (
+        'Mais recente'
+        'Mais antigo')
     end
   end
 end

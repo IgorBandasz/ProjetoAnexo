@@ -19,7 +19,7 @@ object FRelatorioMarca: TFRelatorioMarca
     Left = 0
     Top = 0
     Width = 824
-    Height = 318
+    Height = 362
     Align = alTop
     DataSource = DM.dsRelatorioMarca
     TabOrder = 0
@@ -97,7 +97,7 @@ object FRelatorioMarca: TFRelatorioMarca
   end
   object pListagem: TPanel
     Left = 0
-    Top = 318
+    Top = 362
     Width = 824
     Height = 53
     Align = alTop
