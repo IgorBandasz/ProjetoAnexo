@@ -67,7 +67,7 @@ begin
       9: condicao := ' having sum(valortotal) > '+cond;
       10: condicao := ' having sum(valortotal) < '+cond;
     end;
-    comando := comando+condicao;
+    comando := comando + condicao;
   end;
 
   case cbOrdem.ItemIndex of
@@ -98,7 +98,8 @@ procedure TFRelatorioOS.edtPesquisaKeyPress(Sender: TObject; var Key: Char);
 begin
   case cbPesquisa.ItemIndex of
     0: key := #0;
-    1,2,3,4: key := DM.LimpaEdit((Sender as TCustomEdit),Key);
+    1,2,3,4,5,6: key := DM.LimpaEdit((Sender as TCustomEdit),Key);
+    7,8,9,10: key := DM.LimpaEdit((Sender as TCustomEdit),Key,',');
   end;
 end;
 

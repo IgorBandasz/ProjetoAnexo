@@ -2,8 +2,8 @@ object FRelatorioProduto: TFRelatorioProduto
   Left = 0
   Top = 0
   Caption = 'Relat'#243'rio de Produtos'
-  ClientHeight = 534
-  ClientWidth = 868
+  ClientHeight = 586
+  ClientWidth = 766
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,8 +17,8 @@ object FRelatorioProduto: TFRelatorioProduto
   TextHeight = 18
   object dbgRelatorioProd: TDBGrid
     Left = 0
-    Top = 0
-    Width = 868
+    Top = 41
+    Width = 766
     Height = 480
     Align = alTop
     DataSource = DM.dsRelatorioProd
@@ -32,13 +32,14 @@ object FRelatorioProduto: TFRelatorioProduto
       item
         Expanded = False
         FieldName = 'PKCODPROD'
-        Title.Caption = 'C'#243'd. PROD'
+        Title.Alignment = taCenter
+        Title.Caption = 'C'#243'd.'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clWindowText
         Title.Font.Height = -16
         Title.Font.Name = 'Tahoma'
         Title.Font.Style = [fsBold]
-        Width = 104
+        Width = 81
         Visible = True
       end
       item
@@ -56,42 +57,44 @@ object FRelatorioProduto: TFRelatorioProduto
       end
       item
         Expanded = False
-        FieldName = 'COUNT'
-        Title.Caption = 'Quantidade de OS'
+        FieldName = 'VALORVENDAPROD'
+        Title.Alignment = taCenter
+        Title.Caption = 'VALOR'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clWindowText
         Title.Font.Height = -16
         Title.Font.Name = 'Tahoma'
         Title.Font.Style = [fsBold]
-        Width = 160
+        Width = 88
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'SUM'
-        Title.Caption = 'Quantidade utilizada'
+        Title.Alignment = taCenter
+        Title.Caption = 'Quant. Utilizada'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clWindowText
         Title.Font.Height = -16
         Title.Font.Name = 'Tahoma'
         Title.Font.Style = [fsBold]
-        Width = 181
+        Width = 155
         Visible = True
       end>
   end
   object pListagem: TPanel
     Left = 0
-    Top = 480
-    Width = 868
+    Top = 521
+    Width = 766
     Height = 53
     Align = alTop
     TabOrder = 1
-    ExplicitTop = 432
-    ExplicitWidth = 704
+    ExplicitTop = 480
+    ExplicitWidth = 868
     object cbPesquisa: TComboBox
-      Left = 126
+      Left = 32
       Top = 14
-      Width = 145
+      Width = 179
       Height = 26
       Style = csDropDownList
       ItemIndex = 0
@@ -103,10 +106,12 @@ object FRelatorioProduto: TFRelatorioProduto
         'C'#243'digo igual a'
         'Nome iniciando por'
         'Valor acima de'
-        'Valor abaixo de')
+        'Valor abaixo de'
+        'Quant. utilizada maior que'
+        'Quant. utilizada menor que')
     end
     object edtPesquisa: TEdit
-      Left = 304
+      Left = 260
       Top = 15
       Width = 201
       Height = 26
@@ -114,13 +119,49 @@ object FRelatorioProduto: TFRelatorioProduto
       OnKeyPress = edtPesquisaKeyPress
     end
     object btPesquisar: TBitBtn
-      Left = 560
+      Left = 512
       Top = 10
       Width = 83
       Height = 35
       Caption = 'Pesquisar'
       TabOrder = 2
       OnClick = btPesquisarClick
+    end
+  end
+  object pOrdem: TPanel
+    Left = 0
+    Top = 0
+    Width = 766
+    Height = 41
+    Align = alTop
+    TabOrder = 2
+    ExplicitWidth = 672
+    object lbOrdem: TLabel
+      Left = 32
+      Top = 10
+      Width = 58
+      Height = 18
+      Caption = 'Ordenar:'
+    end
+    object cbOrdem: TComboBox
+      Left = 114
+      Top = 7
+      Width = 199
+      Height = 26
+      Style = csDropDownList
+      ItemIndex = 0
+      TabOrder = 0
+      Text = 'A-Z'
+      OnChange = cbOrdemChange
+      Items.Strings = (
+        'A-Z'
+        'Z-A'
+        'Menor c'#243'digo'
+        'Maior c'#243'digo'
+        'Maior valor'
+        'Menor valor'
+        'Maior quant. utilizada'
+        'Menor quant. utilizada')
     end
   end
 end

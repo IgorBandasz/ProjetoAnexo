@@ -126,10 +126,10 @@ object DM: TDM
     Transaction = fdtTransacao
     SQL.Strings = (
       
-        'select p.pkcodprod, p.nomeprod, count(*), sum(r.quantidade) from' +
-        ' tbproduto p'
+        'select p.pkcodprod, p.nomeprod, p.valorvendaprod, sum(r.quantida' +
+        'de) from tbproduto p'
       'inner join tbrelprodutoos r on p.pkcodprod = r.fkcodprod'
-      'group by p.nomeprod,p.pkcodprod')
+      'group by p.nomeprod,p.pkcodprod, p.valorvendaprod')
     Left = 96
     Top = 304
   end
@@ -143,10 +143,10 @@ object DM: TDM
     Transaction = fdtTransacao
     SQL.Strings = (
       
-        'select s.pkcodservico, s.descricaoservico, count(*) from tbservi' +
-        'co s'
+        'select s.pkcodservico, s.descricaoservico, s.valorbase, count(*)' +
+        ' from tbservico s'
       'inner join tbrelservicoos r on s.pkcodservico = r.fkcodservico'
-      'group by s.descricaoservico, s.pkcodservico')
+      'group by s.descricaoservico, s.pkcodservico, s.valorbase')
     Left = 184
     Top = 304
   end

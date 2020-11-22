@@ -2,8 +2,8 @@ object FRelatorioServico: TFRelatorioServico
   Left = 0
   Top = 0
   Caption = 'Relat'#243'rio de Servi'#231'os'
-  ClientHeight = 530
-  ClientWidth = 865
+  ClientHeight = 597
+  ClientWidth = 926
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,8 +17,8 @@ object FRelatorioServico: TFRelatorioServico
   TextHeight = 18
   object dbgRelatorioServico: TDBGrid
     Left = 0
-    Top = 0
-    Width = 865
+    Top = 41
+    Width = 926
     Height = 481
     Align = alTop
     DataSource = DM.dsRelatorioServ
@@ -32,7 +32,8 @@ object FRelatorioServico: TFRelatorioServico
       item
         Expanded = False
         FieldName = 'PKCODSERVICO'
-        Title.Caption = 'C'#243'd. SERV'
+        Title.Alignment = taCenter
+        Title.Caption = 'C'#243'd.'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clWindowText
         Title.Font.Height = -16
@@ -51,13 +52,27 @@ object FRelatorioServico: TFRelatorioServico
         Title.Font.Height = -16
         Title.Font.Name = 'Tahoma'
         Title.Font.Style = [fsBold]
-        Width = 580
+        Width = 529
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'VALORBASE'
+        Title.Alignment = taCenter
+        Title.Caption = 'VALOR'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -16
+        Title.Font.Name = 'Tahoma'
+        Title.Font.Style = [fsBold]
+        Width = 91
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'COUNT'
-        Title.Caption = 'N'#176' de realiza'#231#245'es'
+        Title.Alignment = taCenter
+        Title.Caption = 'Quant. Realizada'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clWindowText
         Title.Font.Height = -16
@@ -69,18 +84,17 @@ object FRelatorioServico: TFRelatorioServico
   end
   object pListagem: TPanel
     Left = 0
-    Top = 481
-    Width = 865
+    Top = 522
+    Width = 926
     Height = 53
     Align = alTop
     TabOrder = 1
-    ExplicitLeft = -3
-    ExplicitTop = 477
-    ExplicitWidth = 868
+    ExplicitTop = 481
+    ExplicitWidth = 865
     object cbPesquisa: TComboBox
-      Left = 126
+      Left = 88
       Top = 14
-      Width = 145
+      Width = 183
       Height = 26
       Style = csDropDownList
       ItemIndex = 0
@@ -92,7 +106,9 @@ object FRelatorioServico: TFRelatorioServico
         'C'#243'digo igual a'
         'Nome iniciando por'
         'Valor acima de'
-        'Valor abaixo de')
+        'Valor abaixo de'
+        'Quant. utilizada maior que'
+        'Quant. utilizada menor que')
     end
     object edtPesquisa: TEdit
       Left = 304
@@ -110,6 +126,44 @@ object FRelatorioServico: TFRelatorioServico
       Caption = 'Pesquisar'
       TabOrder = 2
       OnClick = btPesquisarClick
+    end
+  end
+  object pOrdem: TPanel
+    Left = 0
+    Top = 0
+    Width = 926
+    Height = 41
+    Align = alTop
+    TabOrder = 2
+    ExplicitLeft = -8
+    ExplicitTop = -15
+    ExplicitWidth = 865
+    object lbOrdem: TLabel
+      Left = 32
+      Top = 10
+      Width = 58
+      Height = 18
+      Caption = 'Ordenar:'
+    end
+    object cbOrdem: TComboBox
+      Left = 114
+      Top = 7
+      Width = 199
+      Height = 26
+      Style = csDropDownList
+      ItemIndex = 0
+      TabOrder = 0
+      Text = 'A-Z'
+      OnChange = cbOrdemChange
+      Items.Strings = (
+        'A-Z'
+        'Z-A'
+        'Menor c'#243'digo'
+        'Maior c'#243'digo'
+        'Maior valor'
+        'Menor valor'
+        'Maior quant. realizada'
+        'Menor quant. realizada')
     end
   end
 end

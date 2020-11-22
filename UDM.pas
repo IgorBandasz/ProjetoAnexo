@@ -70,14 +70,17 @@ var
   STbRelServicoOS :string= 'select * from tbrelservicoos r '
                           +' inner join tbservico s on s.pkcodservico = r.fkcodservico ';
 
-  SRelatorioProd :string= 'select p.pkcodprod, p.nomeprod, count(*), sum(r.quantidade) from tbproduto p '
-                              +' inner join tbrelprodutoos r on p.pkcodprod = r.fkcodprod ';
+  SRelatorioProd :string= 'select p.pkcodprod, p.nomeprod, p.valorvendaprod, sum(r.quantidade) from tbproduto p '
+                         +' left join tbrelprodutoos r on p.pkcodprod = r.fkcodprod ';
+  SRelatorioProd2 :string=' group by p.nomeprod, p.pkcodprod, p.valorvendaprod';
 
-  SRelatorioServ :string= 'select s.pkcodservico, s.descricaoservico, count(*) from tbservico s '
-                            +' inner join tbrelservicoos r on s.pkcodservico = r.fkcodservico';
+  SRelatorioServ :string= 'select s.pkcodservico, s.descricaoservico, s.valorbase, count(*) from tbservico s '
+                         +' inner join tbrelservicoos r on s.pkcodservico = r.fkcodservico';
+  SRelatorioServ2 :string=' group by s.descricaoservico, s.pkcodservico, s.valorbase';
 
   SRelatorioCli :string= 'select c.pkcodcli, c.nomecli, count(*), sum(o.valortotal), avg(o.valortotal) from tbcliente c '
                         +' inner join tbos o on c.pkcodcli = o.fkcodcli';
+  SRelatorioCli2 :string=' group by c.nomecli, c.pkcodcli ';
 
   SRelatorioVei :string= 'select v.pkcodveiculo, v.placaveiculo, m.nomemarca, count(*), avg(o.valortotal), sum(o.valortotal) from tbveiculo v '
                         +' inner join tbos o on v.pkcodveiculo = o.fkcodveiculo '

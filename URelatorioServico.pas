@@ -14,11 +14,15 @@ type
     cbPesquisa: TComboBox;
     edtPesquisa: TEdit;
     btPesquisar: TBitBtn;
+    pOrdem: TPanel;
+    lbOrdem: TLabel;
+    cbOrdem: TComboBox;
     procedure btPesquisarClick(Sender: TObject);
     procedure cbPesquisaChange(Sender: TObject);
     procedure edtPesquisaKeyPress(Sender: TObject; var Key: Char);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure cbOrdemChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,24 +40,50 @@ uses UDM;
 
 procedure TFRelatorioServico.btPesquisarClick(Sender: TObject);
 var
-  comando, condicao : string;
+  comando, condicao, cond, ordem : string;
 begin
   comando := SRelatorioServ;
-  condicao := Trim(edtPesquisa.Text);
-  if condicao <> '' then
+  cond := Trim(edtPesquisa.Text);
+  condicao := '';
+  if cond <> '' then
   begin
     case cbPesquisa.ItemIndex of
-      1: condicao := ' where pkcodservico ='+condicao;
-      2: condicao := ' where upper(descricaoservico) like upper('+QuotedStr(condicao+'%')+')';
-      3: condicao := ' where valorbase >'+DM.limpaVir(condicao);
-      4: condicao := ' where valorbase <'+DM.limpaVir(condicao);
+      1: condicao := ' where s.pkcodservico ='+cond;
+      2: condicao := ' where upper(s.descricaoservico) like upper('+QuotedStr(cond+'%')+')';
+      3: condicao := ' where s.valorbase >'+cond;
+      4: condicao := ' where s.valorbase <'+cond;
     end;
     comando := comando+condicao;
+    condicao := '';
   end;
-  comando := comando+' group by s.descricaoservico, s.pkcodservico';
+  comando := comando + SRelatorioServ2;
+  if cond <> '' then
+  begin
+    case cbPesquisa.ItemIndex of
+      5: condicao := ' having count(*) > '+cond;
+      6: condicao := ' having count(*) < '+cond;
+    end;
+    comando := comando + condicao;
+  end;
+
+  case cbOrdem.ItemIndex of
+    0: ordem := ' order by s.descricaoservico';
+    1: ordem := ' order by s.descricaoservico desc';
+    2: ordem := ' order by s.pkcodservico';
+    3: ordem := ' order by s.pkcodservico desc';
+    4: ordem := ' order by s.valorbase desc';
+    5: ordem := ' order by s.valorbase';
+    6: ordem := ' order by count(*) desc';
+    7: ordem := ' order by count(*)';
+  end;
+  comando := comando + ordem;
 
   DM.executaSql(comando,DM.sqlRelatorioServ);
+end;
 
+procedure TFRelatorioServico.cbOrdemChange(Sender: TObject);
+begin
+  btPesquisarClick(nil);
 end;
 
 procedure TFRelatorioServico.cbPesquisaChange(Sender: TObject);
@@ -66,9 +96,8 @@ procedure TFRelatorioServico.edtPesquisaKeyPress(Sender: TObject;
 begin
   case cbPesquisa.ItemIndex of
     0: key := #0;
-    1: key := DM.LimpaEdit((Sender as TCustomEdit),Key);
-    3: key := DM.LimpaEdit((Sender as TCustomEdit),Key,',');
-    4: key := DM.LimpaEdit((Sender as TCustomEdit),Key,',');
+    1,5,6: key := DM.LimpaEdit((Sender as TCustomEdit),Key);
+    3,4: key := DM.LimpaEdit((Sender as TCustomEdit),Key,',');
   end;
 end;
 
