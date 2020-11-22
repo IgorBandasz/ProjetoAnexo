@@ -66,6 +66,10 @@ object FPrincipal: TFPrincipal
         Caption = 'Cliente'
         OnClick = Cliente2Click
       end
+      object Veculo2: TMenuItem
+        Caption = 'Ve'#237'culo'
+        OnClick = Veculo2Click
+      end
     end
   end
 end

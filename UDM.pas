@@ -35,6 +35,8 @@ type
     dsRelatorioServ: TDataSource;
     sqlRelatorioCli: TFDQuery;
     dsRelatorioCli: TDataSource;
+    sqlRelatorioVei: TFDQuery;
+    dsRelatorioVei: TDataSource;
   private
 
     { Private declarations }
@@ -69,6 +71,9 @@ var
                             +' inner join tbrelservicoos r on s.pkcodservico = r.fkcodservico';
   SRelatorioCli :string= 'select c.pkcodcli, c.nomecli, count(*), sum(o.valortotal), avg(o.valortotal) from tbcliente c '
                         +' inner join tbos o on c.pkcodcli = o.fkcodcli';
+  SRelatorioVei :string= 'select v.pkcodveiculo, v.placaveiculo, m.nomemarca, count(*), avg(o.valortotal), sum(o.valortotal) from tbveiculo v '
+                        +' inner join tbos o on v.pkcodveiculo = o.fkcodveiculo '
+                        +' inner join tbmarca m on m.pkcodmarca = v.fkcodmarca';
 
 
 

@@ -16,7 +16,8 @@ uses
   UListarServicos in 'UListarServicos.pas' {FListarServicos},
   URelatorioProduto in 'URelatorioProduto.pas' {FRelatorioProduto},
   URelatorioServico in 'URelatorioServico.pas' {FRelatorioServico},
-  URelatorioCliente in 'URelatorioCliente.pas' {FRelatorioCliente};
+  URelatorioCliente in 'URelatorioCliente.pas' {FRelatorioCliente},
+  URelatorioVeiculo in 'URelatorioVeiculo.pas' {FRelatorioVeiculo};
 
 {$R *.res}
 
@@ -38,5 +39,6 @@ begin
   Application.CreateForm(TFRelatorioProduto, FRelatorioProduto);
   Application.CreateForm(TFRelatorioServico, FRelatorioServico);
   Application.CreateForm(TFRelatorioCliente, FRelatorioCliente);
+  Application.CreateForm(TFRelatorioVeiculo, FRelatorioVeiculo);
   Application.Run;
 end.

@@ -172,4 +172,22 @@ object DM: TDM
     Left = 272
     Top = 392
   end
+  object sqlRelatorioVei: TFDQuery
+    Connection = fdcConexao
+    Transaction = fdtTransacao
+    SQL.Strings = (
+      
+        'select v.pkcodveiculo, v.placaveiculo, m.nomemarca, count(*), av' +
+        'g(o.valortotal), sum(o.valortotal) from tbveiculo v'
+      'inner join tbos o on v.pkcodveiculo = o.fkcodveiculo'
+      'inner join tbmarca m on m.pkcodmarca = v.fkcodmarca'
+      'group by v.pkcodveiculo, v.placaveiculo, m.nomemarca')
+    Left = 360
+    Top = 304
+  end
+  object dsRelatorioVei: TDataSource
+    DataSet = sqlRelatorioVei
+    Left = 360
+    Top = 392
+  end
 end
