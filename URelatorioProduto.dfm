@@ -126,6 +126,15 @@ object FRelatorioProduto: TFRelatorioProduto
       TabOrder = 2
       OnClick = btPesquisarClick
     end
+    object btSair: TBitBtn
+      Left = 667
+      Top = 10
+      Width = 75
+      Height = 34
+      Caption = 'Sair'
+      TabOrder = 3
+      OnClick = btSairClick
+    end
   end
   object pOrdem: TPanel
     Left = 0

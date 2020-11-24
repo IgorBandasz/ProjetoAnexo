@@ -231,6 +231,8 @@ end;
 procedure TFCadVeiculo.cbPesquisaChange(Sender: TObject);
 begin
   edtPesquisa.Text := '';
+  if edtPesquisa.CanFocus then
+    edtPesquisa.SetFocus;
 end;
 
 procedure TFCadVeiculo.controleBotoes(acao: integer);

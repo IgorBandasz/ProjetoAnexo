@@ -153,6 +153,8 @@ end;
 procedure TFLocOS.cbPesquisaChange(Sender: TObject);
 begin
   edtPesquisa.Text := '';
+  if edtPesquisa.CanFocus then
+    edtPesquisa.SetFocus;
 end;
 
 procedure TFLocOS.controleBotoes();

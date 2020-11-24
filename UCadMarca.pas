@@ -187,6 +187,8 @@ end;
 procedure TFCadMarca.cbPesquisaChange(Sender: TObject);
 begin
   edtPesquisa.Text := '';
+  if edtPesquisa.CanFocus then
+    edtPesquisa.SetFocus;
 end;
 
 procedure TFCadMarca.controleBotoes(acao: integer);

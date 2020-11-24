@@ -2,8 +2,8 @@ object FRelatorioOS: TFRelatorioOS
   Left = 0
   Top = 0
   Caption = 'Relat'#243'rio de OS'
-  ClientHeight = 496
-  ClientWidth = 541
+  ClientHeight = 497
+  ClientWidth = 543
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,7 +19,7 @@ object FRelatorioOS: TFRelatorioOS
   object dbgRelatorioOS: TDBGrid
     Left = 0
     Top = 41
-    Width = 541
+    Width = 543
     Height = 393
     Align = alTop
     DataSource = DM.dsRelatorioOS
@@ -40,6 +40,7 @@ object FRelatorioOS: TFRelatorioOS
         Title.Font.Height = -16
         Title.Font.Name = 'Tahoma'
         Title.Font.Style = [fsBold]
+        Width = 65
         Visible = True
       end
       item
@@ -51,6 +52,7 @@ object FRelatorioOS: TFRelatorioOS
         Title.Font.Height = -16
         Title.Font.Name = 'Tahoma'
         Title.Font.Style = [fsBold]
+        Width = 78
         Visible = True
       end
       item
@@ -63,7 +65,7 @@ object FRelatorioOS: TFRelatorioOS
         Title.Font.Height = -16
         Title.Font.Name = 'Tahoma'
         Title.Font.Style = [fsBold]
-        Width = 96
+        Width = 110
         Visible = True
       end
       item
@@ -96,10 +98,11 @@ object FRelatorioOS: TFRelatorioOS
   object pListagem: TPanel
     Left = 0
     Top = 434
-    Width = 541
+    Width = 543
     Height = 53
     Align = alTop
     TabOrder = 1
+    ExplicitWidth = 541
     object cbPesquisa: TComboBox
       Left = 18
       Top = 14
@@ -126,13 +129,13 @@ object FRelatorioOS: TFRelatorioOS
     object edtPesquisa: TEdit
       Left = 219
       Top = 14
-      Width = 201
+      Width = 110
       Height = 26
       TabOrder = 1
       OnKeyPress = edtPesquisaKeyPress
     end
     object btPesquisar: TBitBtn
-      Left = 438
+      Left = 354
       Top = 10
       Width = 83
       Height = 35
@@ -140,14 +143,24 @@ object FRelatorioOS: TFRelatorioOS
       TabOrder = 2
       OnClick = btPesquisarClick
     end
+    object btSair: TBitBtn
+      Left = 456
+      Top = 10
+      Width = 65
+      Height = 35
+      Caption = 'Sair'
+      TabOrder = 3
+      OnClick = btSairClick
+    end
   end
   object pOrdem: TPanel
     Left = 0
     Top = 0
-    Width = 541
+    Width = 543
     Height = 41
     Align = alTop
     TabOrder = 2
+    ExplicitWidth = 541
     object lbOrdem: TLabel
       Left = 32
       Top = 10

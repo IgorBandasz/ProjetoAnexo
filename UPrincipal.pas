@@ -53,6 +53,7 @@ type
     procedure btRelMarcaClick(Sender: TObject);
     procedure btRelProdutoClick(Sender: TObject);
     procedure btRelServicoClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -166,6 +167,12 @@ begin
   if FRelatorioCliente = nil then
     Application.CreateForm(TFRelatorioCliente,FRelatorioCliente);
   FRelatorioCliente.ShowModal;
+end;
+
+procedure TFPrincipal.FormActivate(Sender: TObject);
+begin
+  if btCadOs.CanFocus then
+    btCadOs.SetFocus;
 end;
 
 procedure TFPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);

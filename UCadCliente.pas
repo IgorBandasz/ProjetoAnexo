@@ -189,6 +189,8 @@ end;
 procedure TFCadCliente.cbPesquisaChange(Sender: TObject);
 begin
   edtPesquisa.Text := '';
+  if edtPesquisa.CanFocus then
+    edtPesquisa.SetFocus;
 end;
 
 procedure TFCadCliente.controleBotoes(acao: integer);

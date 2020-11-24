@@ -17,12 +17,14 @@ type
     pOrdem: TPanel;
     lbOrdem: TLabel;
     cbOrdem: TComboBox;
+    btSair: TBitBtn;
     procedure FormActivate(Sender: TObject);
     procedure cbPesquisaChange(Sender: TObject);
     procedure edtPesquisaKeyPress(Sender: TObject; var Key: Char);
     procedure btPesquisarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cbOrdemChange(Sender: TObject);
+    procedure btSairClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -81,6 +83,11 @@ begin
   DM.executaSql(comando,DM.sqlRelatorioProd);
 end;
 
+procedure TFRelatorioProduto.btSairClick(Sender: TObject);
+begin
+  close;
+end;
+
 procedure TFRelatorioProduto.cbOrdemChange(Sender: TObject);
 begin
   btPesquisarClick(nil);
@@ -89,6 +96,8 @@ end;
 procedure TFRelatorioProduto.cbPesquisaChange(Sender: TObject);
 begin
   edtPesquisa.Text := '';
+  if edtPesquisa.CanFocus then
+    edtPesquisa.SetFocus;
 end;
 
 procedure TFRelatorioProduto.edtPesquisaKeyPress(Sender: TObject;

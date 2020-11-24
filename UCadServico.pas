@@ -190,6 +190,8 @@ end;
 procedure TFCadServico.cbPesquisaChange(Sender: TObject);
 begin
   edtPesquisa.Text := '';
+  if edtPesquisa.CanFocus then
+    edtPesquisa.SetFocus;
 end;
 
 procedure TFCadServico.controleBotoes(acao: integer);

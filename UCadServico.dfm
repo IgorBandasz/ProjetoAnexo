@@ -192,7 +192,7 @@ object FCadServico: TFCadServico
     TabOrder = 3
     object cbPesquisa: TComboBox
       Left = 30
-      Top = 13
+      Top = 6
       Width = 155
       Height = 26
       Style = csDropDownList

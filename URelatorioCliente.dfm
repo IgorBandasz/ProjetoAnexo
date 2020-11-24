@@ -2,7 +2,7 @@ object FRelatorioCliente: TFRelatorioCliente
   Left = 0
   Top = 0
   Caption = 'Relat'#243'rio de Clientes'
-  ClientHeight = 426
+  ClientHeight = 430
   ClientWidth = 811
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -141,6 +141,15 @@ object FRelatorioCliente: TFRelatorioCliente
       Caption = 'Pesquisar'
       TabOrder = 2
       OnClick = btPesquisarClick
+    end
+    object btSair: TBitBtn
+      Left = 712
+      Top = 10
+      Width = 75
+      Height = 34
+      Caption = 'Sair'
+      TabOrder = 3
+      OnClick = btSairClick
     end
   end
   object pOrdem: TPanel
