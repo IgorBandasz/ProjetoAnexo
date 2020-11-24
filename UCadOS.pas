@@ -108,6 +108,22 @@ uses UDM, ULocOS, UListarClientes, UListarProdutos, UListarServicos;
 
 procedure TFCadOS.btAdicionarProdutoClick(Sender: TObject);
 begin
+  if edtFkCodProd.Text = '' then
+  begin
+    showmessage('Selecione ou digite um Código de Produto');
+    exit
+  end;
+  if edtQuantidade.Text = '' then
+  begin
+    showmessage('Digite uma Quantidade');
+    exit
+  end;
+  if edtValorUnit.Text = '' then
+  begin
+    showmessage('Digite um Valor Unitário');
+    exit
+  end;
+
   try
     cdTbRelProdutoOS.Append;
     cdTbRelProdutoOS.FieldByName('fkcodprod').AsInteger := StrToInt(edtFkCodProd.Text);
@@ -128,6 +144,17 @@ end;
 
 procedure TFCadOS.btAdicionarServicoClick(Sender: TObject);
 begin
+  if edtFkCodServico.Text = '' then
+  begin
+    showmessage('Selecione ou digite um Código de Serviço');
+    exit
+  end;
+  if edtValorServico.Text = '' then
+  begin
+    showmessage('Digite um Valor para o Serviço');
+    exit
+  end;
+
   try
     cdTbRelServicoOS.Append;
     cdTbRelServicoOS.FieldByName('fkcodservico').AsInteger := StrToInt(edtFkCodServico.Text);
@@ -255,8 +282,43 @@ end;
 procedure TFCadOS.btSalvarClick(Sender: TObject);
 var
   x : string;
+  contador :integer;
 begin
   try
+    if edtFkCodCli.Text = '' then
+    begin
+      showmessage('Selecione ou digite um Código de Cliente');
+      exit;
+    end;
+
+    if medtPlacaVeiculo.Text = '   -    ' then
+    begin
+      showmessage('Digite uma Placa de veículo');
+      exit;
+    end;
+
+    contador :=0;
+
+    cdTbRelProdutoOS.First;
+    while not cdTbRelProdutoOS.Eof do
+    begin
+      contador := contador + 1;
+      cdTbRelProdutoOS.Next;
+    end;
+
+    cdTbRelServicoOS.First;
+    while not cdTbRelServicoOS.Eof do
+    begin
+      contador := contador + 1;
+      cdTbRelServicoOS.Next;
+    end;
+
+    if contador = 0 then
+    begin
+      showmessage('Adicione um produto ou serviço na OS');
+      exit;
+    end;
+
     if DM.fdtTransacaoAltera.TransactionIntf.Active then
       DM.fdtTransacaoAltera.Rollback;
     DM.fdtTransacaoAltera.StartTransaction;
@@ -283,7 +345,7 @@ begin
     begin
       x := 'select max(pkcodos) as maior from tbos where fkcodcli ='+DM.salvaChave(edtFkCodCli.Text);
       DM.executaSql(x,DM.sqlGeral);
-      edtPkCodOS.Text := Dm.sqlGeral.FieldByName('maior').AsString;
+      edtPkCodOS.Text := DM.sqlGeral.FieldByName('maior').AsString;
     end;
 
     cdTbRelProdutoOS.First;
@@ -406,6 +468,7 @@ begin
 
   edtNomeProduto.Text := DM.sqlGeral.FieldByName('nomeprod').AsString;
   edtValorUnit.Text := FormatFloat('#0.00',DM.sqlGeral.FieldByName('valorvendaprod').AsFloat);
+  edtQuantidade.Text := '1';
   if edtQuantidade.CanFocus then
     edtQuantidade.SetFocus;
 end;

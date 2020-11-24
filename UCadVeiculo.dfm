@@ -11,6 +11,7 @@ object FCadVeiculo: TFCadVeiculo
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
   OnActivate = FormActivate
   OnClose = FormClose
   PixelsPerInch = 96
@@ -22,7 +23,6 @@ object FCadVeiculo: TFCadVeiculo
     Height = 63
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 113
     object btNovo: TBitBtn
       Left = 30
       Top = 12
@@ -130,7 +130,6 @@ object FCadVeiculo: TFCadVeiculo
     Height = 53
     Align = alBottom
     TabOrder = 2
-    ExplicitTop = 395
     object cbPesquisa: TComboBox
       Left = 30
       Top = 13
@@ -247,7 +246,6 @@ object FCadVeiculo: TFCadVeiculo
     Height = 41
     Align = alBottom
     TabOrder = 4
-    ExplicitTop = 239
     object lbOrdem: TLabel
       Left = 32
       Top = 10

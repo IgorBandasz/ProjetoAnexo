@@ -11,6 +11,7 @@ object FRelatorioVeiculo: TFRelatorioVeiculo
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
   OnActivate = FormActivate
   OnClose = FormClose
   PixelsPerInch = 96
@@ -115,7 +116,6 @@ object FRelatorioVeiculo: TFRelatorioVeiculo
     Height = 53
     Align = alTop
     TabOrder = 1
-    ExplicitTop = 305
     object cbPesquisa: TComboBox
       Left = 30
       Top = 13
@@ -163,7 +163,6 @@ object FRelatorioVeiculo: TFRelatorioVeiculo
     Height = 41
     Align = alTop
     TabOrder = 2
-    ExplicitLeft = -8
     object lbOrdem: TLabel
       Left = 32
       Top = 10

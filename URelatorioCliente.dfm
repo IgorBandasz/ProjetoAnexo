@@ -11,7 +11,7 @@ object FRelatorioCliente: TFRelatorioCliente
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesigned
+  Position = poMainFormCenter
   OnActivate = FormActivate
   OnClose = FormClose
   PixelsPerInch = 96
@@ -104,8 +104,6 @@ object FRelatorioCliente: TFRelatorioCliente
     Height = 53
     Align = alTop
     TabOrder = 1
-    ExplicitTop = 305
-    ExplicitWidth = 838
     object cbPesquisa: TComboBox
       Left = 30
       Top = 14
@@ -152,9 +150,6 @@ object FRelatorioCliente: TFRelatorioCliente
     Height = 41
     Align = alTop
     TabOrder = 2
-    ExplicitLeft = 8
-    ExplicitTop = -15
-    ExplicitWidth = 838
     object lbOrdem: TLabel
       Left = 32
       Top = 10

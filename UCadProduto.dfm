@@ -11,6 +11,7 @@ object FCadProduto: TFCadProduto
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
   OnActivate = FormActivate
   OnClose = FormClose
   PixelsPerInch = 96
@@ -22,7 +23,6 @@ object FCadProduto: TFCadProduto
     Height = 63
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 150
     object btNovo: TBitBtn
       Left = 30
       Top = 12
@@ -129,7 +129,6 @@ object FCadProduto: TFCadProduto
     Height = 53
     Align = alBottom
     TabOrder = 2
-    ExplicitTop = 432
     object cbPesquisa: TComboBox
       Left = 30
       Top = 13
@@ -234,7 +233,6 @@ object FCadProduto: TFCadProduto
     Height = 41
     Align = alBottom
     TabOrder = 4
-    ExplicitTop = 277
     object lbOrdem: TLabel
       Left = 32
       Top = 10

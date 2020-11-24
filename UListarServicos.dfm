@@ -11,6 +11,7 @@ object FListarServicos: TFListarServicos
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
   OnActivate = FormActivate
   OnClose = FormClose
   PixelsPerInch = 96
@@ -79,8 +80,6 @@ object FListarServicos: TFListarServicos
     Height = 53
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = -8
-    ExplicitWidth = 700
     object cbPesquisa: TComboBox
       Left = 118
       Top = 14

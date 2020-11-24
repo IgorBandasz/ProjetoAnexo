@@ -11,9 +11,23 @@ object FPrincipal: TFPrincipal
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 18
+  object lbTitulo: TLabel
+    Left = 16
+    Top = 16
+    Width = 176
+    Height = 38
+    Caption = 'Bem-Vindo'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
+  end
   object pCadastro: TPanel
     Left = 64
     Top = 112
@@ -32,6 +46,13 @@ object FPrincipal: TFPrincipal
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+    end
+    object Label1: TLabel
+      Left = 8
+      Top = -96
+      Width = 41
+      Height = 18
+      Caption = 'Label1'
     end
     object btCadCliente: TBitBtn
       Left = 64

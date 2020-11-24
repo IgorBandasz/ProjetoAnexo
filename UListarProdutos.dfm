@@ -11,6 +11,7 @@ object FListarProdutos: TFListarProdutos
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
   OnActivate = FormActivate
   OnClose = FormClose
   PixelsPerInch = 96
@@ -80,9 +81,6 @@ object FListarProdutos: TFListarProdutos
     Height = 53
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = -69
-    ExplicitTop = 246
-    ExplicitWidth = 704
     object cbPesquisa: TComboBox
       Left = 70
       Top = 14

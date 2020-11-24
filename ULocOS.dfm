@@ -11,6 +11,7 @@ object FLocOS: TFLocOS
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
   OnActivate = FormActivate
   OnClose = FormClose
   PixelsPerInch = 96
@@ -22,7 +23,6 @@ object FLocOS: TFLocOS
     Height = 63
     Align = alTop
     TabOrder = 0
-    ExplicitTop = 473
     object btNovo: TBitBtn
       Left = 360
       Top = 11
@@ -178,9 +178,6 @@ object FLocOS: TFLocOS
     Height = 41
     Align = alTop
     TabOrder = 3
-    ExplicitLeft = 8
-    ExplicitTop = 8
-    ExplicitWidth = 541
     object lbOrdem: TLabel
       Left = 32
       Top = 10

@@ -11,6 +11,7 @@ object FCadServico: TFCadServico
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
   OnActivate = FormActivate
   OnClose = FormClose
   PixelsPerInch = 96
@@ -84,7 +85,6 @@ object FCadServico: TFCadServico
     Height = 63
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 153
     object btNovo: TBitBtn
       Left = 30
       Top = 12
@@ -190,7 +190,6 @@ object FCadServico: TFCadServico
     Height = 53
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 448
     object cbPesquisa: TComboBox
       Left = 30
       Top = 13
@@ -233,7 +232,6 @@ object FCadServico: TFCadServico
     Height = 41
     Align = alBottom
     TabOrder = 4
-    ExplicitTop = 261
     object lbOrdem: TLabel
       Left = 32
       Top = 10
