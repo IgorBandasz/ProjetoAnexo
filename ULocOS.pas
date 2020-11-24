@@ -19,6 +19,9 @@ type
     cbPesquisa: TComboBox;
     edtPesquisa: TEdit;
     btPesquisar: TBitBtn;
+    pOrdem: TPanel;
+    lbOrdem: TLabel;
+    cbOrdem: TComboBox;
     procedure controleBotoes();
     procedure btNovoClick(Sender: TObject);
     procedure btAlterarClick(Sender: TObject);
@@ -29,6 +32,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cbPesquisaChange(Sender: TObject);
+    procedure cbOrdemChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -65,7 +69,7 @@ end;
 
 procedure TFLocOS.btPesquisarClick(Sender: TObject);
 var
-  comando, condicao : string;
+  comando, condicao, ordem : string;
 begin
   comando := STbOS;
   condicao := Trim(edtPesquisa.Text);
@@ -83,7 +87,24 @@ begin
     end;
     comando := comando+condicao;
   end;
-  DM.executaSql(comando,dm.sqlOS);
+
+  case cbOrdem.ItemIndex of
+    0: ordem := ' order by extract(YEAR from o.dataos) desc, extract(MONTH from o.dataos) desc, extract(DAY from o.dataos) desc';
+    1: ordem := ' order by extract(YEAR from o.dataos), extract(MONTH from o.dataos), extract(DAY from o.dataos)';
+    2: ordem := ' order by o.pkcodos';
+    3: ordem := ' order by o.pkcodos desc';
+    4: ordem := ' order by o.fkcodcli';
+    5: ordem := ' order by o.fkcodcli desc';
+    6: ordem := ' order by c.nomecli';
+    7: ordem := ' order by c.nomecli desc';
+    8: ordem := ' order by v.placaveiculo';
+    9: ordem := ' order by v.placaveiculo desc';
+    10: ordem := ' order by o.valortotal desc';
+    11: ordem := ' order by o.valortotal';
+  end;
+  comando := comando + ordem;
+
+  DM.executaSql(comando,DM.sqlOS);
 end;
 
 procedure TFLocOS.btRemoverClick(Sender: TObject);
@@ -123,6 +144,11 @@ begin
   close;
 end;
 
+
+procedure TFLocOS.cbOrdemChange(Sender: TObject);
+begin
+  btPesquisarClick(nil);
+end;
 
 procedure TFLocOS.cbPesquisaChange(Sender: TObject);
 begin

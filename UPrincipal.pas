@@ -9,23 +9,6 @@ uses
 
 type
   TFPrincipal = class(TForm)
-    menuPrincipal: TMainMenu;
-    Cadastro1: TMenuItem;
-    Cliente1: TMenuItem;
-    Produto1: TMenuItem;
-    Servio1: TMenuItem;
-    N1: TMenuItem;
-    Sair1: TMenuItem;
-    Marca1: TMenuItem;
-    Veculo1: TMenuItem;
-    OS1: TMenuItem;
-    Relatrios1: TMenuItem;
-    Produto2: TMenuItem;
-    Servio2: TMenuItem;
-    Cliente2: TMenuItem;
-    Veculo2: TMenuItem;
-    Marca2: TMenuItem;
-    OS2: TMenuItem;
     pCadastro: TPanel;
     pRelatorios: TPanel;
     lbCadastro: TLabel;

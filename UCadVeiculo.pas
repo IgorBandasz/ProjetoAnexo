@@ -30,6 +30,9 @@ type
     cbFkCodMarca: TComboBox;
     dbedtPkCodVeiculo: TDBEdit;
     medtPlacaVeiculo: TMaskEdit;
+    pOrdem: TPanel;
+    lbOrdem: TLabel;
+    cbOrdem: TComboBox;
     procedure mostra;
     procedure limpa;
     procedure controleBotoes(acao :integer);
@@ -47,6 +50,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cbNomeMarcaExit(Sender: TObject);
     procedure cbPesquisaChange(Sender: TObject);
+    procedure cbOrdemChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -89,7 +93,7 @@ end;
 
 procedure TFCadVeiculo.btPesquisarClick(Sender: TObject);
 var
-  comando, condicao : string;
+  comando, condicao, ordem : string;
 begin
   comando := STbVeiculo;
   condicao := Trim(edtPesquisa.Text);
@@ -97,11 +101,22 @@ begin
   begin
     case cbPesquisa.ItemIndex of
       1: condicao := ' where pkcodveiculo ='+condicao;
-      2: condicao := ' where upper(placaveiculo) like upper('+QuotedStr(condicao+'%')+')';
-      3: condicao := ' where upper(nomemarca) like upper('+QuotedStr(condicao+'%')+')';
+      2: condicao := ' where upper(v.placaveiculo) like upper('+QuotedStr(condicao+'%')+')';
+      3: condicao := ' where upper(m.nomemarca) like upper('+QuotedStr(condicao+'%')+')';
     end;
     comando := comando+condicao;
   end;
+
+  case cbOrdem.ItemIndex of
+    0: ordem := ' order by v.placaveiculo';
+    1: ordem := ' order by v.placaveiculo desc';
+    2: ordem := ' order by m.nomemarca';
+    3: ordem := ' order by m.nomemarca desc';
+    4: ordem := ' order by v.pkcodveiculo';
+    5: ordem := ' order by v.pkcodveiculo desc';
+  end;
+  comando := comando + ordem;
+
   DM.executaSql(comando,dm.sqlVeiculo);
 end;
 
@@ -206,6 +221,11 @@ end;
 procedure TFCadVeiculo.cbNomeMarcaExit(Sender: TObject);
 begin
   cbFkCodMarca.ItemIndex := cbNomeMarca.ItemIndex;
+end;
+
+procedure TFCadVeiculo.cbOrdemChange(Sender: TObject);
+begin
+  btPesquisarClick(nil);
 end;
 
 procedure TFCadVeiculo.cbPesquisaChange(Sender: TObject);

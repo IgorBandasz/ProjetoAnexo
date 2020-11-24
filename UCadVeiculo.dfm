@@ -2,7 +2,7 @@ object FCadVeiculo: TFCadVeiculo
   Left = 0
   Top = 0
   Caption = 'Cadastro de Ve'#237'culo'
-  ClientHeight = 448
+  ClientHeight = 492
   ClientWidth = 705
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,11 +17,12 @@ object FCadVeiculo: TFCadVeiculo
   TextHeight = 18
   object pBotoes: TPanel
     Left = 0
-    Top = 113
+    Top = 116
     Width = 705
     Height = 63
     Align = alBottom
     TabOrder = 0
+    ExplicitTop = 113
     object btNovo: TBitBtn
       Left = 30
       Top = 12
@@ -79,7 +80,7 @@ object FCadVeiculo: TFCadVeiculo
   end
   object dbgVeiculos: TDBGrid
     Left = 0
-    Top = 176
+    Top = 220
     Width = 705
     Height = 219
     Align = alBottom
@@ -124,11 +125,12 @@ object FCadVeiculo: TFCadVeiculo
   end
   object pListagem: TPanel
     Left = 0
-    Top = 395
+    Top = 439
     Width = 705
     Height = 53
     Align = alBottom
     TabOrder = 2
+    ExplicitTop = 395
     object cbPesquisa: TComboBox
       Left = 30
       Top = 13
@@ -236,6 +238,40 @@ object FCadVeiculo: TFCadVeiculo
       MaxLength = 8
       TabOrder = 4
       Text = '   -    '
+    end
+  end
+  object pOrdem: TPanel
+    Left = 0
+    Top = 179
+    Width = 705
+    Height = 41
+    Align = alBottom
+    TabOrder = 4
+    ExplicitTop = 239
+    object lbOrdem: TLabel
+      Left = 32
+      Top = 10
+      Width = 58
+      Height = 18
+      Caption = 'Ordenar:'
+    end
+    object cbOrdem: TComboBox
+      Left = 114
+      Top = 7
+      Width = 199
+      Height = 26
+      Style = csDropDownList
+      ItemIndex = 0
+      TabOrder = 0
+      Text = 'Placa A-Z'
+      OnChange = cbOrdemChange
+      Items.Strings = (
+        'Placa A-Z'
+        'Placa Z-A'
+        'Marca A-Z'
+        'Marca Z-A'
+        'Menor c'#243'digo'
+        'Maior c'#243'digo')
     end
   end
 end

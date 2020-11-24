@@ -2,7 +2,7 @@ object FCadProduto: TFCadProduto
   Left = 0
   Top = 0
   Caption = 'Cadastro de Produto'
-  ClientHeight = 485
+  ClientHeight = 534
   ClientWidth = 704
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,11 +17,12 @@ object FCadProduto: TFCadProduto
   TextHeight = 18
   object pBotoes: TPanel
     Left = 0
-    Top = 150
+    Top = 158
     Width = 704
     Height = 63
     Align = alBottom
     TabOrder = 0
+    ExplicitTop = 150
     object btNovo: TBitBtn
       Left = 30
       Top = 12
@@ -79,7 +80,7 @@ object FCadProduto: TFCadProduto
   end
   object dbgProdutos: TDBGrid
     Left = 0
-    Top = 213
+    Top = 262
     Width = 704
     Height = 219
     Align = alBottom
@@ -123,11 +124,12 @@ object FCadProduto: TFCadProduto
   end
   object pListagem: TPanel
     Left = 0
-    Top = 432
+    Top = 481
     Width = 704
     Height = 53
     Align = alBottom
     TabOrder = 2
+    ExplicitTop = 432
     object cbPesquisa: TComboBox
       Left = 30
       Top = 13
@@ -223,6 +225,40 @@ object FCadProduto: TFCadProduto
       TabOrder = 3
       Visible = False
       OnChange = dbedtPkCodProdChange
+    end
+  end
+  object pOrdem: TPanel
+    Left = 0
+    Top = 221
+    Width = 704
+    Height = 41
+    Align = alBottom
+    TabOrder = 4
+    ExplicitTop = 277
+    object lbOrdem: TLabel
+      Left = 32
+      Top = 10
+      Width = 58
+      Height = 18
+      Caption = 'Ordenar:'
+    end
+    object cbOrdem: TComboBox
+      Left = 114
+      Top = 7
+      Width = 199
+      Height = 26
+      Style = csDropDownList
+      ItemIndex = 0
+      TabOrder = 0
+      Text = 'A-Z'
+      OnChange = cbOrdemChange
+      Items.Strings = (
+        'A-Z'
+        'Z-A'
+        'Menor c'#243'digo'
+        'Maior c'#243'digo'
+        'Maior valor'
+        'Menor valor')
     end
   end
 end

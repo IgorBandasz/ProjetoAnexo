@@ -2,7 +2,7 @@ object FCadCliente: TFCadCliente
   Left = 0
   Top = 0
   Caption = 'Cadastro de Cliente'
-  ClientHeight = 544
+  ClientHeight = 588
   ClientWidth = 700
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,7 +17,7 @@ object FCadCliente: TFCadCliente
   TextHeight = 18
   object dbgClientes: TDBGrid
     Left = 0
-    Top = 215
+    Top = 259
     Width = 700
     Height = 276
     Align = alBottom
@@ -60,11 +60,12 @@ object FCadCliente: TFCadCliente
   end
   object pListagem: TPanel
     Left = 0
-    Top = 491
+    Top = 535
     Width = 700
     Height = 53
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 491
     object cbPesquisa: TComboBox
       Left = 30
       Top = 14
@@ -100,11 +101,12 @@ object FCadCliente: TFCadCliente
   end
   object pBotoes: TPanel
     Left = 0
-    Top = 152
+    Top = 155
     Width = 700
     Height = 63
     Align = alBottom
     TabOrder = 2
+    ExplicitTop = 152
     object btNovo: TBitBtn
       Left = 30
       Top = 12
@@ -222,6 +224,40 @@ object FCadCliente: TFCadCliente
       MaxLength = 14
       TabOrder = 3
       Text = '(  )     -    '
+    end
+  end
+  object pOrdem: TPanel
+    Left = 0
+    Top = 218
+    Width = 700
+    Height = 41
+    Align = alBottom
+    TabOrder = 4
+    ExplicitTop = 256
+    object lbOrdem: TLabel
+      Left = 32
+      Top = 10
+      Width = 58
+      Height = 18
+      Caption = 'Ordenar:'
+    end
+    object cbOrdem: TComboBox
+      Left = 114
+      Top = 7
+      Width = 199
+      Height = 26
+      Style = csDropDownList
+      ItemIndex = 0
+      TabOrder = 0
+      Text = 'A-Z'
+      OnChange = cbOrdemChange
+      Items.Strings = (
+        'A-Z'
+        'Z-A'
+        'Menor c'#243'digo'
+        'Maior c'#243'digo'
+        'Menor telefone '
+        'Maior telefone')
     end
   end
 end

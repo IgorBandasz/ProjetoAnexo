@@ -28,6 +28,9 @@ type
     btSair: TBitBtn;
     dbedtCodCli: TDBEdit;
     medtFoneCli: TMaskEdit;
+    pOrdem: TPanel;
+    lbOrdem: TLabel;
+    cbOrdem: TComboBox;
     procedure btSairClick(Sender: TObject);
     procedure dbedtCodCliChange(Sender: TObject);
     procedure mostra;
@@ -43,6 +46,7 @@ type
     procedure btSalvarClick(Sender: TObject);
     procedure edtPesquisaKeyPress(Sender: TObject; var Key: Char);
     procedure cbPesquisaChange(Sender: TObject);
+    procedure cbOrdemChange(Sender: TObject);
   private
 
     { Private declarations }
@@ -83,7 +87,7 @@ end;
 
 procedure TFCadCliente.btPesquisarClick(Sender: TObject);
 var
-  comando, condicao : string;
+  comando, condicao , ordem: string;
 begin
   comando := STbCliente;
   condicao := Trim(edtPesquisa.Text);
@@ -96,6 +100,17 @@ begin
     end;
     comando := comando+condicao;
   end;
+
+  case cbOrdem.ItemIndex of
+    0: ordem := ' order by nomecli';
+    1: ordem := ' order by nomecli desc';
+    2: ordem := ' order by pkcodcli';
+    3: ordem := ' order by pkcodcli desc';
+    4: ordem := ' order by fonecli ';
+    5: ordem := ' order by fonecli desc';
+  end;
+  comando := comando + ordem;
+
   DM.executaSql(comando,DM.sqlCliente);
 end;
 
@@ -164,6 +179,11 @@ begin
   end;
 
 
+end;
+
+procedure TFCadCliente.cbOrdemChange(Sender: TObject);
+begin
+  btPesquisarClick(nil);
 end;
 
 procedure TFCadCliente.cbPesquisaChange(Sender: TObject);

@@ -2,7 +2,7 @@ object FCadServico: TFCadServico
   Left = 0
   Top = 0
   Caption = 'Cadastro de Servi'#231'o'
-  ClientHeight = 501
+  ClientHeight = 543
   ClientWidth = 700
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -79,11 +79,12 @@ object FCadServico: TFCadServico
   end
   object pBotoes: TPanel
     Left = 0
-    Top = 153
+    Top = 154
     Width = 700
     Height = 63
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 153
     object btNovo: TBitBtn
       Left = 30
       Top = 12
@@ -141,7 +142,7 @@ object FCadServico: TFCadServico
   end
   object dbgServicos: TDBGrid
     Left = 0
-    Top = 216
+    Top = 258
     Width = 700
     Height = 232
     Align = alBottom
@@ -184,11 +185,12 @@ object FCadServico: TFCadServico
   end
   object pListagem: TPanel
     Left = 0
-    Top = 448
+    Top = 490
     Width = 700
     Height = 53
     Align = alBottom
     TabOrder = 3
+    ExplicitTop = 448
     object cbPesquisa: TComboBox
       Left = 30
       Top = 13
@@ -222,6 +224,40 @@ object FCadServico: TFCadServico
       Caption = 'Pesquisar'
       TabOrder = 2
       OnClick = btPesquisarClick
+    end
+  end
+  object pOrdem: TPanel
+    Left = 0
+    Top = 217
+    Width = 700
+    Height = 41
+    Align = alBottom
+    TabOrder = 4
+    ExplicitTop = 261
+    object lbOrdem: TLabel
+      Left = 32
+      Top = 10
+      Width = 58
+      Height = 18
+      Caption = 'Ordenar:'
+    end
+    object cbOrdem: TComboBox
+      Left = 114
+      Top = 7
+      Width = 199
+      Height = 26
+      Style = csDropDownList
+      ItemIndex = 0
+      TabOrder = 0
+      Text = 'A-Z'
+      OnChange = cbOrdemChange
+      Items.Strings = (
+        'A-Z'
+        'Z-A'
+        'Menor c'#243'digo'
+        'Maior c'#243'digo'
+        'Maior valor'
+        'Menor valor')
     end
   end
 end

@@ -2,7 +2,7 @@ object FCadMarca: TFCadMarca
   Left = 0
   Top = 0
   Caption = 'Cadastro de Marca'
-  ClientHeight = 437
+  ClientHeight = 486
   ClientWidth = 690
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,11 +17,12 @@ object FCadMarca: TFCadMarca
   TextHeight = 18
   object pBotoes: TPanel
     Left = 0
-    Top = 102
+    Top = 110
     Width = 690
     Height = 63
     Align = alBottom
     TabOrder = 0
+    ExplicitTop = 102
     object btNovo: TBitBtn
       Left = 26
       Top = 12
@@ -79,7 +80,7 @@ object FCadMarca: TFCadMarca
   end
   object dbgMarcas: TDBGrid
     Left = 0
-    Top = 165
+    Top = 214
     Width = 690
     Height = 219
     Align = alBottom
@@ -115,11 +116,12 @@ object FCadMarca: TFCadMarca
   end
   object pListagem: TPanel
     Left = 0
-    Top = 384
+    Top = 433
     Width = 690
     Height = 53
     Align = alBottom
     TabOrder = 2
+    ExplicitTop = 384
     object cbPesquisa: TComboBox
       Left = 36
       Top = 13
@@ -198,6 +200,39 @@ object FCadMarca: TFCadMarca
       TabOrder = 2
       Visible = False
       OnChange = dbedtPkCodMarcaChange
+    end
+  end
+  object pOrdem: TPanel
+    Left = 0
+    Top = 173
+    Width = 690
+    Height = 41
+    Align = alBottom
+    TabOrder = 4
+    ExplicitLeft = 8
+    ExplicitTop = 232
+    object lbOrdem: TLabel
+      Left = 32
+      Top = 10
+      Width = 58
+      Height = 18
+      Caption = 'Ordenar:'
+    end
+    object cbOrdem: TComboBox
+      Left = 114
+      Top = 7
+      Width = 199
+      Height = 26
+      Style = csDropDownList
+      ItemIndex = 0
+      TabOrder = 0
+      Text = 'A-Z'
+      OnChange = cbOrdemChange
+      Items.Strings = (
+        'A-Z'
+        'Z-A'
+        'Menor c'#243'digo'
+        'Maior c'#243'digo')
     end
   end
 end

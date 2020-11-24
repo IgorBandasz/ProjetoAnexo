@@ -2,7 +2,7 @@ object FLocOS: TFLocOS
   Left = 0
   Top = 0
   Caption = 'FLocOS'
-  ClientHeight = 534
+  ClientHeight = 616
   ClientWidth = 870
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,12 +17,12 @@ object FLocOS: TFLocOS
   TextHeight = 18
   object pBotoes: TPanel
     Left = 0
-    Top = 473
+    Top = 514
     Width = 870
     Height = 63
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 857
+    ExplicitTop = 473
     object btNovo: TBitBtn
       Left = 360
       Top = 11
@@ -62,7 +62,7 @@ object FLocOS: TFLocOS
   end
   object dbgOS: TDBGrid
     Left = 0
-    Top = 53
+    Top = 94
     Width = 870
     Height = 420
     Align = alTop
@@ -133,7 +133,6 @@ object FLocOS: TFLocOS
     Height = 53
     Align = alTop
     TabOrder = 2
-    ExplicitWidth = 857
     object cbPesquisa: TComboBox
       Left = 106
       Top = 14
@@ -170,6 +169,49 @@ object FLocOS: TFLocOS
       Caption = 'Pesquisar'
       TabOrder = 2
       OnClick = btPesquisarClick
+    end
+  end
+  object pOrdem: TPanel
+    Left = 0
+    Top = 53
+    Width = 870
+    Height = 41
+    Align = alTop
+    TabOrder = 3
+    ExplicitLeft = 8
+    ExplicitTop = 8
+    ExplicitWidth = 541
+    object lbOrdem: TLabel
+      Left = 32
+      Top = 10
+      Width = 58
+      Height = 18
+      Caption = 'Ordenar:'
+    end
+    object cbOrdem: TComboBox
+      Left = 114
+      Top = 7
+      Width = 199
+      Height = 26
+      Style = csDropDownList
+      ItemIndex = 0
+      TabOrder = 0
+      Text = 'Mais recente'
+      OnChange = cbOrdemChange
+      Items.Strings = (
+        'Mais recente'
+        'Mais antigo'
+        'Menor c'#243'digo'
+        'Maior c'#243'digo'
+        'Menor c'#243'digo do Cliente'
+        'Maior c'#243'digo do Cliente'
+        'Nome do Cliente A-Z'
+        'Nome do Cliente Z-A'
+        'Placa A-Z'
+        'Placa Z-A'
+        'Maior valor'
+        'Menor valor'
+        '')
     end
   end
 end

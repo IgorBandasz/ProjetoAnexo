@@ -27,6 +27,9 @@ type
     edtNomeMarca: TEdit;
     edtPkCodMarca: TEdit;
     dbedtPkCodMarca: TDBEdit;
+    pOrdem: TPanel;
+    lbOrdem: TLabel;
+    cbOrdem: TComboBox;
     procedure mostra;
     procedure limpa;
     procedure controleBotoes(acao: integer);
@@ -42,6 +45,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cbPesquisaChange(Sender: TObject);
+    procedure cbOrdemChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -83,7 +87,7 @@ end;
 
 procedure TFCadMarca.btPesquisarClick(Sender: TObject);
 var
-  comando, condicao : string;
+  comando, condicao, ordem : string;
 begin
   comando := STbMarca;
   condicao := Trim(edtPesquisa.Text);
@@ -96,6 +100,15 @@ begin
     end;
     comando := comando+condicao;
   end;
+
+  case cbOrdem.ItemIndex of
+    0: ordem := ' order by nomemarca';
+    1: ordem := ' order by nomemarca desc';
+    2: ordem := ' order by pkcodmarca';
+    3: ordem := ' order by pkcodmarca desc';
+  end;
+  comando := comando + ordem;
+
   DM.executaSql(comando,DM.sqlMarca);
 end;
 
@@ -164,6 +177,11 @@ begin
     showmessage('erro ao salvar dados');
   end;
 
+end;
+
+procedure TFCadMarca.cbOrdemChange(Sender: TObject);
+begin
+  btPesquisarClick(nil);
 end;
 
 procedure TFCadMarca.cbPesquisaChange(Sender: TObject);

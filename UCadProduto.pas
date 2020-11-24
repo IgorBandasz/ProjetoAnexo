@@ -29,6 +29,9 @@ type
     edtPkCodProd: TEdit;
     edtValorVendaProd: TEdit;
     dbedtPkCodProd: TDBEdit;
+    pOrdem: TPanel;
+    lbOrdem: TLabel;
+    cbOrdem: TComboBox;
     procedure mostra;
     procedure limpa;
     procedure controleBotoes(acao :integer);
@@ -45,6 +48,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure edtValorVendaProdKeyPress(Sender: TObject; var Key: Char);
     procedure cbPesquisaChange(Sender: TObject);
+    procedure cbOrdemChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -86,7 +90,7 @@ end;
 
 procedure TFCadProduto.btPesquisarClick(Sender: TObject);
 var
-  comando, condicao : string;
+  comando, condicao, ordem : string;
 begin
   comando := STbProduto;
   condicao := Trim(edtPesquisa.Text);
@@ -101,7 +105,18 @@ begin
     end;
     comando := comando+condicao;
   end;
-  DM.executaSql(comando,dm.sqlProduto);
+
+  case cbOrdem.ItemIndex of
+    0: ordem := ' order by nomeprod';
+    1: ordem := ' order by nomeprod desc';
+    2: ordem := ' order by pkcodprod';
+    3: ordem := ' order by pkcodprod desc';
+    4: ordem := ' order by valorvendaprod desc';
+    5: ordem := ' order by valorvendaprod';
+  end;
+  comando := comando + ordem;
+
+  DM.executaSql(comando,DM.sqlProduto);
 end;
 
 procedure TFCadProduto.btRemoverClick(Sender: TObject);
@@ -169,6 +184,11 @@ begin
   end;
 
 
+end;
+
+procedure TFCadProduto.cbOrdemChange(Sender: TObject);
+begin
+  btPesquisarClick(nil);
 end;
 
 procedure TFCadProduto.cbPesquisaChange(Sender: TObject);

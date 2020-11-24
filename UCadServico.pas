@@ -29,6 +29,9 @@ type
     btPesquisar: TBitBtn;
     edtValorBase: TEdit;
     dbedtPkCodServico: TDBEdit;
+    pOrdem: TPanel;
+    lbOrdem: TLabel;
+    cbOrdem: TComboBox;
     procedure mostra;
     procedure limpa;
     procedure controleBotoes(acao: integer);
@@ -45,6 +48,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure edtValorBaseKeyPress(Sender: TObject; var Key: Char);
     procedure cbPesquisaChange(Sender: TObject);
+    procedure cbOrdemChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -84,7 +88,7 @@ end;
 
 procedure TFCadServico.btPesquisarClick(Sender: TObject);
 var
-  comando, condicao : string;
+  comando, condicao, ordem : string;
 begin
   comando := STbServico;
   condicao :=Trim(edtPesquisa.Text);
@@ -99,7 +103,18 @@ begin
     end;
     comando := comando+condicao;
   end;
-  DM.executaSql(comando,dm.sqlServico);
+
+  case cbOrdem.ItemIndex of
+    0: ordem := ' order by descricaoservico';
+    1: ordem := ' order by descricaoservico desc';
+    2: ordem := ' order by pkcodservico';
+    3: ordem := ' order by pkcodservico desc';
+    4: ordem := ' order by valorbase desc';
+    5: ordem := ' order by valorbase';
+  end;
+  comando := comando + ordem;
+
+  DM.executaSql(comando,DM.sqlServico);
 end;
 
 procedure TFCadServico.btRemoverClick(Sender: TObject);
@@ -165,6 +180,11 @@ begin
     showmessage('erro ao salvar dados');
   end;
 
+end;
+
+procedure TFCadServico.cbOrdemChange(Sender: TObject);
+begin
+  btPesquisarClick(nil);
 end;
 
 procedure TFCadServico.cbPesquisaChange(Sender: TObject);
