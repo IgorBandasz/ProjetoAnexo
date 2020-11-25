@@ -60,11 +60,11 @@ var
   STbProduto :string= 'select * from tbproduto ';
   STbMarca   :string= 'select * from tbmarca ';
   STbVeiculo :string= 'select * from tbveiculo v  '
-                    + 'inner join tbmarca m on m.pkcodmarca = v.fkcodmarca ';
+                    + 'left join tbmarca m on m.pkcodmarca = v.fkcodmarca ';
   STbOS :string= 'select * from tbos o '
-                +' inner join tbcliente c on c.pkcodcli = o.fkcodcli'
-                +' inner join tbveiculo v on v.pkcodveiculo = o.fkcodveiculo'
-                +' inner join tbmarca m on m.pkcodmarca = v.fkcodmarca';
+                +' left join tbcliente c on c.pkcodcli = o.fkcodcli'
+                +' left join tbveiculo v on v.pkcodveiculo = o.fkcodveiculo'
+                +' left join tbmarca m on m.pkcodmarca = v.fkcodmarca';
   STbRelProdutoOS :string= 'select * from tbrelprodutoos r'
                           +' inner join tbproduto p on p.pkcodprod = r.fkcodprod';
   STbRelServicoOS :string= 'select * from tbrelservicoos r '
