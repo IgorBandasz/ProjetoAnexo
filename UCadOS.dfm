@@ -4,7 +4,7 @@ object FCadOS: TFCadOS
   Caption = 'Cadastro de Ordem de Servi'#231'o'
   ClientHeight = 849
   ClientWidth = 1005
-  Color = clBtnFace
+  Color = clInactiveBorder
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -15
@@ -22,6 +22,8 @@ object FCadOS: TFCadOS
     Width = 1005
     Height = 63
     Align = alBottom
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 0
     object btSalvar: TBitBtn
       Left = 783
@@ -98,8 +100,10 @@ object FCadOS: TFCadOS
   object pDados: TPanel
     Left = 1
     Top = 8
-    Width = 996
+    Width = 1002
     Height = 73
+    Color = clGradientActiveCaption
+    ParentBackground = False
     TabOrder = 2
     object lbCodigo: TLabel
       Left = 29
@@ -202,41 +206,43 @@ object FCadOS: TFCadOS
     end
   end
   object pInsereProduto: TPanel
-    Left = 8
+    Left = 1
     Top = 342
-    Width = 989
+    Width = 1002
     Height = 67
+    Color = clGradientInactiveCaption
+    ParentBackground = False
     TabOrder = 3
     object lbCodProd: TLabel
-      Left = 111
+      Left = 118
       Top = 7
       Width = 64
       Height = 18
       Caption = 'C'#243'd. Prod'
     end
     object lbnomeprod: TLabel
-      Left = 207
+      Left = 214
       Top = 7
       Width = 115
       Height = 18
       Caption = 'Nome do Produto'
     end
     object lbQuantidade: TLabel
-      Left = 559
+      Left = 566
       Top = 8
       Width = 45
       Height = 18
       Caption = 'Quant.'
     end
     object lbValorUnit: TLabel
-      Left = 670
+      Left = 677
       Top = 8
       Width = 85
       Height = 18
       Caption = 'Valor Unit'#225'rio'
     end
     object edtFkCodProd: TEdit
-      Left = 111
+      Left = 118
       Top = 32
       Width = 82
       Height = 26
@@ -245,7 +251,7 @@ object FCadOS: TFCadOS
       OnKeyPress = edtFkCodProdKeyPress
     end
     object edtNomeProduto: TEdit
-      Left = 207
+      Left = 214
       Top = 32
       Width = 328
       Height = 26
@@ -253,7 +259,7 @@ object FCadOS: TFCadOS
       TabOrder = 1
     end
     object edtQuantidade: TEdit
-      Left = 559
+      Left = 566
       Top = 32
       Width = 90
       Height = 26
@@ -261,7 +267,7 @@ object FCadOS: TFCadOS
       OnKeyPress = edtQuantidadeKeyPress
     end
     object edtValorUnit: TEdit
-      Left = 671
+      Left = 678
       Top = 32
       Width = 121
       Height = 26
@@ -269,7 +275,7 @@ object FCadOS: TFCadOS
       OnKeyPress = edtValorUnitKeyPress
     end
     object btAdicionarProduto: TBitBtn
-      Left = 809
+      Left = 816
       Top = 14
       Width = 70
       Height = 41
@@ -278,7 +284,7 @@ object FCadOS: TFCadOS
       OnClick = btAdicionarProdutoClick
     end
     object btRemoverProduto: TBitBtn
-      Left = 898
+      Left = 905
       Top = 14
       Width = 74
       Height = 41
@@ -287,8 +293,8 @@ object FCadOS: TFCadOS
       OnClick = btRemoverProdutoClick
     end
     object btListarProdutos: TBitBtn
-      Left = 0
-      Top = 17
+      Left = 7
+      Top = 21
       Width = 105
       Height = 25
       Caption = 'Listar Produtos'
@@ -313,6 +319,7 @@ object FCadOS: TFCadOS
       item
         Expanded = False
         FieldName = 'FkCodServico'
+        Title.Alignment = taCenter
         Title.Caption = 'C'#243'd. Serv'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clWindowText
@@ -337,6 +344,7 @@ object FCadOS: TFCadOS
       item
         Expanded = False
         FieldName = 'ValorServico'
+        Title.Alignment = taCenter
         Title.Caption = 'VALOR SERVI'#199'O'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clWindowText
@@ -348,34 +356,36 @@ object FCadOS: TFCadOS
       end>
   end
   object pInsereServico: TPanel
-    Left = 8
+    Left = 1
     Top = 676
-    Width = 989
+    Width = 1002
     Height = 66
+    Color = clGradientInactiveCaption
+    ParentBackground = False
     TabOrder = 5
     object lbCodServ: TLabel
-      Left = 111
+      Left = 118
       Top = 8
       Width = 64
       Height = 18
       Caption = 'C'#243'd. Serv'
     end
     object lbDescricaoServ: TLabel
-      Left = 207
+      Left = 214
       Top = 8
       Width = 134
       Height = 18
       Caption = 'Descri'#231#227'o do Servi'#231'o'
     end
     object lbValorServ: TLabel
-      Left = 671
+      Left = 678
       Top = 8
       Width = 104
       Height = 18
       Caption = 'Valor do Servi'#231'o'
     end
     object edtFkCodServico: TEdit
-      Left = 111
+      Left = 118
       Top = 32
       Width = 82
       Height = 26
@@ -384,7 +394,7 @@ object FCadOS: TFCadOS
       OnKeyPress = edtFkCodServicoKeyPress
     end
     object edtValorServico: TEdit
-      Left = 670
+      Left = 677
       Top = 32
       Width = 121
       Height = 26
@@ -392,7 +402,7 @@ object FCadOS: TFCadOS
       OnKeyPress = edtValorServicoKeyPress
     end
     object btAdicionarServico: TBitBtn
-      Left = 809
+      Left = 816
       Top = 13
       Width = 70
       Height = 41
@@ -401,7 +411,7 @@ object FCadOS: TFCadOS
       OnClick = btAdicionarServicoClick
     end
     object btRemoverServico: TBitBtn
-      Left = 898
+      Left = 905
       Top = 13
       Width = 74
       Height = 41
@@ -410,8 +420,8 @@ object FCadOS: TFCadOS
       OnClick = btRemoverServicoClick
     end
     object btListarServicos: TBitBtn
-      Left = 4
-      Top = 16
+      Left = 7
+      Top = 21
       Width = 101
       Height = 25
       Caption = 'Listar Servi'#231'os'
@@ -428,36 +438,36 @@ object FCadOS: TFCadOS
     TabOrder = 6
   end
   object pValorOS: TPanel
-    Left = 782
+    Left = 760
     Top = 743
-    Width = 215
+    Width = 237
     Height = 41
     Color = clScrollBar
     ParentBackground = False
     TabOrder = 7
     object lbValor: TLabel
-      Left = 21
+      Left = 17
       Top = 9
-      Width = 87
-      Height = 21
+      Width = 96
+      Height = 23
       Caption = 'Valor Total:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -17
+      Font.Height = -19
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
     end
     object lbValorTotal: TLabel
-      Left = 166
+      Left = 183
       Top = 9
-      Width = 32
-      Height = 21
+      Width = 36
+      Height = 23
       Alignment = taRightJustify
       Caption = '0,00'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clGreen
-      Font.Height = -17
+      Font.Height = -19
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False

@@ -2,9 +2,9 @@ object FRelatorioCliente: TFRelatorioCliente
   Left = 0
   Top = 0
   Caption = 'Relat'#243'rio de Clientes'
-  ClientHeight = 430
-  ClientWidth = 811
-  Color = clBtnFace
+  ClientHeight = 600
+  ClientWidth = 898
+  Color = clInactiveBorder
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -15
@@ -19,8 +19,8 @@ object FRelatorioCliente: TFRelatorioCliente
   object dbgRelatorioCliente: TDBGrid
     Left = 0
     Top = 41
-    Width = 811
-    Height = 328
+    Width = 898
+    Height = 496
     Align = alTop
     DataSource = DM.dsRelatorioCli
     TabOrder = 0
@@ -54,7 +54,20 @@ object FRelatorioCliente: TFRelatorioCliente
         Title.Font.Height = -16
         Title.Font.Name = 'Tahoma'
         Title.Font.Style = [fsBold]
-        Width = 368
+        Width = 339
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'FONECLI'
+        Title.Alignment = taCenter
+        Title.Caption = 'TELEFONE'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -16
+        Title.Font.Name = 'Tahoma'
+        Title.Font.Style = [fsBold]
+        Width = 120
         Visible = True
       end
       item
@@ -99,13 +112,15 @@ object FRelatorioCliente: TFRelatorioCliente
   end
   object pListagem: TPanel
     Left = 0
-    Top = 369
-    Width = 811
+    Top = 537
+    Width = 898
     Height = 53
     Align = alTop
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 1
     object cbPesquisa: TComboBox
-      Left = 30
+      Left = 48
       Top = 14
       Width = 179
       Height = 26
@@ -126,7 +141,7 @@ object FRelatorioCliente: TFRelatorioCliente
         'Somat'#243'rio OS menor que')
     end
     object edtPesquisa: TEdit
-      Left = 256
+      Left = 274
       Top = 15
       Width = 201
       Height = 26
@@ -134,7 +149,7 @@ object FRelatorioCliente: TFRelatorioCliente
       OnKeyPress = edtPesquisaKeyPress
     end
     object btPesquisar: TBitBtn
-      Left = 504
+      Left = 522
       Top = 10
       Width = 83
       Height = 35
@@ -143,7 +158,7 @@ object FRelatorioCliente: TFRelatorioCliente
       OnClick = btPesquisarClick
     end
     object btSair: TBitBtn
-      Left = 712
+      Left = 772
       Top = 10
       Width = 75
       Height = 34
@@ -155,9 +170,11 @@ object FRelatorioCliente: TFRelatorioCliente
   object pOrdem: TPanel
     Left = 0
     Top = 0
-    Width = 811
+    Width = 898
     Height = 41
     Align = alTop
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 2
     object lbOrdem: TLabel
       Left = 32
@@ -165,6 +182,12 @@ object FRelatorioCliente: TFRelatorioCliente
       Width = 58
       Height = 18
       Caption = 'Ordenar:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object cbOrdem: TComboBox
       Left = 114

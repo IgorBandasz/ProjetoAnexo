@@ -2,9 +2,9 @@ object FListarProdutos: TFListarProdutos
   Left = 0
   Top = 0
   Caption = 'FListarProdutos'
-  ClientHeight = 378
+  ClientHeight = 460
   ClientWidth = 710
-  Color = clBtnFace
+  Color = clInactiveBorder
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -15
@@ -18,7 +18,7 @@ object FListarProdutos: TFListarProdutos
   TextHeight = 18
   object lbInstrucao: TLabel
     Left = 24
-    Top = 8
+    Top = 12
     Width = 339
     Height = 19
     Caption = 'Duplo clique no produto para seleciona-lo'
@@ -31,9 +31,9 @@ object FListarProdutos: TFListarProdutos
   end
   object dbgProdutos: TDBGrid
     Left = 0
-    Top = 40
+    Top = 43
     Width = 710
-    Height = 285
+    Height = 364
     Align = alBottom
     DataSource = DM.dsProduto
     Font.Charset = DEFAULT_CHARSET
@@ -76,11 +76,14 @@ object FListarProdutos: TFListarProdutos
   end
   object pListagem: TPanel
     Left = 0
-    Top = 325
+    Top = 407
     Width = 710
     Height = 53
     Align = alBottom
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 1
+    ExplicitTop = 325
     object cbPesquisa: TComboBox
       Left = 70
       Top = 14

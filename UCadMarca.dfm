@@ -2,9 +2,9 @@ object FCadMarca: TFCadMarca
   Left = 0
   Top = 0
   Caption = 'Cadastro de Marca'
-  ClientHeight = 486
-  ClientWidth = 690
-  Color = clBtnFace
+  ClientHeight = 600
+  ClientWidth = 700
+  Color = clInactiveBorder
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -15
@@ -18,11 +18,15 @@ object FCadMarca: TFCadMarca
   TextHeight = 18
   object pBotoes: TPanel
     Left = 0
-    Top = 110
-    Width = 690
+    Top = 112
+    Width = 700
     Height = 63
     Align = alBottom
+    Color = clWhite
+    ParentBackground = False
     TabOrder = 0
+    ExplicitTop = 110
+    ExplicitWidth = 690
     object btNovo: TBitBtn
       Left = 26
       Top = 12
@@ -80,9 +84,9 @@ object FCadMarca: TFCadMarca
   end
   object dbgMarcas: TDBGrid
     Left = 0
-    Top = 214
-    Width = 690
-    Height = 219
+    Top = 216
+    Width = 700
+    Height = 331
     Align = alBottom
     DataSource = DM.dsMarca
     Font.Charset = DEFAULT_CHARSET
@@ -110,17 +114,21 @@ object FCadMarca: TFCadMarca
         Expanded = False
         FieldName = 'NOMEMARCA'
         Title.Caption = 'NOME DA MARCA'
-        Width = 530
+        Width = 546
         Visible = True
       end>
   end
   object pListagem: TPanel
     Left = 0
-    Top = 433
-    Width = 690
+    Top = 547
+    Width = 700
     Height = 53
     Align = alBottom
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 2
+    ExplicitTop = 433
+    ExplicitWidth = 690
     object cbPesquisa: TComboBox
       Left = 36
       Top = 13
@@ -155,10 +163,12 @@ object FCadMarca: TFCadMarca
     end
   end
   object pDados: TPanel
-    Left = 6
+    Left = 8
     Top = 8
-    Width = 675
+    Width = 684
     Height = 89
+    Color = clWhite
+    ParentBackground = False
     TabOrder = 3
     object lbCodigo: TLabel
       Left = 84
@@ -203,17 +213,27 @@ object FCadMarca: TFCadMarca
   end
   object pOrdem: TPanel
     Left = 0
-    Top = 173
-    Width = 690
+    Top = 175
+    Width = 700
     Height = 41
     Align = alBottom
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 4
+    ExplicitTop = 173
+    ExplicitWidth = 690
     object lbOrdem: TLabel
       Left = 32
       Top = 10
       Width = 58
       Height = 18
       Caption = 'Ordenar:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object cbOrdem: TComboBox
       Left = 114

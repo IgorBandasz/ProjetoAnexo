@@ -160,10 +160,10 @@ object DM: TDM
     Transaction = fdtTransacao
     SQL.Strings = (
       
-        'select c.pkcodcli, c.nomecli, count(*), sum(o.valortotal), avg(o' +
-        '.valortotal) from tbcliente c'
+        'select c.pkcodcli, c.nomecli, c.fonecli, count(*), sum(o.valorto' +
+        'tal), avg(o.valortotal) from tbcliente c'
       'inner join tbos o on c.pkcodcli = o.fkcodcli'
-      'group by c.pkcodcli, c.nomecli')
+      'group by c.pkcodcli, c.nomecli, c.fonecli')
     Left = 272
     Top = 304
   end

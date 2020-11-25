@@ -2,9 +2,9 @@ object FRelatorioServico: TFRelatorioServico
   Left = 0
   Top = 0
   Caption = 'Relat'#243'rio de Servi'#231'os'
-  ClientHeight = 597
+  ClientHeight = 600
   ClientWidth = 926
-  Color = clBtnFace
+  Color = clInactiveBorder
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -15
@@ -20,7 +20,7 @@ object FRelatorioServico: TFRelatorioServico
     Left = 0
     Top = 41
     Width = 926
-    Height = 481
+    Height = 496
     Align = alTop
     DataSource = DM.dsRelatorioServ
     TabOrder = 0
@@ -85,10 +85,12 @@ object FRelatorioServico: TFRelatorioServico
   end
   object pListagem: TPanel
     Left = 0
-    Top = 522
+    Top = 537
     Width = 926
     Height = 53
     Align = alTop
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 1
     object cbPesquisa: TComboBox
       Left = 88
@@ -142,6 +144,8 @@ object FRelatorioServico: TFRelatorioServico
     Width = 926
     Height = 41
     Align = alTop
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 2
     object lbOrdem: TLabel
       Left = 32
@@ -149,6 +153,12 @@ object FRelatorioServico: TFRelatorioServico
       Width = 58
       Height = 18
       Caption = 'Ordenar:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object cbOrdem: TComboBox
       Left = 114

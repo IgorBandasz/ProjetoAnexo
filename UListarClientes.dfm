@@ -3,8 +3,8 @@ object FListarClientes: TFListarClientes
   Top = 0
   Caption = 'Lista de Clientes'
   ClientHeight = 460
-  ClientWidth = 717
-  Color = clBtnFace
+  ClientWidth = 712
+  Color = clInactiveBorder
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -15
@@ -18,7 +18,7 @@ object FListarClientes: TFListarClientes
   TextHeight = 18
   object lbInstrucao: TLabel
     Left = 24
-    Top = 8
+    Top = 12
     Width = 330
     Height = 19
     Caption = 'Duplo clique no cliente para seleciona-lo'
@@ -31,9 +31,9 @@ object FListarClientes: TFListarClientes
   end
   object dbgClientes: TDBGrid
     Left = 0
-    Top = 40
-    Width = 717
-    Height = 367
+    Top = 43
+    Width = 712
+    Height = 364
     Align = alBottom
     DataSource = DM.dsCliente
     Font.Charset = DEFAULT_CHARSET
@@ -76,12 +76,15 @@ object FListarClientes: TFListarClientes
   object pListagem: TPanel
     Left = 0
     Top = 407
-    Width = 717
+    Width = 712
     Height = 53
     Align = alBottom
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 1
+    ExplicitWidth = 717
     object cbPesquisa: TComboBox
-      Left = 86
+      Left = 78
       Top = 14
       Width = 145
       Height = 26
@@ -96,7 +99,7 @@ object FListarClientes: TFListarClientes
         'Nome iniciando por')
     end
     object edtPesquisa: TEdit
-      Left = 272
+      Left = 264
       Top = 14
       Width = 201
       Height = 26
@@ -104,7 +107,7 @@ object FListarClientes: TFListarClientes
       OnKeyPress = edtPesquisaKeyPress
     end
     object btPesquisar: TBitBtn
-      Left = 520
+      Left = 512
       Top = 9
       Width = 83
       Height = 35

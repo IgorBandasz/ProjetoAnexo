@@ -2,9 +2,9 @@ object FCadCliente: TFCadCliente
   Left = 0
   Top = 0
   Caption = 'Cadastro de Cliente'
-  ClientHeight = 588
+  ClientHeight = 600
   ClientWidth = 700
-  Color = clBtnFace
+  Color = clInactiveBorder
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -15
@@ -18,9 +18,9 @@ object FCadCliente: TFCadCliente
   TextHeight = 18
   object dbgClientes: TDBGrid
     Left = 0
-    Top = 259
+    Top = 264
     Width = 700
-    Height = 276
+    Height = 283
     Align = alBottom
     DataSource = DM.dsCliente
     Font.Charset = DEFAULT_CHARSET
@@ -61,11 +61,14 @@ object FCadCliente: TFCadCliente
   end
   object pListagem: TPanel
     Left = 0
-    Top = 535
+    Top = 547
     Width = 700
     Height = 53
     Align = alBottom
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 1
+    ExplicitTop = 535
     object cbPesquisa: TComboBox
       Left = 30
       Top = 14
@@ -101,17 +104,26 @@ object FCadCliente: TFCadCliente
   end
   object pBotoes: TPanel
     Left = 0
-    Top = 155
+    Top = 160
     Width = 700
     Height = 63
     Align = alBottom
+    Color = clWhite
+    ParentBackground = False
     TabOrder = 2
+    ExplicitTop = 155
     object btNovo: TBitBtn
       Left = 30
       Top = 12
       Width = 83
       Height = 42
       Caption = 'Novo'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 0
       OnClick = btNovoClick
     end
@@ -121,6 +133,12 @@ object FCadCliente: TFCadCliente
       Width = 83
       Height = 42
       Caption = 'Alterar'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 1
       OnClick = btAlterarClick
     end
@@ -130,6 +148,12 @@ object FCadCliente: TFCadCliente
       Width = 83
       Height = 42
       Caption = 'Remover'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 2
       OnClick = btRemoverClick
     end
@@ -139,6 +163,12 @@ object FCadCliente: TFCadCliente
       Width = 83
       Height = 42
       Caption = 'Salvar'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 3
       OnClick = btSalvarClick
     end
@@ -148,6 +178,12 @@ object FCadCliente: TFCadCliente
       Width = 83
       Height = 42
       Caption = 'Cancelar'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 4
       OnClick = btCancelarClick
     end
@@ -157,6 +193,12 @@ object FCadCliente: TFCadCliente
       Width = 83
       Height = 42
       Caption = 'Sair'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 5
       OnClick = btSairClick
     end
@@ -166,6 +208,8 @@ object FCadCliente: TFCadCliente
     Top = 8
     Width = 684
     Height = 138
+    Color = clWhite
+    ParentBackground = False
     TabOrder = 3
     object lbCodigo: TLabel
       Left = 75
@@ -227,17 +271,26 @@ object FCadCliente: TFCadCliente
   end
   object pOrdem: TPanel
     Left = 0
-    Top = 218
+    Top = 223
     Width = 700
     Height = 41
     Align = alBottom
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 4
+    ExplicitTop = 218
     object lbOrdem: TLabel
       Left = 32
       Top = 10
       Width = 58
       Height = 18
       Caption = 'Ordenar:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object cbOrdem: TComboBox
       Left = 114

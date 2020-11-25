@@ -2,9 +2,9 @@ object FRelatorioVeiculo: TFRelatorioVeiculo
   Left = 0
   Top = 0
   Caption = 'Relat'#243'rio de Ve'#237'culos'
-  ClientHeight = 430
+  ClientHeight = 600
   ClientWidth = 760
-  Color = clBtnFace
+  Color = clInactiveBorder
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -15
@@ -20,7 +20,7 @@ object FRelatorioVeiculo: TFRelatorioVeiculo
     Left = 0
     Top = 41
     Width = 760
-    Height = 328
+    Height = 496
     Align = alTop
     DataSource = DM.dsRelatorioVei
     TabOrder = 0
@@ -111,10 +111,12 @@ object FRelatorioVeiculo: TFRelatorioVeiculo
   end
   object pListagem: TPanel
     Left = 0
-    Top = 369
+    Top = 537
     Width = 760
     Height = 53
     Align = alTop
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 1
     object cbPesquisa: TComboBox
       Left = 30
@@ -171,6 +173,8 @@ object FRelatorioVeiculo: TFRelatorioVeiculo
     Width = 760
     Height = 41
     Align = alTop
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 2
     object lbOrdem: TLabel
       Left = 32
@@ -178,6 +182,12 @@ object FRelatorioVeiculo: TFRelatorioVeiculo
       Width = 58
       Height = 18
       Caption = 'Ordenar:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object cbOrdem: TComboBox
       Left = 114

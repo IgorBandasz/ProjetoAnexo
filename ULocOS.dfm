@@ -2,9 +2,9 @@ object FLocOS: TFLocOS
   Left = 0
   Top = 0
   Caption = 'FLocOS'
-  ClientHeight = 616
+  ClientHeight = 600
   ClientWidth = 870
-  Color = clBtnFace
+  Color = clInactiveBorder
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -15
@@ -18,11 +18,14 @@ object FLocOS: TFLocOS
   TextHeight = 18
   object pBotoes: TPanel
     Left = 0
-    Top = 514
+    Top = 525
     Width = 870
     Height = 63
     Align = alTop
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 0
+    ExplicitTop = 514
     object btNovo: TBitBtn
       Left = 360
       Top = 11
@@ -64,7 +67,7 @@ object FLocOS: TFLocOS
     Left = 0
     Top = 94
     Width = 870
-    Height = 420
+    Height = 431
     Align = alTop
     DataSource = DM.dsOS
     Font.Charset = DEFAULT_CHARSET
@@ -177,6 +180,8 @@ object FLocOS: TFLocOS
     Width = 870
     Height = 41
     Align = alTop
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 3
     object lbOrdem: TLabel
       Left = 32
@@ -184,6 +189,12 @@ object FLocOS: TFLocOS
       Width = 58
       Height = 18
       Caption = 'Ordenar:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object cbOrdem: TComboBox
       Left = 114

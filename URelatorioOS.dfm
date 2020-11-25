@@ -2,9 +2,9 @@ object FRelatorioOS: TFRelatorioOS
   Left = 0
   Top = 0
   Caption = 'Relat'#243'rio de OS'
-  ClientHeight = 497
+  ClientHeight = 600
   ClientWidth = 543
-  Color = clBtnFace
+  Color = clInactiveBorder
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -15
@@ -20,7 +20,7 @@ object FRelatorioOS: TFRelatorioOS
     Left = 0
     Top = 41
     Width = 543
-    Height = 393
+    Height = 496
     Align = alTop
     DataSource = DM.dsRelatorioOS
     TabOrder = 0
@@ -97,12 +97,13 @@ object FRelatorioOS: TFRelatorioOS
   end
   object pListagem: TPanel
     Left = 0
-    Top = 434
+    Top = 537
     Width = 543
     Height = 53
     Align = alTop
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 541
     object cbPesquisa: TComboBox
       Left = 18
       Top = 14
@@ -159,14 +160,21 @@ object FRelatorioOS: TFRelatorioOS
     Width = 543
     Height = 41
     Align = alTop
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 2
-    ExplicitWidth = 541
     object lbOrdem: TLabel
       Left = 32
       Top = 10
       Width = 58
       Height = 18
       Caption = 'Ordenar:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object cbOrdem: TComboBox
       Left = 114

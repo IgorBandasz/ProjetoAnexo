@@ -2,9 +2,9 @@ object FCadProduto: TFCadProduto
   Left = 0
   Top = 0
   Caption = 'Cadastro de Produto'
-  ClientHeight = 534
-  ClientWidth = 704
-  Color = clBtnFace
+  ClientHeight = 600
+  ClientWidth = 700
+  Color = clInactiveBorder
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -15
@@ -18,11 +18,15 @@ object FCadProduto: TFCadProduto
   TextHeight = 18
   object pBotoes: TPanel
     Left = 0
-    Top = 158
-    Width = 704
+    Top = 160
+    Width = 700
     Height = 63
     Align = alBottom
+    Color = clWhite
+    ParentBackground = False
     TabOrder = 0
+    ExplicitTop = 158
+    ExplicitWidth = 704
     object btNovo: TBitBtn
       Left = 30
       Top = 12
@@ -80,9 +84,9 @@ object FCadProduto: TFCadProduto
   end
   object dbgProdutos: TDBGrid
     Left = 0
-    Top = 262
-    Width = 704
-    Height = 219
+    Top = 264
+    Width = 700
+    Height = 283
     Align = alBottom
     DataSource = DM.dsProduto
     Font.Charset = DEFAULT_CHARSET
@@ -111,7 +115,7 @@ object FCadProduto: TFCadProduto
         Expanded = False
         FieldName = 'NOMEPROD'
         Title.Caption = 'NOME DO PRODUTO'
-        Width = 439
+        Width = 427
         Visible = True
       end
       item
@@ -124,11 +128,15 @@ object FCadProduto: TFCadProduto
   end
   object pListagem: TPanel
     Left = 0
-    Top = 481
-    Width = 704
+    Top = 547
+    Width = 700
     Height = 53
     Align = alBottom
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 2
+    ExplicitTop = 481
+    ExplicitWidth = 704
     object cbPesquisa: TComboBox
       Left = 30
       Top = 13
@@ -167,8 +175,10 @@ object FCadProduto: TFCadProduto
   object pDados: TPanel
     Left = 8
     Top = 8
-    Width = 689
+    Width = 684
     Height = 138
+    Color = clWhite
+    ParentBackground = False
     TabOrder = 3
     object lbCodigo: TLabel
       Left = 84
@@ -228,11 +238,15 @@ object FCadProduto: TFCadProduto
   end
   object pOrdem: TPanel
     Left = 0
-    Top = 221
-    Width = 704
+    Top = 223
+    Width = 700
     Height = 41
     Align = alBottom
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 4
+    ExplicitTop = 221
+    ExplicitWidth = 704
     object lbOrdem: TLabel
       Left = 32
       Top = 10

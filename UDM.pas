@@ -78,9 +78,9 @@ var
                          +' inner join tbrelservicoos r on s.pkcodservico = r.fkcodservico';
   SRelatorioServ2 :string=' group by s.descricaoservico, s.pkcodservico, s.valorbase';
 
-  SRelatorioCli :string= 'select c.pkcodcli, c.nomecli, count(*), sum(o.valortotal), avg(o.valortotal) from tbcliente c '
+  SRelatorioCli :string= 'select c.pkcodcli, c.nomecli, c.fonecli, count(*), sum(o.valortotal), avg(o.valortotal) from tbcliente c '
                         +' inner join tbos o on c.pkcodcli = o.fkcodcli';
-  SRelatorioCli2 :string=' group by c.nomecli, c.pkcodcli ';
+  SRelatorioCli2 :string=' group by c.nomecli, c.pkcodcli, c.fonecli ';
 
   SRelatorioVei :string= 'select v.pkcodveiculo, v.placaveiculo, m.nomemarca, count(*), avg(o.valortotal), sum(o.valortotal) from tbveiculo v '
                         +' inner join tbos o on v.pkcodveiculo = o.fkcodveiculo '

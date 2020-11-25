@@ -4,7 +4,7 @@ object FPrincipal: TFPrincipal
   Caption = 'In'#237'cio'
   ClientHeight = 482
   ClientWidth = 665
-  Color = clBtnFace
+  Color = clInactiveBorder
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -15
@@ -17,8 +17,8 @@ object FPrincipal: TFPrincipal
   PixelsPerInch = 96
   TextHeight = 18
   object lbTitulo: TLabel
-    Left = 16
-    Top = 16
+    Left = 243
+    Top = 32
     Width = 176
     Height = 38
     Caption = 'Bem-Vindo'
@@ -34,20 +34,9 @@ object FPrincipal: TFPrincipal
     Top = 112
     Width = 217
     Height = 313
+    Color = clWhite
+    ParentBackground = False
     TabOrder = 0
-    object lbCadastro: TLabel
-      Left = 61
-      Top = 15
-      Width = 94
-      Height = 29
-      Caption = 'Cadastro'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -24
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-    end
     object Label1: TLabel
       Left = 8
       Top = -96
@@ -109,26 +98,37 @@ object FPrincipal: TFPrincipal
       TabOrder = 5
       OnClick = btCadOSClick
     end
+    object pTituloCad: TPanel
+      Left = 0
+      Top = 0
+      Width = 217
+      Height = 58
+      Color = clHighlight
+      ParentBackground = False
+      TabOrder = 6
+      object lbCadastro: TLabel
+        Left = 61
+        Top = 15
+        Width = 94
+        Height = 29
+        Caption = 'Cadastro'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -24
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+    end
   end
   object pRelatorios: TPanel
     Left = 383
     Top = 112
     Width = 217
     Height = 313
+    Color = clWhite
+    ParentBackground = False
     TabOrder = 1
-    object lbRelatorios: TLabel
-      Left = 58
-      Top = 15
-      Width = 105
-      Height = 29
-      Caption = 'Relat'#243'rios'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -24
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-    end
     object btRelCliente: TBitBtn
       Left = 67
       Top = 104
@@ -182,6 +182,28 @@ object FPrincipal: TFPrincipal
       Caption = 'Ve'#237'culo'
       TabOrder = 5
       OnClick = btRelVeiculoClick
+    end
+    object pTituloRel: TPanel
+      Left = 0
+      Top = 0
+      Width = 217
+      Height = 58
+      Color = clHighlight
+      ParentBackground = False
+      TabOrder = 6
+      object lbRelatorios: TLabel
+        Left = 58
+        Top = 15
+        Width = 105
+        Height = 29
+        Caption = 'Relat'#243'rios'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -24
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
     end
   end
 end

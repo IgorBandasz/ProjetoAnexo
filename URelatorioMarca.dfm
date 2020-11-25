@@ -2,9 +2,9 @@ object FRelatorioMarca: TFRelatorioMarca
   Left = 0
   Top = 0
   Caption = 'Relat'#243'rio das Marcas de ve'#237'culos'
-  ClientHeight = 461
+  ClientHeight = 600
   ClientWidth = 816
-  Color = clBtnFace
+  Color = clInactiveBorder
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -15
@@ -20,7 +20,7 @@ object FRelatorioMarca: TFRelatorioMarca
     Left = 0
     Top = 41
     Width = 816
-    Height = 362
+    Height = 496
     Align = alTop
     DataSource = DM.dsRelatorioMarca
     TabOrder = 0
@@ -98,10 +98,12 @@ object FRelatorioMarca: TFRelatorioMarca
   end
   object pListagem: TPanel
     Left = 0
-    Top = 403
+    Top = 537
     Width = 816
     Height = 53
     Align = alTop
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 1
     object cbPesquisa: TComboBox
       Left = 36
@@ -157,6 +159,8 @@ object FRelatorioMarca: TFRelatorioMarca
     Width = 816
     Height = 41
     Align = alTop
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 2
     object lbOrdem: TLabel
       Left = 32
@@ -164,6 +168,12 @@ object FRelatorioMarca: TFRelatorioMarca
       Width = 58
       Height = 18
       Caption = 'Ordenar:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object cbOrdem: TComboBox
       Left = 114

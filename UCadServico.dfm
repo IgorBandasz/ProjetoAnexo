@@ -2,9 +2,9 @@ object FCadServico: TFCadServico
   Left = 0
   Top = 0
   Caption = 'Cadastro de Servi'#231'o'
-  ClientHeight = 543
+  ClientHeight = 600
   ClientWidth = 700
-  Color = clBtnFace
+  Color = clInactiveBorder
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -15
@@ -19,8 +19,10 @@ object FCadServico: TFCadServico
   object pDados: TPanel
     Left = 8
     Top = 8
-    Width = 689
+    Width = 684
     Height = 138
+    Color = clWhite
+    ParentBackground = False
     TabOrder = 0
     object lbCodigo: TLabel
       Left = 75
@@ -80,11 +82,14 @@ object FCadServico: TFCadServico
   end
   object pBotoes: TPanel
     Left = 0
-    Top = 154
+    Top = 160
     Width = 700
     Height = 63
     Align = alBottom
+    Color = clWhite
+    ParentBackground = False
     TabOrder = 1
+    ExplicitTop = 154
     object btNovo: TBitBtn
       Left = 30
       Top = 12
@@ -142,9 +147,9 @@ object FCadServico: TFCadServico
   end
   object dbgServicos: TDBGrid
     Left = 0
-    Top = 258
+    Top = 264
     Width = 700
-    Height = 232
+    Height = 283
     Align = alBottom
     DataSource = DM.dsServico
     Font.Charset = DEFAULT_CHARSET
@@ -185,14 +190,17 @@ object FCadServico: TFCadServico
   end
   object pListagem: TPanel
     Left = 0
-    Top = 490
+    Top = 547
     Width = 700
     Height = 53
     Align = alBottom
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 3
+    ExplicitTop = 490
     object cbPesquisa: TComboBox
       Left = 30
-      Top = 6
+      Top = 13
       Width = 155
       Height = 26
       Style = csDropDownList
@@ -227,17 +235,26 @@ object FCadServico: TFCadServico
   end
   object pOrdem: TPanel
     Left = 0
-    Top = 217
+    Top = 223
     Width = 700
     Height = 41
     Align = alBottom
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 4
+    ExplicitTop = 217
     object lbOrdem: TLabel
       Left = 32
       Top = 10
       Width = 58
       Height = 18
       Caption = 'Ordenar:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object cbOrdem: TComboBox
       Left = 114

@@ -2,9 +2,9 @@ object FRelatorioProduto: TFRelatorioProduto
   Left = 0
   Top = 0
   Caption = 'Relat'#243'rio de Produtos'
-  ClientHeight = 586
+  ClientHeight = 600
   ClientWidth = 766
-  Color = clBtnFace
+  Color = clInactiveBorder
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -15
@@ -20,7 +20,7 @@ object FRelatorioProduto: TFRelatorioProduto
     Left = 0
     Top = 41
     Width = 766
-    Height = 480
+    Height = 496
     Align = alTop
     DataSource = DM.dsRelatorioProd
     TabOrder = 0
@@ -85,10 +85,12 @@ object FRelatorioProduto: TFRelatorioProduto
   end
   object pListagem: TPanel
     Left = 0
-    Top = 521
+    Top = 537
     Width = 766
     Height = 53
     Align = alTop
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 1
     object cbPesquisa: TComboBox
       Left = 32
@@ -142,6 +144,8 @@ object FRelatorioProduto: TFRelatorioProduto
     Width = 766
     Height = 41
     Align = alTop
+    Color = clHighlight
+    ParentBackground = False
     TabOrder = 2
     object lbOrdem: TLabel
       Left = 32
@@ -149,6 +153,12 @@ object FRelatorioProduto: TFRelatorioProduto
       Width = 58
       Height = 18
       Caption = 'Ordenar:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object cbOrdem: TComboBox
       Left = 114

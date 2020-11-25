@@ -27,6 +27,8 @@ type
     btRelOS: TBitBtn;
     Label1: TLabel;
     lbTitulo: TLabel;
+    pTituloCad: TPanel;
+    pTituloRel: TPanel;
     procedure Sair1Click(Sender: TObject);
     procedure Cliente1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
