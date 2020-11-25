@@ -84,6 +84,7 @@ type
     procedure btProcuraClienteClick(Sender: TObject);
     procedure btListarProdutosClick(Sender: TObject);
     procedure btListarServicosClick(Sender: TObject);
+    procedure medtDataOsExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -282,18 +283,8 @@ procedure TFCadOS.btSalvarClick(Sender: TObject);
 var
   x : string;
   contador :integer;
-  DataDigitada : TDateTime;
 begin
   try
-    if not(TryStrToDate(medtDataOS.Text,DataDigitada)) then
-    begin
-       Showmessage('Data Inválida');
-       if medtDataOs.CanFocus then
-          medtDataOS.SetFocus;
-       exit
-    end;
-
-
     if edtFkCodCli.Text = '' then
     begin
       showmessage('Selecione ou digite um Código de Cliente');
@@ -582,6 +573,13 @@ begin
   edtFkCodServico.Text := '';
   edtDescricaoServico.Text := '';
   edtValorServico.Text := '';
+end;
+
+procedure TFCadOS.medtDataOsExit(Sender: TObject);
+var
+  x :string;
+begin
+  x := formatdatetime('dd.mm.yyyy',StrToDate(medtDataOS.Text));
 end;
 
 procedure TFCadOS.medtPlacaVeiculoExit(Sender: TObject);

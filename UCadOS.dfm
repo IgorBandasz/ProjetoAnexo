@@ -165,7 +165,6 @@ object FCadOS: TFCadOS
       MaxLength = 10
       TabOrder = 1
       Text = '  /  /    '
-      OnExit = medtDataOsExit
     end
     object medtPlacaVeiculo: TMaskEdit
       Left = 394
