@@ -126,6 +126,16 @@ begin
       DM.fdtTransacaoAltera.Rollback;
     DM.fdtTransacaoAltera.StartTransaction;
 
+    comando := 'select count(*) as quant from tbrelservicoos where fkcodservico ='+edtPkCodServico.Text;
+    DM.executaSql(comando, DM.sqlGeral);
+    if DM.sqlGeral.FieldByName('quant').AsInteger > 0 then
+    begin
+      showmessage('Não é possível remover esse Serviço enquanto ele estiver resgistrado em alguma OS');
+      acaoGeral := 3;
+      controleBotoes(acaoGeral);
+      exit
+    end;
+
     comando:='DELETE FROM TBSERVICO'
        +' WHERE PKCODSERVICO = '+edtPkCodServico.Text;
 

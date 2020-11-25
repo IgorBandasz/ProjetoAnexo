@@ -25,8 +25,6 @@ object FCadProduto: TFCadProduto
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 158
-    ExplicitWidth = 704
     object btNovo: TBitBtn
       Left = 30
       Top = 12
@@ -135,8 +133,6 @@ object FCadProduto: TFCadProduto
     Color = clHighlight
     ParentBackground = False
     TabOrder = 2
-    ExplicitTop = 481
-    ExplicitWidth = 704
     object cbPesquisa: TComboBox
       Left = 30
       Top = 13
@@ -245,14 +241,18 @@ object FCadProduto: TFCadProduto
     Color = clHighlight
     ParentBackground = False
     TabOrder = 4
-    ExplicitTop = 221
-    ExplicitWidth = 704
     object lbOrdem: TLabel
       Left = 32
       Top = 10
       Width = 58
       Height = 18
       Caption = 'Ordenar:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object cbOrdem: TComboBox
       Left = 114

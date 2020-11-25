@@ -15,12 +15,16 @@ type
     edtPesquisa: TEdit;
     btPesquisar: TBitBtn;
     lbInstrucao: TLabel;
+    pOrdem: TPanel;
+    lbOrdem: TLabel;
+    cbOrdem: TComboBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormActivate(Sender: TObject);
     procedure edtPesquisaKeyPress(Sender: TObject; var Key: Char);
     procedure cbPesquisaChange(Sender: TObject);
     procedure btPesquisarClick(Sender: TObject);
     procedure dbgProdutosDblClick(Sender: TObject);
+    procedure cbOrdemChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,7 +42,7 @@ uses UDM, UCadOS;
 
 procedure TFListarProdutos.btPesquisarClick(Sender: TObject);
 var
-  comando, condicao : string;
+  comando, condicao, ordem : string;
 begin
   comando := STbProduto;
   condicao := Trim(edtPesquisa.Text);
@@ -52,8 +56,24 @@ begin
     end;
     comando := comando+condicao;
   end;
+
+  case cbOrdem.ItemIndex of
+    0: ordem := ' order by nomeprod';
+    1: ordem := ' order by nomeprod desc';
+    2: ordem := ' order by pkcodprod';
+    3: ordem := ' order by pkcodprod desc';
+    4: ordem := ' order by valorvendaprod desc';
+    5: ordem := ' order by valorvendaprod';
+  end;
+  comando := comando + ordem;
+
   DM.executaSql(comando,DM.sqlProduto);
 
+end;
+
+procedure TFListarProdutos.cbOrdemChange(Sender: TObject);
+begin
+  btPesquisarClick(nil);
 end;
 
 procedure TFListarProdutos.cbPesquisaChange(Sender: TObject);

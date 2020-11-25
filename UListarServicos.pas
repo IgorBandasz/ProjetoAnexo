@@ -15,12 +15,16 @@ type
     edtPesquisa: TEdit;
     btPesquisar: TBitBtn;
     lbInstrucao: TLabel;
+    pOrdem: TPanel;
+    lbOrdem: TLabel;
+    cbOrdem: TComboBox;
     procedure btPesquisarClick(Sender: TObject);
     procedure cbPesquisaChange(Sender: TObject);
     procedure edtPesquisaKeyPress(Sender: TObject; var Key: Char);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dbgServicosDblClick(Sender: TObject);
+    procedure cbOrdemChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,7 +42,7 @@ uses UDM, UCadOS;
 
 procedure TFListarServicos.btPesquisarClick(Sender: TObject);
 var
-  comando, condicao : string;
+  comando, condicao, ordem : string;
 begin
   comando := STbServico;
   condicao :=Trim(edtPesquisa.Text);
@@ -52,8 +56,24 @@ begin
     end;
     comando := comando+condicao;
   end;
+
+  case cbOrdem.ItemIndex of
+    0: ordem := ' order by descricaoservico';
+    1: ordem := ' order by descricaoservico desc';
+    2: ordem := ' order by pkcodservico';
+    3: ordem := ' order by pkcodservico desc';
+    4: ordem := ' order by valorbase desc';
+    5: ordem := ' order by valorbase';
+  end;
+  comando := comando + ordem;
+
   DM.executaSql(comando,dm.sqlServico);
 
+end;
+
+procedure TFListarServicos.cbOrdemChange(Sender: TObject);
+begin
+  btPesquisarClick(nil);
 end;
 
 procedure TFListarServicos.cbPesquisaChange(Sender: TObject);

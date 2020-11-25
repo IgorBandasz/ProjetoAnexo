@@ -2,7 +2,7 @@ object FListarProdutos: TFListarProdutos
   Left = 0
   Top = 0
   Caption = 'FListarProdutos'
-  ClientHeight = 460
+  ClientHeight = 500
   ClientWidth = 710
   Color = clInactiveBorder
   Font.Charset = DEFAULT_CHARSET
@@ -31,7 +31,7 @@ object FListarProdutos: TFListarProdutos
   end
   object dbgProdutos: TDBGrid
     Left = 0
-    Top = 43
+    Top = 83
     Width = 710
     Height = 364
     Align = alBottom
@@ -76,14 +76,14 @@ object FListarProdutos: TFListarProdutos
   end
   object pListagem: TPanel
     Left = 0
-    Top = 407
+    Top = 447
     Width = 710
     Height = 53
     Align = alBottom
     Color = clHighlight
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 325
+    ExplicitTop = 407
     object cbPesquisa: TComboBox
       Left = 70
       Top = 14
@@ -117,6 +117,49 @@ object FListarProdutos: TFListarProdutos
       Caption = 'Pesquisar'
       TabOrder = 2
       OnClick = btPesquisarClick
+    end
+  end
+  object pOrdem: TPanel
+    Left = 0
+    Top = 42
+    Width = 710
+    Height = 41
+    Align = alBottom
+    Color = clHighlight
+    ParentBackground = False
+    TabOrder = 2
+    ExplicitTop = 223
+    ExplicitWidth = 700
+    object lbOrdem: TLabel
+      Left = 32
+      Top = 10
+      Width = 58
+      Height = 18
+      Caption = 'Ordenar:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object cbOrdem: TComboBox
+      Left = 114
+      Top = 7
+      Width = 199
+      Height = 26
+      Style = csDropDownList
+      ItemIndex = 0
+      TabOrder = 0
+      Text = 'A-Z'
+      OnChange = cbOrdemChange
+      Items.Strings = (
+        'A-Z'
+        'Z-A'
+        'Menor c'#243'digo'
+        'Maior c'#243'digo'
+        'Maior valor'
+        'Menor valor')
     end
   end
 end

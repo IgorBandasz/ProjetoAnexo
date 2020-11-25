@@ -89,7 +89,6 @@ object FCadServico: TFCadServico
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 154
     object btNovo: TBitBtn
       Left = 30
       Top = 12
@@ -197,7 +196,6 @@ object FCadServico: TFCadServico
     Color = clHighlight
     ParentBackground = False
     TabOrder = 3
-    ExplicitTop = 490
     object cbPesquisa: TComboBox
       Left = 30
       Top = 13
@@ -242,7 +240,7 @@ object FCadServico: TFCadServico
     Color = clHighlight
     ParentBackground = False
     TabOrder = 4
-    ExplicitTop = 217
+    ExplicitTop = 220
     object lbOrdem: TLabel
       Left = 32
       Top = 10

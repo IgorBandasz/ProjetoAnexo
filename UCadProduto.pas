@@ -128,10 +128,21 @@ begin
       DM.fdtTransacaoAltera.Rollback;
     DM.fdtTransacaoAltera.StartTransaction;
 
+    comando := 'select count(*) as quant from tbrelprodutoos where fkcodprod ='+edtPkCodProd.Text;
+    DM.executaSql(comando, DM.sqlGeral);
+    if DM.sqlGeral.FieldByName('quant').AsInteger > 0 then
+    begin
+      showmessage('Não é possível remover esse Produto enquanto ele estiver resgistrado em alguma OS');
+      acaoGeral := 3;
+      controleBotoes(acaoGeral);
+      exit
+    end;
+
+
     comando:='DELETE FROM TBPRODUTO'
        +' WHERE PKCODPROD = '+edtPkCodProd.Text;
 
-    DM.executaSql(comando,dm.sqlAltera);
+    DM.executaSql(comando,DM.sqlAltera);
     DM.fdtTransacaoAltera.Commit;
     btPesquisarClick(nil);
     acaoGeral := 3;
