@@ -353,16 +353,14 @@ begin
 
     DM.fdtTransacaoAltera.Commit;
 
-    if DM.fdtTransacaoAltera.TransactionIntf.Active then
-      DM.fdtTransacaoAltera.Rollback;
-    DM.fdtTransacaoAltera.StartTransaction;
-
     if acaoGeral = 0 then
     begin
       x := 'select max(pkcodos) as maior from tbos where fkcodcli ='+DM.salvaChave(edtFkCodCli.Text);
       DM.executaSql(x,DM.sqlGeral);
       edtPkCodOS.Text := DM.sqlGeral.FieldByName('maior').AsString;
     end;
+
+    DM.fdtTransacaoAltera.StartTransaction;
 
     cdTbRelProdutoOS.First;
     while not cdTbRelProdutoOS.Eof do
