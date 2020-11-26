@@ -350,6 +350,13 @@ begin
       end;
     end;
     DM.executaSql(x,DM.sqlAltera);
+
+    DM.fdtTransacaoAltera.Commit;
+
+    if DM.fdtTransacaoAltera.TransactionIntf.Active then
+      DM.fdtTransacaoAltera.Rollback;
+    DM.fdtTransacaoAltera.StartTransaction;
+
     if acaoGeral = 0 then
     begin
       x := 'select max(pkcodos) as maior from tbos where fkcodcli ='+DM.salvaChave(edtFkCodCli.Text);
